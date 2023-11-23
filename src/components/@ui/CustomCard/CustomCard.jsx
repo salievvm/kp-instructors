@@ -11,14 +11,14 @@ export default function CustomCard({
 }) {
   const sx = (theme) => ({
     base: {
-      padding: '40px',
+      padding: '24px',
       [theme.breakpoints.down('sm')]: {
         padding: '24px',
       },
     },
     filled: {
       bgcolor: 'info.main',
-      padding: '40px',
+      padding: '24px',
       [theme.breakpoints.down('sm')]: {
         padding: '24px',
       },

@@ -3,6 +3,7 @@ import { Grid, Typography } from '@mui/material';
 import CustomCard from '../../components/@ui/CustomCard';
 import CustomTypography from '../../components/@ui/CustomTypography';
 import Navigation from './Navigation';
+import Filter from './Filter';
 
 const Instructors = ({ }) => {
   return (
@@ -16,7 +17,6 @@ const Instructors = ({ }) => {
         xs={4}
       >
         <CustomCard variant="filled">
-          <Typography variant="h3">Горные лыжи и сноуборд</Typography>
           <Navigation />
         </CustomCard>
       </Grid>
@@ -24,7 +24,9 @@ const Instructors = ({ }) => {
         item
         xs={8}
       >
-        <CustomCard variant="filled">123</CustomCard>
+        <CustomCard variant="filled">
+          <Filter />
+        </CustomCard>
       </Grid>
       <Grid
         item
