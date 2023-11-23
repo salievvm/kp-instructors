@@ -8,8 +8,12 @@ import CrmRelatives from './Crm/Relatives';
 import CrmExperience from './Crm/Experience';
 import CrmRecommendation from './Crm/Recommendation';
 
+import Navigation from './Navigation';
+
 const obApp = new App();
 const obForm = new Form();
+
+const obNavigation = new Navigation();
 
 export {
   obApp,
@@ -20,4 +24,5 @@ export {
   CrmRecommendation,
   CrmContact,
   CrmRequisite,
+  obNavigation,
 };

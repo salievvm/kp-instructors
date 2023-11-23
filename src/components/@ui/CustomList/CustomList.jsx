@@ -101,50 +101,6 @@ ListItem.defaultProps = {
   open: false,
 };
 
-const schema = {
-  skis: {
-    title: 'Горные лыжи и сноуборд',
-    id: 'skis',
-    items: [
-      {
-        id: 'standart',
-        title: 'Стандартные тарифы',
-        quantity: 12,
-        items: [
-          {
-            title: 'Индивидуальное занятие',
-            id: 'individual',
-            items: [
-              {
-                id: '1hour',
-                title: '1 час',
-              },
-              {
-                id: '2hours',
-                title: '2 часа',
-              },
-            ],
-          },
-          {
-            title: 'Два человека/Парное занятие',
-            id: 'twoperson',
-            items: [
-              {
-                id: '1hour',
-                title: '1 час',
-              },
-              {
-                id: '2hours',
-                title: '2 часа',
-              },
-            ],
-          },
-        ],
-      },
-    ],
-  },
-};
-
 const RecursiveList = ({ items, level }) => {
   const [openItems, setOpenItems] = React.useState([]);
 
@@ -179,10 +135,19 @@ const RecursiveList = ({ items, level }) => {
   );
 };
 
-const CustomList = () => {
-  const { skis } = schema;
+const CustomList = ({ schema }) => {
+  return <RecursiveList items={schema.items} level={0} />;
+};
 
-  return <RecursiveList items={skis.items} level={0} />;
+CustomList.propTypes = {
+  schema: PropTypes.shape({
+    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    title: PropTypes.string,
+    items: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      title: PropTypes.string,
+    })),
+  }),
 };
 
 export default CustomList;

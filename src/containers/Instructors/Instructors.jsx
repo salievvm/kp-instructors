@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid, Typography } from '@mui/material';
 import CustomCard from '../../components/@ui/CustomCard';
 import CustomTypography from '../../components/@ui/CustomTypography';
-import CustomList from '../../components/@ui/CustomList/CustomList';
+import Navigation from './Navigation';
 
 const Instructors = ({ }) => {
   return (
@@ -17,7 +17,7 @@ const Instructors = ({ }) => {
       >
         <CustomCard variant="filled">
           <Typography variant="h3">Горные лыжи и сноуборд</Typography>
-          <CustomList />
+          <Navigation />
         </CustomCard>
       </Grid>
       <Grid
