@@ -145,48 +145,44 @@ const schema = {
   },
 };
 
-export default function CustomList({ }) {
-  const [open, setOpen] = React.useState(true);
+const RecursiveList = ({ items, level }) => {
+  const [openItems, setOpenItems] = React.useState([]);
 
-  const handleClick = () => {
-    setOpen(!open);
+  const handleClick = (id) => {
+    if (openItems.includes(id)) {
+      setOpenItems(openItems.filter((itemId) => itemId !== id));
+    } else {
+      setOpenItems([...openItems, id]);
+    }
   };
 
-  const { skis } = schema;
-
   return (
-    <List
-      sx={{ width: '100%' }}
-      component="nav"
-      aria-labelledby="nested-list-subheader"
-    >
-      {skis.items.map((item) => (
+    <List sx={{ width: '100%' }} component="nav">
+      {items.map((item) => (
         <React.Fragment key={item.id}>
           <ListItem
-            chip={12}
-            onClick={handleClick}
+            chip={item.quantity}
+            onClick={() => handleClick(item.id)}
             title={item.title}
-            open={open}
+            open={openItems.includes(item.id)}
             id={item.id}
+            level={level}
           />
           {item.items && item.items.length ? (
-            <Collapse in={open} timeout="auto" unmountOnExit>
-              <List component="div" disablePadding>
-                {item.items.map((subitem) => (
-                  <React.Fragment key={subitem.id}>
-                    <ListItem title={subitem.title} level={1} id={subitem.id} />
-                    {subitem.items && subitem.items.length ? (
-                      subitem.items.map((subsubitem) => (
-                        <ListItem title={subsubitem.title} level={2} id={subsubitem.id} key={subsubitem.id}/>
-                      ))
-                    ) : null}
-                  </React.Fragment>
-                ))}
-              </List>
+            <Collapse in={openItems.includes(item.id)} timeout="auto" unmountOnExit>
+              <RecursiveList items={item.items} level={level + 1} />
             </Collapse>
           ) : null}
         </React.Fragment>
       ))}
     </List>
   );
-}
+};
+
+const CustomList = () => {
+  const { skis } = schema;
+
+  return <RecursiveList items={skis.items} level={0} />;
+};
+
+export default CustomList;
