@@ -6,6 +6,30 @@ import Navigation from './Navigation';
 import Filter from './Filter';
 import Lessons from './Lessons';
 import bg_main from '../../assets/img/bg_main.webp';
+import CustomBreadcrumbs from '../../components/@ui/CustomBreadcrumbs';
+
+const links = [
+  {
+    href: '#',
+    label: 'Главная',
+  },
+  {
+    href: '#',
+    label: 'Онлайн-магазин',
+  },
+  {
+    href: '#',
+    label: 'Категории',
+  },
+  {
+    href: '#',
+    label: 'Услуги',
+  },
+  {
+    href: '#',
+    label: 'Инструктора',
+  },
+];
 
 const Instructors = ({ }) => {
   return (
@@ -36,6 +60,12 @@ const Instructors = ({ }) => {
             </Grid>
           </Grid>
         </CustomCard>
+      </Grid>
+      <Grid
+        item
+        xs={12}
+      >
+        <CustomBreadcrumbs links={links} />
       </Grid>
       <Grid
         item
