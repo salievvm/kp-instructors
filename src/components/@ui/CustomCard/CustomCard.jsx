@@ -11,6 +11,7 @@ export default function CustomCard({
   height,
   variant,
   bg,
+  gradient,
 }) {
   const sx = (theme) => ({
     base: {
@@ -28,7 +29,7 @@ export default function CustomCard({
     },
     banner: {
       bgcolor: 'info.main',
-      backgroundImage: `linear-gradient(90deg, #1F1B2E 0%, rgba(31, 27, 46, 0.72) 25%, rgba(31, 27, 46, 0) 50%), url("${bg}")`,
+      backgroundImage: gradient ? `linear-gradient(90deg, #1F1B2E 0%, rgba(31, 27, 46, 0.72) 25%, rgba(31, 27, 46, 0) 50%), url("${bg}")` : `url("${bg}")`,
       backgroundPosition: 'center',
       backgroundSize: 'cover',
       backgroundRepeat: 'no-repeat',
@@ -40,7 +41,7 @@ export default function CustomCard({
       [theme.breakpoints.down('sm')]: {
         height: 392,
         padding: '24px',
-        backgroundImage: `linear-gradient(0deg, #1F1B2E 0%, rgba(31, 27, 46, 0.72) 25%, rgba(31, 27, 46, 0) 50%), url("${bg}")`,
+        backgroundImage: gradient ? `linear-gradient(0deg, #1F1B2E 0%, rgba(31, 27, 46, 0.72) 25%, rgba(31, 27, 46, 0) 50%), url("${bg}")` : `url("${bg}")`,
         backgroundPosition: '70%',
       },
     },
@@ -69,6 +70,7 @@ CustomCard.propTypes = {
   margin: PropTypes.any,
   width: PropTypes.any,
   variant: PropTypes.oneOf(['base', 'filled', 'banner']),
+  gradient: PropTypes.bool,
 };
 
 CustomCard.defaultProps = {
@@ -76,4 +78,5 @@ CustomCard.defaultProps = {
   width: '100%',
   margin: 0,
   variant: 'base',
+  gradient: false,
 };

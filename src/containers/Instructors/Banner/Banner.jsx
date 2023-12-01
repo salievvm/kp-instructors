@@ -7,6 +7,7 @@ import CustomCard from '../../../components/@ui/CustomCard';
 const Banner = () => {
   return (
     <CustomCard
+      gradient
       variant="banner"
       height={540}
       bg={bg_main}

@@ -8,6 +8,8 @@ import Lessons from './Lessons';
 import CustomBreadcrumbs from '../../components/@ui/CustomBreadcrumbs';
 import Banner from './Banner';
 
+import bg_banner_mobile from '../../assets/img/banner_mobile.jpg';
+
 const links = [
   {
     href: '#',
@@ -63,6 +65,19 @@ const Instructors = ({ }) => {
           </CustomCard>
           <Lessons />
         </Grid>
+      </Grid>
+      <Grid item xs={12}>
+        <CustomCard variant="banner" bg={bg_banner_mobile}>
+          <Grid container>
+            <Grid item xs={12} md={6}>
+              <Typography variant="h2">Покупайте в магазине через приложение Красная Поляна</Typography>
+              <Typography variant="body1">Чтобы скачать приложение Красная Поляна, наведите камеру смартфона на QR-код или выберите свой магазин приложений</Typography>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              
+            </Grid>
+          </Grid>
+        </CustomCard>
       </Grid>
       <Grid item>
         <CustomTypography />

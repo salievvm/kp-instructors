@@ -9,9 +9,9 @@ const typography = {
     lineHeight: '48px',
   },
   h2: {
-    fontSize: '24px',
+    fontSize: '40px',
     fontWeight: 700,
-    lineHeight: '32px',
+    lineHeight: '48px',
   },
   h3: {
     fontSize: '16px',
