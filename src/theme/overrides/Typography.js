@@ -1,0 +1,23 @@
+export default function Typography(theme) {
+  return {
+    MuiTypography: {
+      styleOverrides: {
+        h1: {
+          [theme.breakpoints.down('md')]: {
+            fontSize: '32px',
+            lineHeight: '36px',
+          },
+          [theme.breakpoints.down('sm')]: {
+            fontSize: '28px',
+            lineHeight: '32px',
+          },
+          // // Другие стили для более крупных экранов (sm, md, lg, xl)
+          // [theme.breakpoints.up('sm')]: {
+          //   fontSize: '40px',
+          //   lineHeight: '48px',
+          // },
+        },
+      },
+    },
+  };
+}

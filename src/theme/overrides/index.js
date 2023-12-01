@@ -8,6 +8,7 @@ import Dialog from './Dialog';
 import Chip from './Chip';
 import List from './List';
 import IconButton from './IconButton';
+import Typography from './Typography';
 // ----------------------------------------------------------------------
 
 export default function ComponentsOverrides(theme) {
@@ -21,5 +22,6 @@ export default function ComponentsOverrides(theme) {
     IconButton(theme),
     Chip(theme),
     List(theme),
+    Typography(theme),
   );
 };

@@ -33,8 +33,15 @@ export default function CustomCard({
       backgroundSize: 'cover',
       backgroundRepeat: 'no-repeat',
       padding: '24px',
+      height: 540,
+      [theme.breakpoints.down('lg')]: {
+        height: 440,
+      },
       [theme.breakpoints.down('sm')]: {
+        height: 392,
         padding: '24px',
+        backgroundImage: `linear-gradient(0deg, #1F1B2E 0%, rgba(31, 27, 46, 0.72) 25%, rgba(31, 27, 46, 0) 50%), url("${bg}")`,
+        backgroundPosition: '70%',
       },
     },
   });
@@ -46,7 +53,6 @@ export default function CustomCard({
         padding,
         width,
         margin,
-        height,
         borderRadius,
       }}
       sx={(theme) => sx(theme)[variant]}
