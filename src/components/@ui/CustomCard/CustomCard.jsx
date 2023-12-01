@@ -62,7 +62,7 @@ CustomCard.propTypes = {
   borderRadius: PropTypes.number,
   margin: PropTypes.any,
   width: PropTypes.any,
-  variant: PropTypes.oneOf(['base', 'filled']),
+  variant: PropTypes.oneOf(['base', 'filled', 'banner']),
 };
 
 CustomCard.defaultProps = {

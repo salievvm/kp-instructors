@@ -47,7 +47,7 @@ export default function CustomBreadcrumbs({
               href={href}
               label={label}
             />
-            : <Typography color="text.primary">
+            : <Typography key={i} color="text.primary">
               {label}
             </Typography>)
         })}

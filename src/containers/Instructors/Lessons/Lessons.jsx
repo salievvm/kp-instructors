@@ -12,7 +12,7 @@ import { ArrowDownIcon } from '../../../assets/icons';
 
 const data = [
   {
-    id: 'test',
+    id: 'test1',
     dateStart: '01.01.2024',
     parentId: 'standart_individual_1hour',
     timeStart: '10:00',
@@ -20,7 +20,7 @@ const data = [
     price: 6000,
   },
   {
-    id: 'test',
+    id: 'test2',
     parentId: 'standart_individual_1hour',
     dateStart: '01.01.2024',
     timeStart: '11:00',
@@ -28,7 +28,7 @@ const data = [
     price: 6000,
   },
   {
-    id: 'test',
+    id: 'test3',
     parentId: 'standart_individual_1hour',
     dateStart: '01.01.2024',
     timeStart: '12:00',
@@ -77,6 +77,7 @@ const LessonsBody = ({
   return (
     data.map((item) => {
       return <CustomCard
+        key={item.id}
         variant="filled"
         padding="6px 8px 6px 16px"
         borderRadius={BORDER_RADIUS_SM}
