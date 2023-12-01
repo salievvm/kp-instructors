@@ -60,4 +60,31 @@ const schema = {
   },
 };
 
-export { schema };
+const mock = [
+  {
+    id: 'test1',
+    dateStart: '01.01.2024',
+    parentId: 'standart_individual_1hour',
+    timeStart: '10:00',
+    leftQuotas: '1',
+    price: 6000,
+  },
+  {
+    id: 'test2',
+    parentId: 'standart_individual_1hour',
+    dateStart: '01.01.2024',
+    timeStart: '11:00',
+    leftQuotas: '3',
+    price: 6000,
+  },
+  {
+    id: 'test3',
+    parentId: 'standart_individual_1hour',
+    dateStart: '01.01.2024',
+    timeStart: '12:00',
+    leftQuotas: '2',
+    price: 6000,
+  },
+];
+
+export { schema, mock };

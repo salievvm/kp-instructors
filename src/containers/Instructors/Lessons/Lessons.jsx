@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from "react-redux";
 
 import { Grid, Typography } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
@@ -9,33 +10,6 @@ import { obLessons } from '../../../redux/actions/model';
 
 import LessonAddToCard from './LessonAddToCart';
 import { ArrowDownIcon } from '../../../assets/icons';
-
-const data = [
-  {
-    id: 'test1',
-    dateStart: '01.01.2024',
-    parentId: 'standart_individual_1hour',
-    timeStart: '10:00',
-    leftQuotas: '1',
-    price: 6000,
-  },
-  {
-    id: 'test2',
-    parentId: 'standart_individual_1hour',
-    dateStart: '01.01.2024',
-    timeStart: '11:00',
-    leftQuotas: '3',
-    price: 6000,
-  },
-  {
-    id: 'test3',
-    parentId: 'standart_individual_1hour',
-    dateStart: '01.01.2024',
-    timeStart: '12:00',
-    leftQuotas: '2',
-    price: 6000,
-  },
-];
 
 const LessonsHeader = ({
   schema
@@ -108,10 +82,14 @@ const LessonsBody = ({
 const Lessons = () => {
   const { schema } = obLessons;
 
+  const {
+    instructors,
+  } = useSelector(state => state);
+
   return (
     <>
       <LessonsHeader schema={schema}/>
-      <LessonsBody schema={schema} data={data} />
+      <LessonsBody schema={schema} data={instructors.list} />
     </>
   );
 };
