@@ -28,7 +28,7 @@ const schema = {
   dateStart: {
     id: 'dateStart',
     label: 'Дата начала занятия',
-    // minWidth: 170,
+    minWidth: 143,
     type: date,
     format: (value) => {
       return dayjs(value).format('DD.MM.YYYY')
@@ -37,19 +37,19 @@ const schema = {
   timeStart: {
     id: 'timeStart',
     label: 'Время начала занятия',
-    // minWidth: 170,
+    minWidth: 155,
     type: text,
   },
   leftQuotas: {
     id: 'leftQuotas',
     label: 'Осталось мест',
-    // minWidth: 170,
+    minWidth: 104,
     type: text,
   },
   price: {
     id: 'price',
     label: 'Стоимость занятия',
-    // minWidth: 170,
+    minWidth: 175,
     type: text,
     format: (value) => {
       return new Intl.NumberFormat('ru-RU', {

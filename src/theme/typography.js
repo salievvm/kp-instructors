@@ -4,9 +4,9 @@ const typography = {
   fontFamily: 'Inter, Arial, sans-serif',
   color: MAIN_TEXT,
   h1: {
-    fontSize: '32px',
+    fontSize: '40px',
     fontWeight: 700,
-    lineHeight: '40px',
+    lineHeight: '48px',
   },
   h2: {
     fontSize: '24px',
@@ -17,6 +17,11 @@ const typography = {
     fontSize: '16px',
     fontWeight: 700,
     lineHeight: '24px',
+  },
+  h4: {
+    fontSize: '14px',
+    fontWeight: 700,
+    lineHeight: '20px',
   },
   subtitle1: {
     fontSize: '16px',

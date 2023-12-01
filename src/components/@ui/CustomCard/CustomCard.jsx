@@ -8,7 +8,9 @@ export default function CustomCard({
   borderRadius,
   margin,
   width,
+  height,
   variant,
+  bg,
 }) {
   const sx = (theme) => ({
     base: {
@@ -24,6 +26,17 @@ export default function CustomCard({
         padding: '24px',
       },
     },
+    banner: {
+      bgcolor: 'info.main',
+      backgroundImage: `linear-gradient(90deg, #1F1B2E 0%, rgba(31, 27, 46, 0.72) 25%, rgba(31, 27, 46, 0) 50%), url("${bg}")`,
+      backgroundPosition: 'center',
+      backgroundSize: 'cover',
+      backgroundRepeat: 'no-repeat',
+      padding: '24px',
+      [theme.breakpoints.down('sm')]: {
+        padding: '24px',
+      },
+    },
   });
 
   return (
@@ -33,6 +46,7 @@ export default function CustomCard({
         padding,
         width,
         margin,
+        height,
         borderRadius,
       }}
       sx={(theme) => sx(theme)[variant]}

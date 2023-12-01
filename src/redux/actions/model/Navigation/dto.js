@@ -13,11 +13,11 @@ const schema = {
             id: 'individual',
             items: [
               {
-                id: '1hour',
+                id: 'standart_individual_1hour',
                 title: '1 час',
               },
               {
-                id: '2hours',
+                id: 'standart_individual_2hours',
                 title: '2 часа',
               },
             ],

@@ -7,9 +7,9 @@ import { CartIcon } from '../../../assets/icons';
 import { BORDER_RADIUS_SM } from '../../../theme/const';
 
 
-const LessonAddToCard = ({ value, onClick }) => {
+const LessonAddToCard = ({ value, onClick, minWidth }) => {
   return (
-    <Grid item>
+    <Grid minWidth={minWidth} item>
       <CustomCard
         width="auto"
         padding="6px 6px 6px 16px"
