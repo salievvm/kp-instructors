@@ -5,6 +5,7 @@ import Paper from '@mui/material/Paper';
 export default function CustomCard({
   children,
   padding,
+  borderRadius,
   margin,
   width,
   variant,
@@ -32,6 +33,7 @@ export default function CustomCard({
         padding,
         width,
         margin,
+        borderRadius,
       }}
       sx={(theme) => sx(theme)[variant]}
     >
@@ -42,7 +44,8 @@ export default function CustomCard({
 
 CustomCard.propTypes = {
   children: PropTypes.any.isRequired,
-  padding: PropTypes.number,
+  padding: PropTypes.any,
+  borderRadius: PropTypes.number,
   margin: PropTypes.any,
   width: PropTypes.any,
   variant: PropTypes.oneOf(['base', 'filled']),

@@ -243,7 +243,6 @@ const schema = {
                   },
                 ],
               },
-              
               {
                 id: 'groupgourperson',
                 title: 'Группа из 4-х человек',
@@ -254,7 +253,6 @@ const schema = {
                   },
                 ],
               },
-              
             ],
           },
         ],

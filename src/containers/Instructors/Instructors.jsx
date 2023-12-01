@@ -4,6 +4,7 @@ import CustomCard from '../../components/@ui/CustomCard';
 import CustomTypography from '../../components/@ui/CustomTypography';
 import Navigation from './Navigation';
 import Filter from './Filter';
+import Lessons from './Lessons';
 
 const Instructors = ({ }) => {
   return (
@@ -24,9 +25,16 @@ const Instructors = ({ }) => {
         item
         xs={8}
       >
-        <CustomCard variant="filled">
-          <Filter />
-        </CustomCard>
+        <Grid
+          container
+          direction="column"
+          gap={2}
+        >
+          <CustomCard variant="filled">
+            <Filter />
+          </CustomCard>
+          <Lessons />
+        </Grid>
       </Grid>
       <Grid
         item
