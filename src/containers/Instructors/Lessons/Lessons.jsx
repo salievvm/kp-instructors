@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { Grid, Typography } from '@mui/material';
-import IconButton from '@mui/material/IconButton';
+import { Grid } from '@mui/material';
 
-import { CartIcon } from '../../../assets/icons';
 import CustomCard from '../../../components/@ui/CustomCard';
 import { BORDER_RADIUS_SM } from '../../../theme/const';
 import { obLessons } from '../../../redux/actions/model';
+
+import LessonAddToCard from './LessonAddToCart';
 
 const data = [
   {
@@ -17,29 +17,6 @@ const data = [
     price: 6000,
   },
 ];
-
-const LessonAddToCard = ({ value, onClick }) => {
-  return (
-    <Grid item>
-      <CustomCard
-        width="auto"
-        padding="6px 6px 6px 16px"
-        borderRadius={BORDER_RADIUS_SM}
-      >
-        <Grid container justifyContent="space-between" alignItems="center" gap={2}>
-          <Typography variant="h3">{value}</Typography>
-          <IconButton
-            size="large"
-            color="primary"
-            onClick={onClick}
-          >
-            <CartIcon />
-          </IconButton>
-        </Grid>
-      </CustomCard>
-    </Grid>
-  );
-};
 
 const Lessons = () => {
   const { schema } = obLessons;
