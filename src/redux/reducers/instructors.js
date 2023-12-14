@@ -1,4 +1,4 @@
-import { mock } from "../actions/model/Lessons/dto";
+import { mock, breadcrumbs } from "../actions/model/Lessons/dto";
 
 export const INSTRUCTORS_SET_FILTER = 'INSTRUCTORS_SET_FILTER';
 
@@ -7,6 +7,7 @@ const initState = {
   filter: {},
   sort: {},
   list: mock,
+  breadcrumbs,
 };
 
 function reducer(state = initState, action) {

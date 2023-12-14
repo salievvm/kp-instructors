@@ -87,4 +87,27 @@ const mock = [
   },
 ];
 
-export { schema, mock };
+const breadcrumbs = [
+  {
+    href: '#',
+    label: 'Главная',
+  },
+  {
+    href: '#',
+    label: 'Онлайн-магазин',
+  },
+  {
+    href: '#',
+    label: 'Категории',
+  },
+  {
+    href: '#',
+    label: 'Услуги',
+  },
+  {
+    href: '#',
+    label: 'Инструктора',
+  },
+];
+
+export { schema, mock, breadcrumbs };
