@@ -23,6 +23,11 @@ const typography = {
     fontWeight: 700,
     lineHeight: '20px',
   },
+  h5: {
+    fontSize: '24px',
+    fontWeight: 700,
+    lineHeight: '28px',
+  },
   subtitle1: {
     fontSize: '16px',
     fontWeight: 500,

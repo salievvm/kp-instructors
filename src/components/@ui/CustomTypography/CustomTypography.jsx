@@ -15,13 +15,13 @@ export default function CustomTypography() {
       <Typography variant="h3" gutterBottom>
         h3. Basic/16-24-B
       </Typography>
-      {/* <Typography variant="h4" gutterBottom>
+      <Typography variant="h4" gutterBottom>
         h4. Heading
       </Typography>
       <Typography variant="h5" gutterBottom>
         h5. Heading
       </Typography>
-      <Typography variant="h6" gutterBottom>
+      {/* <Typography variant="h6" gutterBottom>
         h6. Heading
       </Typography> */}
       <Typography variant="subtitle1" gutterBottom>

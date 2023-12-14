@@ -9,7 +9,8 @@ import Filter from './Filter';
 import Lessons from './Lessons';
 import CustomBreadcrumbs from '../../components/@ui/CustomBreadcrumbs';
 import Banner from './Banner';
-import BannerMobile from './BannerMobile/BannerMobile';
+import BannerMobile from './BannerMobile';
+import BannerSubscription from './BannerSubscription';
 
 const Instructors = ({ }) => {
   const {
@@ -21,43 +22,47 @@ const Instructors = ({ }) => {
   }, [instructors]);
 
   return (
-    <Grid
-      container
-      spacing={2}
-      marginTop="24px"
-      marginBottom="24px"
-    >
-      <Grid item xs={12}>
-        <Banner />
-      </Grid>
-      <Grid item xs={12}>
-        <CustomBreadcrumbs links={breadcrumbs} />
-      </Grid>
-      <Grid item xs={4}
+    <>
+      <Grid
+        container
+        spacing={2}
+        marginTop={6}
       >
-        <CustomCard variant="filled">
-          <Navigation />
-        </CustomCard>
-      </Grid>
-      <Grid item xs={8}>
-        <Grid
-          container
-          direction="column"
-          gap={2}
+        <Grid item xs={12}>
+          <Banner />
+        </Grid>
+        <Grid item xs={12}>
+          <CustomBreadcrumbs links={breadcrumbs} />
+        </Grid>
+        <Grid item xs={4}
         >
           <CustomCard variant="filled">
-            <Filter />
+            <Navigation />
           </CustomCard>
-          <Lessons />
+        </Grid>
+        <Grid item xs={8}>
+          <Grid
+            container
+            direction="column"
+            gap={2}
+          >
+            <CustomCard variant="filled">
+              <Filter />
+            </CustomCard>
+            <Lessons />
+          </Grid>
         </Grid>
       </Grid>
-      <Grid item xs={12}>
+      <Grid
+        container
+        gap={6}
+        marginTop={6}
+      >
         <BannerMobile />
-      </Grid>
-      <Grid item>
+        <BannerSubscription />
         <CustomTypography />
       </Grid>
-    </Grid>
+    </>
   );
 };
 

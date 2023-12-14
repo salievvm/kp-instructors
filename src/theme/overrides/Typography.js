@@ -23,6 +23,12 @@ export default function Typography(theme) {
             lineHeight: '28px',
           },
         },
+        h5: {
+          [theme.breakpoints.down('md')]: {
+            fontSize: '20px',
+            lineHeight: '24px',
+          },
+        },
       },
     },
   };
