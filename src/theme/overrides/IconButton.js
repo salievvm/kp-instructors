@@ -20,7 +20,15 @@ export default function IconButton(theme) {
           padding: 12,
           "&:hover": {
             backgroundColor: theme.palette.primary.main,
-            filter: 'brightness(105%)',
+            filter: 'brightness(90%)',
+          },
+        },
+        colorSecondary: {
+          backgroundColor: theme.palette.info.contrastText,
+          padding: 12,
+          "&:hover": {
+            backgroundColor: theme.palette.info.contrastText,
+            filter: 'brightness(90%)',
           },
         },
       },

@@ -15,7 +15,7 @@ export default function Container(theme) {
             // paddingRight: 0,
           },
           [theme.breakpoints.down('sm')]: {
-            minWidth: 320,
+            minWidth: 360,
             // paddingLeft: 0,
             // paddingRight: 0,
           },

@@ -17,6 +17,12 @@ export default function Typography(theme) {
           //   lineHeight: '48px',
           // },
         },
+        h2: {
+          [theme.breakpoints.down('lg')]: {
+            fontSize: '24px',
+            lineHeight: '28px',
+          },
+        },
       },
     },
   };
