@@ -1,4 +1,4 @@
-import { CONTAINER_WIDTH_MD, CONTAINER_WIDTH_XL } from "../const";
+import { CONTAINER_WIDTH_XL } from "../const";
 
 export default function Container(theme) {
   return {

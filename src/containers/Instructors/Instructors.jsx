@@ -12,7 +12,7 @@ import Banner from './Banner';
 import BannerMobile from './BannerMobile';
 import BannerSubscription from './BannerSubscription';
 
-const Instructors = ({ }) => {
+const Instructors = () => {
   const {
     instructors,
   } = useSelector(state => state);

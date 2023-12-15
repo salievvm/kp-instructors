@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Hidden, Button, IconButton, Grid, Typography } from '@mui/material';
+import { Button, Grid, Typography } from '@mui/material';
 import { styled } from '@mui/system';
 
 import subscription_images from '../../../assets/img/subscription_images.png';
@@ -16,7 +16,6 @@ const {
 
 const CustomImg = styled('img')(({ theme }) => ({
   position: 'absolute',
-  maxHeight: '100%',
   maxHeight: '100%',
   height: '100%',
   left: 0,

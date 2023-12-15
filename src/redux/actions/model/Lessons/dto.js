@@ -3,15 +3,15 @@ import { FIELD_TYPES } from "../../../../consts";
 
 const {
   text,
-  textarea,
-  radio,
-  radioGroup,
-  phone,
-  email,
   date,
-  dateMulti,
-  file,
-  list,
+  // textarea,
+  // radio,
+  // radioGroup,
+  // phone,
+  // email,
+  // dateMulti,
+  // file,
+  // list,
 } = FIELD_TYPES;
 
 const schema = {
