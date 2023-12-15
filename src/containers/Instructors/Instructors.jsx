@@ -3,7 +3,7 @@ import { Grid } from '@mui/material';
 import { useSelector } from "react-redux";
 
 import CustomCard from '../../components/@ui/CustomCard';
-import CustomTypography from '../../components/@ui/CustomTypography';
+// import CustomTypography from '../../components/@ui/CustomTypography';
 import Navigation from './Navigation';
 import Filter from './Filter';
 import Lessons from './Lessons';

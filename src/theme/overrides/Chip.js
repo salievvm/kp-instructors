@@ -1,5 +1,5 @@
-import { MAIN_TEXT } from "../colors";
-import { BORDER_RADIUS_SM } from "../const";
+// import { MAIN_TEXT } from "../colors";
+// import { BORDER_RADIUS_SM } from "../const";
 
 export default function Chip(theme) {
   return {
