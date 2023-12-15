@@ -60,7 +60,7 @@ const Instructors = () => {
       >
         <BannerMobile />
         <BannerSubscription />
-        <CustomTypography />
+        {/* <CustomTypography /> */}
       </Grid>
     </>
   );
