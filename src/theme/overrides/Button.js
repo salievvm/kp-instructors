@@ -19,10 +19,19 @@ export default function Button(theme) {
           color: theme.typography.caption.color,
         },
         containedSizeLarge: {
-          padding: '8px 24px',
+          padding: '6px 16px',
           lineHeight: '40px',
           textTransform: 'inherit',
           fontSize: theme.typography.button.fontSize,
+        },
+        containedSecondary: {
+          backgroundColor: theme.palette.primary.contrastText,
+          color: theme.palette.info.contrastText,
+          padding: 12,
+          "&:hover": {
+            backgroundColor: theme.palette.primary.contrastText,
+            filter: 'brightness(99%)',
+          },
         },
       },
     },
