@@ -6,8 +6,6 @@ export default class Navigation {
 
   constructor(api) {
     this.api = new NavigationApi(api);
-
-    console.log('Navigation', { api });
   }
 
   getTreeList = async () => {

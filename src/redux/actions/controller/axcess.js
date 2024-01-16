@@ -20,8 +20,6 @@ class ShopController {
 
       const data = response.data;
 
-      console.log('shop controller', { data });
-
       if (data.error) {
         throw new Error({ response });
       } else {

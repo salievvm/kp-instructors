@@ -15,12 +15,9 @@ class AxcessController {
   get = async (params) => {
     try {
       const _params = this.HTTPBuild(params);
-      console.log(`${this.hook}${_params}`);
       const response = await axios.get(`${this.hook}?${_params}`);
 
       const data = response.data;
-
-      console.log('axcess controller', { data });
 
       if (data.error) {
         throw new Error({ response });
