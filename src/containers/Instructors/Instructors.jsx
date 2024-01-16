@@ -11,15 +11,19 @@ import CustomBreadcrumbs from '../../components/@ui/CustomBreadcrumbs';
 import Banner from './Banner';
 import BannerMobile from './BannerMobile';
 import BannerSubscription from './BannerSubscription';
+import useInstructors from './hooks/useInstructors';
 
 const Instructors = () => {
   const {
+    app,
     instructors,
-  } = useSelector(state => state);
+    breadcrumbs,
+    getAll,
+  } = useInstructors();
 
-  const breadcrumbs = React.useMemo(() => {
-    return instructors.breadcrumbs;
-  }, [instructors]);
+  React.useEffect(() => {
+    getAll();
+  }, []);
 
   return (
     <>

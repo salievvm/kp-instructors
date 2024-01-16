@@ -1,22 +1,19 @@
 import React from 'react';
-import { useSelector } from "react-redux";
-
-import { obLessons } from '../../../redux/actions/model';
 
 import LessonsBody from './LessonsBody';
 import LessonsHeader from './LessonsHeader';
 
-const Lessons = () => {
-  const { schema } = obLessons;
+import useInstructors from '../hooks/useInstructors';
 
+const Lessons = () => {
   const {
-    instructors,
-  } = useSelector(state => state);
+    lessons
+  } = useInstructors();
 
   return (
     <>
-      <LessonsHeader schema={schema}/>
-      <LessonsBody schema={schema} data={instructors.list} />
+      <LessonsHeader schema={lessons.schema}/>
+      <LessonsBody schema={lessons.schema} data={lessons.list} />
     </>
   );
 };
