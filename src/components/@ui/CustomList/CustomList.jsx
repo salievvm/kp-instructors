@@ -50,6 +50,7 @@ const ListItem = ({
   level,
   onClick,
   open,
+  activeItemId,
   id,
 }) => {
   // console.log({ id });
@@ -69,7 +70,7 @@ const ListItem = ({
                 </Grid>
               ) : null}
               <Grid item>
-                <Typography variant="body2">{title}</Typography>
+                <Typography variant={activeItemId === id ? 'body1' : 'body2'}>{title}</Typography>
               </Grid>
             </Grid>
           </Grid>
@@ -92,6 +93,7 @@ ListItem.propTypes = {
   onClick: PropTypes.func,
   id: PropTypes.any,
   open: PropTypes.bool,
+  activeItemId: PropTypes.any,
 };
 
 ListItem.defaultProps = {
@@ -99,9 +101,15 @@ ListItem.defaultProps = {
   level: null,
   onClick: () => { },
   open: false,
+  activeItemId: "",
 };
 
-const RecursiveList = ({ items, level }) => {
+const RecursiveList = ({ 
+  items,
+  level,
+  activeItemId,
+  onClick,
+}) => {
   const [openItems, setOpenItems] = React.useState([]);
 
   const handleClick = (id) => {
@@ -109,6 +117,14 @@ const RecursiveList = ({ items, level }) => {
       setOpenItems(openItems.filter((itemId) => itemId !== id));
     } else {
       setOpenItems([...openItems, id]);
+    }
+
+    console.log({ items, id });
+
+    const item = items.find((item) => item.id === id);
+    if (!item.items || !item.items?.length) {
+      console.log({ item, onClick });
+      onClick(id);
     }
   };
 
@@ -123,10 +139,15 @@ const RecursiveList = ({ items, level }) => {
             open={openItems.includes(item.id)}
             id={item.id}
             level={level}
+            activeItemId={activeItemId}
           />
           {item.items && item.items.length ? (
             <Collapse in={openItems.includes(item.id)} timeout="auto" unmountOnExit>
-              <RecursiveList items={item.items} level={level + 1} />
+              <RecursiveList
+                items={item.items}
+                level={level + 1}
+                onClick={onClick}
+              />
             </Collapse>
           ) : null}
         </React.Fragment>
@@ -135,9 +156,14 @@ const RecursiveList = ({ items, level }) => {
   );
 };
 
-const CustomList = ({ schema }) => {
-  console.log({ schema });
-  return <RecursiveList items={schema.items} level={0} />;
+const CustomList = ({ schema, activeItemId, onClick }) => {
+  console.log({ onClick });
+  return <RecursiveList
+    items={schema.items}
+    level={0}
+    activeItemId={activeItemId}
+    onClick={onClick}
+  />;
 };
 
 CustomList.propTypes = {
@@ -149,6 +175,13 @@ CustomList.propTypes = {
       title: PropTypes.string,
     })),
   }),
+  activeItemId: PropTypes.any,
+  onClick: PropTypes.func,
 };
+
+CustomList.defaultProps = ({
+  activeItemId: "",
+  onClick: () => {},
+});
 
 export default CustomList;

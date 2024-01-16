@@ -13,6 +13,10 @@ const useInstructors = () => {
     await obInstructorsService.get();
   }
 
+  const handleLessonChose = async (productId) => {
+    await obInstructorsService.getLessonsHandler(productId);
+  }
+
   const {
     breadcrumbs,
     lessons,
@@ -28,6 +32,7 @@ const useInstructors = () => {
     lessons,
     navigation,
     getAll,
+    handleLessonChose,
   }
 };
 

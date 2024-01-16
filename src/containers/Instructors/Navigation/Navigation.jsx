@@ -7,7 +7,8 @@ import useInstructors from '../hooks/useInstructors';
 
 const Navigation = () => {
   const {
-    navigation
+    navigation,
+    handleLessonChose,
   } = useInstructors();
 
   return (
@@ -15,6 +16,8 @@ const Navigation = () => {
       <Typography variant="h3">Горные лыжи и сноуборд</Typography>
       <CustomList
         schema={navigation.schema.skis}
+        activeItemId={navigation.activeLesson}
+        onClick={handleLessonChose}
       />
     </>
   );

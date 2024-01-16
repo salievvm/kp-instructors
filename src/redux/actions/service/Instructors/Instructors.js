@@ -1,4 +1,4 @@
-import { SET_LESSONS_LIST, SET_NAVIGATION_TREE } from "../../../reducers/instructors";
+import { SET_ACTIVE_LESSON, SET_LESSONS_LIST, SET_NAVIGATION_TREE } from "../../../reducers/instructors";
 import store from "../../../store";
 
 import {
@@ -59,6 +59,21 @@ class InstructorsService {
     });
 
     return lessons;
+  }
+
+  getLessonsHandler = async (productId) => {
+    this.app.setLoading();
+
+    store.dispatch({
+      type: SET_ACTIVE_LESSON,
+      data: {
+        activeLesson: productId,
+      }
+    });
+
+    await this.getLessons(productId);
+
+    this.app.endLoading();
   }
 }
 
