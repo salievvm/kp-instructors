@@ -1,3 +1,4 @@
+import { SET_LESSONS_LIST } from "../../../reducers/instructors";
 import store from "../../../store";
 
 import {
@@ -24,6 +25,14 @@ class InstructorsService {
 
     const navigation = await this.obNavigation.getTreeList();
     const lessons = await this.obLessons.getList(111);
+
+    store.dispatch({
+      type: SET_LESSONS_LIST,
+      data: {
+        list: lessons,
+        schema: this.obLessons.schema,
+      }
+    })
 
     console.log({ navigation, lessons });
 

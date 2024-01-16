@@ -20,13 +20,14 @@ const LessonsBody = ({
         borderRadius={BORDER_RADIUS_SM}
       >
         <Grid container justifyContent="space-between" alignItems="center">
-          {Object.values(schema).map(({
-            id,
-            hidden,
-            minWidth,
-            format,
-          }) => {
-            const value = item[id];
+          {Object.entries(schema).map((entry) => {
+            const [code, {
+              id,
+              hidden,
+              minWidth,
+              format,
+            }] = entry;
+            const value = item[code];
             const _value = typeof format === 'function' ? format(value) : value;
             return !hidden ? <React.Fragment key={id}>
               {id === 'price' ? (

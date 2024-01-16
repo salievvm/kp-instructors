@@ -1,5 +1,9 @@
 import dayjs from "dayjs";
+import utc from 'dayjs/plugin/utc';
+
 import { FIELD_TYPES } from "../../../../consts";
+
+dayjs.extend(utc);
 
 const {
   text,
@@ -16,32 +20,73 @@ const {
 
 const schema = {
   id: {
-    id: 'id',
+    id: 'lesson_id',
     label: 'ID',
     hidden: true,
   },
   parentId: {
-    id: 'parentId',
+    id: 'product_id',
     label: 'parentId',
     hidden: true,
   },
+  projectId: {
+    id: 'project_id',
+    label: 'projectId',
+    hidden: true,
+  },
+  seasonId: {
+    id: 'season_id',
+    label: 'seasonId',
+    hidden: true,
+  },
+  students: {
+    id: 'students',
+    label: 'students',
+    hidden: true,
+  },
+  rentalItem: {
+    id: 'rental_item',
+    label: 'rentalItem',
+    hidden: true,
+  },
+  rentalPersType: {
+    id: 'rental_pers_type',
+    label: 'rentalPersType',
+    hidden: true,
+  },
   dateStart: {
-    id: 'dateStart',
-    label: 'Дата начала занятия',
+    id: 'start_date',
+    label: 'Дата и время начала занятия',
     minWidth: 143,
     type: date,
     format: (value) => {
-      return dayjs(value).format('DD.MM.YYYY')
+      return dayjs(value).utc().utcOffset(3).format('DD.MM.YYYY HH:mm')
+    },
+    formatForm: (value) => {
+      return dayjs(value).utc().utcOffset(3).format('MM-DD-YYYY HH:mm:ss')
     },
   },
-  timeStart: {
-    id: 'timeStart',
-    label: 'Время начала занятия',
+  dateEnd: {
+    id: 'end_date',
+    label: 'Дата и время окончания занятия',
+    minWidth: 143,
+    type: date,
+    hidden: true,
+    format: (value) => {
+      return dayjs(value).utc().utcOffset(3).format('DD.MM.YYYY HH:mm')
+    },
+    formatForm: (value) => {
+      return dayjs(value).utc().utcOffset(3).format('MM-DD-YYYY HH:mm:ss')
+    },
+  },
+  duration: {
+    id: 'duration',
+    label: 'Продолжительность занятия',
     minWidth: 155,
     type: text,
   },
-  leftQuotas: {
-    id: 'leftQuotas',
+  availableSlots: {
+    id: 'available_slots',
     label: 'Осталось мест',
     minWidth: 104,
     type: text,
@@ -63,26 +108,26 @@ const schema = {
 const mock = [
   {
     id: 'test1',
-    dateStart: '01.01.2024',
+    dateStart: '01.01.2024 10:00',
     parentId: 'standart_individual_1hour',
-    timeStart: '10:00',
-    leftQuotas: '1',
+    duration: '1 ч.',
+    availableSlots: '1',
     price: 6000,
   },
   {
     id: 'test2',
     parentId: 'standart_individual_1hour',
-    dateStart: '01.01.2024',
-    timeStart: '11:00',
-    leftQuotas: '3',
+    dateStart: '01.01.2024 12:00',
+    duration: '2 ч.',
+    availableSlots: '3',
     price: 6000,
   },
   {
     id: 'test3',
     parentId: 'standart_individual_1hour',
-    dateStart: '01.01.2024',
-    timeStart: '12:00',
-    leftQuotas: '2',
+    dateStart: '01.01.2024 14:00',
+    duration: '3 ч.',
+    availableSlots: '2',
     price: 6000,
   },
 ];

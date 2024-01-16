@@ -3,10 +3,12 @@ import { schema as schemaNavigation } from "../actions/model/Navigation/dto";
 
 export const INSTRUCTORS_SET_FILTER = 'INSTRUCTORS_SET_FILTER';
 
+export const SET_LESSONS_LIST = 'SET_LESSONS_LIST';
+
 const initState = {
   lessons: {
-    list: mock,
-    schema: schema,
+    list: [],
+    schema: {},
   },
   navigation: {
     schema: schemaNavigation,
@@ -20,6 +22,15 @@ function reducer(state = initState, action) {
   switch (action.type) {
     case INSTRUCTORS_SET_FILTER:
       return { ...state, filter: action.data };
+    case SET_LESSONS_LIST:
+      return {
+        ...state,
+        lessons: {
+          ...state.lessons,
+          list: action.data.list,
+          schema: action.data.schema,
+        }
+      }
     default:
       return state;
   }
