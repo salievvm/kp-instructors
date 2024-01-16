@@ -62,7 +62,7 @@ const ListItem = ({
           spacing={1}
         >
           <Grid item>
-            <Grid container spacing={2}>
+            <Grid container spacing={2} wrap='nowrap'>
               {level ? (
                 <Grid item>
                   <ListItemLevel level={level} />
@@ -136,6 +136,7 @@ const RecursiveList = ({ items, level }) => {
 };
 
 const CustomList = ({ schema }) => {
+  console.log({ schema });
   return <RecursiveList items={schema.items} level={0} />;
 };
 

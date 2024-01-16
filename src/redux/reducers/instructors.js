@@ -4,6 +4,7 @@ import { schema as schemaNavigation } from "../actions/model/Navigation/dto";
 export const INSTRUCTORS_SET_FILTER = 'INSTRUCTORS_SET_FILTER';
 
 export const SET_LESSONS_LIST = 'SET_LESSONS_LIST';
+export const SET_NAVIGATION_TREE = 'SET_NAVIGATION_TREE';
 
 const initState = {
   lessons: {
@@ -28,6 +29,14 @@ function reducer(state = initState, action) {
         lessons: {
           ...state.lessons,
           list: action.data.list,
+          schema: action.data.schema,
+        }
+      };
+    case SET_NAVIGATION_TREE:
+      return {
+        ...state,
+        navigation: {
+          ...state.navigation,
           schema: action.data.schema,
         }
       }

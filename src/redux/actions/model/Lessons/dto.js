@@ -56,7 +56,7 @@ const schema = {
   },
   dateStart: {
     id: 'start_date',
-    label: 'Дата и время начала занятия',
+    label: 'Дата и время начала',
     minWidth: 143,
     type: date,
     format: (value) => {
@@ -68,7 +68,7 @@ const schema = {
   },
   dateEnd: {
     id: 'end_date',
-    label: 'Дата и время окончания занятия',
+    label: 'Дата и время окончания',
     minWidth: 143,
     type: date,
     hidden: true,
@@ -81,7 +81,7 @@ const schema = {
   },
   duration: {
     id: 'duration',
-    label: 'Продолжительность занятия',
+    label: 'Продолжительность',
     minWidth: 155,
     type: text,
   },
@@ -93,7 +93,7 @@ const schema = {
   },
   price: {
     id: 'price',
-    label: 'Стоимость занятия',
+    label: 'Стоимость',
     minWidth: 175,
     type: text,
     format: (value) => {

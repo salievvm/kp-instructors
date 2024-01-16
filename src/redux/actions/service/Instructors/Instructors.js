@@ -1,4 +1,4 @@
-import { SET_LESSONS_LIST } from "../../../reducers/instructors";
+import { SET_LESSONS_LIST, SET_NAVIGATION_TREE } from "../../../reducers/instructors";
 import store from "../../../store";
 
 import {
@@ -23,8 +23,32 @@ class InstructorsService {
   get = async () => {
     this.app.setLoading();
 
+    const navigation = await this.getNavigation();
+    const productId = navigation?.skis?.items[0]?.items[0]?.id;
+    if (productId) {
+      const lessons = await this.getLessons(productId);
+    } else {
+      this.app.setError('Что-то пошло не так');
+    }
+
+    this.app.endLoading();
+  }
+
+  getNavigation = async () => {
     const navigation = await this.obNavigation.getTreeList();
-    const lessons = await this.obLessons.getList(111);
+
+    store.dispatch({
+      type: SET_NAVIGATION_TREE,
+      data: {
+        schema: navigation,
+      }
+    });
+
+    return navigation;
+  }
+
+  getLessons = async (productId) => {
+    const lessons = await this.obLessons.getList(productId);
 
     store.dispatch({
       type: SET_LESSONS_LIST,
@@ -32,11 +56,9 @@ class InstructorsService {
         list: lessons,
         schema: this.obLessons.schema,
       }
-    })
+    });
 
-    console.log({ navigation, lessons });
-
-    this.app.endLoading();
+    return lessons;
   }
 }
 
