@@ -11,10 +11,10 @@ export const SET_NAVIGATION_TREE = 'SET_NAVIGATION_TREE';
 const initState = {
   lessons: {
     list: [],
-    schema: {},
+    schema: schema,
   },
   navigation: {
-    schema: schemaNavigation,
+    schema: {},
   },
   breadcrumbs,
   filter: {},
@@ -39,7 +39,7 @@ function reducer(state = initState, action) {
         ...state,
         navigation: {
           ...state.navigation,
-          activeLesson: action.data.activeItemId,
+          activeLesson: action.data.activeLesson,
         }
       }
     case SET_NAVIGATION_TREE:

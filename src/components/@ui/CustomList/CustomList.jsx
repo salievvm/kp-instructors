@@ -53,7 +53,6 @@ const ListItem = ({
   activeItemId,
   id,
 }) => {
-  // console.log({ id });
   return (
     <ListItemButton onClick={onClick}>
       <ListItemText primary={
@@ -110,7 +109,9 @@ const RecursiveList = ({
   activeItemId,
   onClick,
 }) => {
-  const [openItems, setOpenItems] = React.useState([]);
+  console.log({ items, level });
+  const defaultOpenItems = level === 0 ? [items[0].id] : [];
+  const [openItems, setOpenItems] = React.useState(defaultOpenItems);
 
   const handleClick = (id) => {
     if (openItems.includes(id)) {
@@ -118,8 +119,6 @@ const RecursiveList = ({
     } else {
       setOpenItems([...openItems, id]);
     }
-
-    console.log({ items, id });
 
     const item = items.find((item) => item.id === id);
     if (!item.items || !item.items?.length) {
@@ -147,6 +146,7 @@ const RecursiveList = ({
                 items={item.items}
                 level={level + 1}
                 onClick={onClick}
+                activeItemId={activeItemId}
               />
             </Collapse>
           ) : null}

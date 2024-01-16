@@ -51,6 +51,13 @@ class InstructorsService {
     const lessons = await this.obLessons.getList(productId);
 
     store.dispatch({
+      type: SET_ACTIVE_LESSON,
+      data: {
+        activeLesson: productId,
+      }
+    });
+    
+    store.dispatch({
       type: SET_LESSONS_LIST,
       data: {
         list: lessons,
@@ -63,13 +70,6 @@ class InstructorsService {
 
   getLessonsHandler = async (productId) => {
     this.app.setLoading();
-
-    store.dispatch({
-      type: SET_ACTIVE_LESSON,
-      data: {
-        activeLesson: productId,
-      }
-    });
 
     await this.getLessons(productId);
 

@@ -40,9 +40,7 @@ const Instructors = () => {
         </Grid>
         <Grid item xs={4}
         >
-          <CustomCard variant="filled">
-            <Navigation />
-          </CustomCard>
+          <Navigation />
         </Grid>
         <Grid item xs={8}>
           <Grid
