@@ -36,9 +36,11 @@ const Banner = () => {
             </Grid>
             <Hidden lgDown>
               <Grid item lg={12}>
-                <Typography variant="body1" gutterBottom color="#fff">
-                  <div dangerouslySetInnerHTML={{ __html:  he.decode(description) }} />
-                </Typography>
+                {description ? (
+                  <Typography variant="body1" gutterBottom color="#fff">
+                    <div dangerouslySetInnerHTML={{ __html: he.decode(description) }} />
+                  </Typography>
+                ) : null}
               </Grid>
             </Hidden>
           </Grid>

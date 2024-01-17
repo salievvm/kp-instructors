@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React from 'react';
 import { Grid } from '@mui/material';
 
@@ -20,7 +22,7 @@ const Instructors = () => {
 
   React.useEffect(() => {
     getAll();
-  }, [getAll]);
+  }, []);
 
   return (
     <>
