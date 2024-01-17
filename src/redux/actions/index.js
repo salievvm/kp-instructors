@@ -1,13 +1,20 @@
-import Bitrix24 from './bitrix24';
+import App from './model/App';
 
-import store from '../store';
-import { hook } from './settings';
+import { AxcessController, ShopController } from './controller';
+import { axcessHook, shopHook } from './settings';
 
-const B24 = new Bitrix24({
-  hook,
-  store
-});
+import InstructorsService from './service/Instructors';
+
+const app = new App();
+
+const obAxcessController = new AxcessController(axcessHook, app);
+const obShopController = new ShopController(shopHook, app);
+
+const obInstructorsService = new InstructorsService(
+  obAxcessController,
+  obShopController,
+);
 
 export {
-  B24,
+  obInstructorsService,
 };
