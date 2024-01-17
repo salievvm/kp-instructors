@@ -1,11 +1,13 @@
 import React from 'react';
 
-import { Skeleton } from '@mui/material';
+import { Grid, Skeleton, Typography } from '@mui/material';
 
 import LessonsBody from './LessonsBody';
 import LessonsHeader from './LessonsHeader';
 
 import useInstructors from '../hooks/useInstructors';
+
+import img from '../../../assets/img/emptystate.png';
 
 const Lessons = () => {
   const {
@@ -15,7 +17,6 @@ const Lessons = () => {
 
   return (
     <>
-      <LessonsHeader schema={lessons.schema} />
       {app.loading && !lessons.list.length ? (
         <>
           <Skeleton height={72} variant="rectangular" />
@@ -23,7 +24,23 @@ const Lessons = () => {
           <Skeleton height={72} variant="rectangular" />
         </>
       ) : (
-        <LessonsBody schema={lessons.schema} data={lessons.list} />
+        !app.loading && !lessons.list.length ? (
+          <Grid
+            container
+            direction="column"
+            alignItems="center"
+            gap={1}
+          >
+            <img src={img} width={335} />
+            <Typography variant="h5">Поиск не дал результатов</Typography>
+            <Typography variant="body2">Попробуйте изменить настройки или ослабить фильтры.</Typography>
+          </Grid>
+        ) : (
+          <>
+            <LessonsHeader schema={lessons.schema} />
+            <LessonsBody schema={lessons.schema} data={lessons.list} />
+          </>
+        )
       )}
     </>
   );

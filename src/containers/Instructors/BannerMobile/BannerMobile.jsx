@@ -49,7 +49,7 @@ const BannerMobile = () => {
             </Hidden>
             <Typography variant="h2">Покупайте в магазине через приложение Красная Поляна</Typography>
             <Hidden lgDown>
-              <Typography variant="body1">Чтобы скачать приложение Красная Поляна, наведите камерусмартфона на QR-код или выберите свой магазин приложений</Typography>
+              <Typography variant="body1">Чтобы скачать приложение Красная Поляна, наведите камеру смартфона на QR-код или выберите свой магазин приложений</Typography>
             </Hidden>
             <Grid item>
               <Grid container gap={1.5}>
