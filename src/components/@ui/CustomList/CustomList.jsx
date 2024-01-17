@@ -109,7 +109,6 @@ const RecursiveList = ({
   activeItemId,
   onClick,
 }) => {
-  console.log({ items, level });
   const defaultOpenItems = level === 0 ? [items[0].id] : [];
   const [openItems, setOpenItems] = React.useState(defaultOpenItems);
 
@@ -122,7 +121,6 @@ const RecursiveList = ({
 
     const item = items.find((item) => item.id === id);
     if (!item.items || !item.items?.length) {
-      console.log({ item, onClick });
       onClick(id);
     }
   };
@@ -157,7 +155,6 @@ const RecursiveList = ({
 };
 
 const CustomList = ({ schema, activeItemId, onClick }) => {
-  console.log({ onClick });
   return <RecursiveList
     items={schema.items}
     level={0}

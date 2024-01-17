@@ -1,6 +1,12 @@
 import dayjs from "dayjs";
+import utc from 'dayjs/plugin/utc';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
+
 import LessonsApi from "../../api/Lessons";
 import { mock, schema } from "./dto";
+
+dayjs.extend(customParseFormat);
+dayjs.extend(utc);
 
 export default class Lessons {
   schema = schema;
@@ -9,6 +15,19 @@ export default class Lessons {
 
   constructor(api) {
     this.api = new LessonsApi(api);
+  }
+
+  filterList = (list, { startDate, endDate }) => {
+    const formatString = 'DD.MM.YYYY HH:mm:ss';
+
+    const obDateStart = dayjs(startDate + " 00:00:00", formatString);
+    const obDateEnd = dayjs(endDate + " 23:59:59", formatString);
+
+    return list.filter((item) => {
+      const obItemDate = dayjs(item.dateStart).utc().utcOffset(3);
+
+      return obItemDate.isAfter(obDateStart) && obItemDate.isBefore(obDateEnd) ? true : false;
+    })
   }
 
   mapFields = ({ lessons, meta }, productId) => {
@@ -37,7 +56,8 @@ export default class Lessons {
         duration: `${duration} ч.`,
         price: 6000,
       }
-    });
+    })
+      .sort((a, b) => dayjs(a.dateStart).isAfter(dayjs(b.dateStart)) ? 1 : -1);
 
     return list;
   }

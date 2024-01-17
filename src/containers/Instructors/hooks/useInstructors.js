@@ -17,10 +17,19 @@ const useInstructors = () => {
     await obInstructorsService.getLessonsHandler(productId);
   }
 
+  const handleSetFilter = (value) => {
+    obInstructorsService.setFilterDate(value[0], value[1]);
+  }
+  
+  const handleUnsetFilter = () => {
+    obInstructorsService.unsetFilterDate();
+  }
+
   const {
     breadcrumbs,
     lessons,
     navigation,
+    filter,
   } = React.useMemo(() => {
     return { ...instructors };
   }, [instructors]);
@@ -30,9 +39,12 @@ const useInstructors = () => {
     instructors,
     breadcrumbs,
     lessons,
+    filter,
     navigation,
     getAll,
     handleLessonChose,
+    handleSetFilter,
+    handleUnsetFilter,
   }
 };
 

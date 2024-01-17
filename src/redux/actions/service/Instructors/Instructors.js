@@ -1,4 +1,4 @@
-import { SET_ACTIVE_LESSON, SET_LESSONS_LIST, SET_NAVIGATION_TREE } from "../../../reducers/instructors";
+import { INSTRUCTORS_SET_FILTER, INSTRUCTORS_UNSET_FILTER, SET_ACTIVE_LESSON, SET_LESSONS_LIST, SET_NAVIGATION_TREE } from "../../../reducers/instructors";
 import store from "../../../store";
 
 import {
@@ -56,7 +56,7 @@ class InstructorsService {
         activeLesson: productId,
       }
     });
-    
+
     store.dispatch({
       type: SET_LESSONS_LIST,
       data: {
@@ -70,10 +70,43 @@ class InstructorsService {
 
   getLessonsHandler = async (productId) => {
     this.app.setLoading();
+    const { instructors } = store.getState();
+    const { startDate, endDate } = instructors.filter;
 
     await this.getLessons(productId);
 
+    if (startDate && endDate) {
+      this.setFilterDate(startDate, endDate);
+    }
+
     this.app.endLoading();
+  }
+
+  setFilterDate = (startDate, endDate) => {
+    const { instructors } = store.getState();
+
+    const list = this.obLessons.filterList(
+      instructors.lessons.list,
+      {
+        startDate,
+        endDate,
+      }
+    );
+
+    store.dispatch({
+      type: INSTRUCTORS_SET_FILTER,
+      data: {
+        startDate,
+        endDate,
+        list,
+      }
+    });
+  }
+
+  unsetFilterDate = () => {
+    store.dispatch({
+      type: INSTRUCTORS_UNSET_FILTER,
+    });
   }
 }
 
