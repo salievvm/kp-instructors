@@ -71,22 +71,27 @@ const LessonItemMobile = ({
           }] = entry;
           const value = item[code];
           const _value = typeof format === 'function' ? format(value) : value;
-          return !hidden ? <React.Fragment key={id}>
-            {id === 'price' ? (
-              <Grid item xs={12}>
-                <LessonAddToCard value={_value} onClick={() => { }} />
-              </Grid>
-            ) : (
+
+          if (!hidden) {
+            if (id === 'price') {
+              return (
+                <Grid item xs={12}>
+                  <LessonAddToCard value={_value} onClick={() => { }} />
+                </Grid>
+              );
+            }
+
+            return (
               <Grid item xs={6}>
                 <Grid container direction="column" gap={0.2}>
                   <Typography variant="caption">{label}</Typography>
                   <Typography variant="body1">{_value}</Typography>
                 </Grid>
               </Grid>
-            )}
-          </React.Fragment> : null;
+            );
+          }
         })}
-      </Grid>
+      </Grid >
     </CustomCard >
   );
 };
@@ -103,12 +108,12 @@ const LessonsBody = ({
     <Grid
       container
       spacing={2}
-      width="100%"
+      // width="100%"
     >
       {data.map((item) => {
         return <Grid
-          key={item.id}
           item
+          key={item.id}
           xs={12}
           sm={6}
           md={12}
