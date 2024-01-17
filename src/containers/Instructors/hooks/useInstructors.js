@@ -14,6 +14,7 @@ const useInstructors = () => {
 
   const theme = useTheme();
   const isDesktop = useMediaQuery(theme.breakpoints.up('lg'));
+  const isTablet = useMediaQuery(theme.breakpoints.up('md'));
 
   const getAll = async () => {
     await obInstructorsService.get();
@@ -52,6 +53,7 @@ const useInstructors = () => {
     filter,
     navigation,
     isDesktop,
+    isTablet,
     getAll,
     handleLessonChose,
     handleSetFilter,
