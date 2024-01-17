@@ -26,31 +26,47 @@ const Filter = () => {
       spacing={2}
     >
       <Grid item>
-        <IconButton
-          size="large"
-          color="info"
+        <Grid
+          container
+          spacing={1}
+          alignItems="center"
         >
-          <SearchIcon />
-        </IconButton>
-      </Grid>
-      <Grid item>
-        <Grid container direction="column">
-          <Typography variant="h3">Подберите занятие</Typography>
-          <Typography variant="caption">Улучшайте уровень катания с нами</Typography>
+          <Grid item>
+            <IconButton
+              size="large"
+              color="info"
+            >
+              <SearchIcon />
+            </IconButton>
+          </Grid>
+          <Grid item>
+            <Grid container direction="column">
+              <Typography variant="h3">Подберите занятие</Typography>
+              <Typography variant="caption">Улучшайте уровень катания с нами</Typography>
+            </Grid>
+          </Grid>
         </Grid>
       </Grid>
-      <Grid item xs>
-        <CustomDateRange
-          theme="filled"
-          label="Выберите даты"
-          minDate={minDate}
-          maxDate={maxDate}
-          onChange={handleSetFilter}
-          value={[filter.startDate, filter.endDate]}
-        />
-      </Grid>
-      <Grid item>
-        <Button size="large" color="button" onClick={handleUnsetFilter}>Сбросить</Button>
+      <Grid item xs={12} sm>
+        <Grid
+          container
+          spacing={1}
+          alignItems="center"
+        >
+          <Grid item xs>
+            <CustomDateRange
+              theme="filled"
+              label="Выберите даты"
+              minDate={minDate}
+              maxDate={maxDate}
+              onChange={handleSetFilter}
+              value={[filter.startDate, filter.endDate]}
+            />
+          </Grid>
+          <Grid item>
+            <Button size="large" color="button" onClick={handleUnsetFilter}>Сбросить</Button>
+          </Grid>
+        </Grid>
       </Grid>
     </Grid>
   );

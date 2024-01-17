@@ -108,6 +108,10 @@ class InstructorsService {
       type: INSTRUCTORS_UNSET_FILTER,
     });
   }
+
+  lessonsSort = (fieldId) => {
+    
+  }
 }
 
 export default InstructorsService;

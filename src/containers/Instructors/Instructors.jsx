@@ -38,15 +38,15 @@ const Instructors = () => {
         <Grid item xs={12}>
           <CustomBreadcrumbs links={breadcrumbs} />
         </Grid>
-        <Grid item xs={4}
-        >
+        <Grid item lg={4} xs={12}>
           <Navigation />
         </Grid>
-        <Grid item xs={8}>
+        <Grid item lg={8} xs={12}>
           <Grid
             container
             direction="column"
             gap={2}
+            width="100%"
           >
             <CustomCard variant="filled">
               <Filter />

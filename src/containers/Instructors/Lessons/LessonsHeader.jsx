@@ -4,10 +4,15 @@ import { Grid, Typography } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 
 import { ArrowDownIcon } from '../../../assets/icons';
+import useInstructors from '../hooks/useInstructors';
 
 const LessonsHeader = ({
   schema
 }) => {
+  const {
+    handleSortLessons,
+  } = useInstructors();
+
   return (
     <Grid
       container
@@ -27,7 +32,9 @@ const LessonsHeader = ({
               <Typography variant="h4">
                 {label}
               </Typography>
-              <IconButton>
+              <IconButton
+                onClick={() => handleSortLessons(id)}
+              >
                 <ArrowDownIcon />
               </IconButton>
             </Grid>

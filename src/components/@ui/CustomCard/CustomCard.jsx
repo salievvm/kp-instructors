@@ -12,6 +12,7 @@ export default function CustomCard({
   variant,
   bg,
   gradient,
+  onClick,
 }) {
   const sx = (theme) => ({
     base: {
@@ -26,6 +27,7 @@ export default function CustomCard({
       [theme.breakpoints.down('sm')]: {
         padding: '24px',
       },
+      cursor: !!onClick ? 'pointer' : 'default',
     },
     banner: {
       bgcolor: 'info.main',
@@ -47,8 +49,16 @@ export default function CustomCard({
     },
   });
 
+  const handleClick = (event) => {
+    event.stopPropagation()
+    if (typeof onClick === 'function') {
+      onClick();
+    }
+  }
+
   return (
     <Paper
+      onClick={handleClick}
       elevation={0}
       style={{
         padding,
@@ -71,6 +81,7 @@ CustomCard.propTypes = {
   width: PropTypes.any,
   variant: PropTypes.oneOf(['base', 'filled', 'banner']),
   gradient: PropTypes.bool,
+  onClick: PropTypes.any,
 };
 
 CustomCard.defaultProps = {
@@ -79,4 +90,5 @@ CustomCard.defaultProps = {
   margin: 0,
   variant: 'base',
   gradient: false,
+  onClick: null,
 };

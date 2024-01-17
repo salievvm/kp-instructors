@@ -1,5 +1,8 @@
 import React from 'react';
 
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
+
 import { useSelector } from "react-redux";
 import { obInstructorsService } from "../../../redux/actions";
 
@@ -8,6 +11,9 @@ const useInstructors = () => {
     app,
     instructors,
   } = useSelector(state => state);
+
+  const theme = useTheme();
+  const isDesktop = useMediaQuery(theme.breakpoints.up('lg'));
 
   const getAll = async () => {
     await obInstructorsService.get();
@@ -23,6 +29,10 @@ const useInstructors = () => {
   
   const handleUnsetFilter = () => {
     obInstructorsService.unsetFilterDate();
+  }
+  
+  const handleSortLessons = (fieldId) => {
+    obInstructorsService.lessonsSort(fieldId);
   }
 
   const {
@@ -41,10 +51,12 @@ const useInstructors = () => {
     lessons,
     filter,
     navigation,
+    isDesktop,
     getAll,
     handleLessonChose,
     handleSetFilter,
     handleUnsetFilter,
+    handleSortLessons,
   }
 };
 

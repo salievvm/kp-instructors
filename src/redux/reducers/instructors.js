@@ -23,7 +23,7 @@ const initState = {
     startDate: null,
     endDate: null,
   },
-  sort: {},
+  sort: {}, // id: 'asc'
 };
 
 function reducer(state = initState, action) {
