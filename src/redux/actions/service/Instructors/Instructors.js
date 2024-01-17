@@ -24,9 +24,11 @@ class InstructorsService {
     this.app.setLoading();
 
     const navigation = await this.getNavigation();
-    const productId = navigation?.skis?.items[0]?.items[0]?.id;
-    if (productId) {
-      const lessons = await this.getLessons(productId);
+    const lesson = navigation?.skis?.items[0]?.items[0];
+
+    console.log({ navigation, lesson});
+    if (lesson) {
+      const lessons = await this.getLessons(lesson);
     } else {
       this.app.setError('Что-то пошло не так');
     }
@@ -47,13 +49,14 @@ class InstructorsService {
     return navigation;
   }
 
-  getLessons = async (productId) => {
+  getLessons = async (lesson) => {
+    const productId = lesson.id;
     const lessons = await this.obLessons.getList(productId);
 
     store.dispatch({
       type: SET_ACTIVE_LESSON,
       data: {
-        activeLesson: productId,
+        activeLesson: lesson,
       }
     });
 
@@ -68,12 +71,12 @@ class InstructorsService {
     return lessons;
   }
 
-  getLessonsHandler = async (productId) => {
+  getLessonsHandler = async (lesson) => {
     this.app.setLoading();
     const { instructors } = store.getState();
     const { startDate, endDate } = instructors.filter;
 
-    await this.getLessons(productId);
+    await this.getLessons(lesson);
 
     if (startDate && endDate) {
       this.setFilterDate(startDate, endDate);

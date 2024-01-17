@@ -22,11 +22,10 @@ const Navigation = () => {
 
   console.log({ isOpenModal });
 
-  const handleCloseModal = (id) => {
-    console.log({ id });
+  const handleCloseModal = (lesson) => {
     setOpenModal(false);
-    if (id) {
-      handleLessonChose(id);
+    if (lesson) {
+      handleLessonChose(lesson);
     }
   }
 
@@ -42,7 +41,7 @@ const Navigation = () => {
             <Typography variant="h3">Горные лыжи и сноуборд</Typography>
             <CustomList
               schema={navigation.schema.skis}
-              activeItemId={navigation.activeLesson}
+              activeItemId={navigation.activeLesson?.id}
               onClick={handleLessonChose}
             />
           </CustomCard>
@@ -64,8 +63,8 @@ const Navigation = () => {
             >
               <CustomList
                 schema={navigation.schema.skis}
-                activeItemId={navigation.activeLesson}
-                onClick={(id) => handleCloseModal(id)}
+                activeItemId={navigation.activeLesson?.id}
+                onClick={handleCloseModal}
               />
             </CustomAlertDialog>
           </>

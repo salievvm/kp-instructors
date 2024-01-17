@@ -121,7 +121,7 @@ const RecursiveList = ({
 
     const item = items.find((item) => item.id === id);
     if (!item.items || !item.items?.length) {
-      onClick(id);
+      onClick(item);
     }
   };
 

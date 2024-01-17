@@ -20,8 +20,8 @@ const useInstructors = () => {
     await obInstructorsService.get();
   }
 
-  const handleLessonChose = async (productId) => {
-    await obInstructorsService.getLessonsHandler(productId);
+  const handleLessonChose = async (lesson) => {
+    await obInstructorsService.getLessonsHandler(lesson);
   }
 
   const handleSetFilter = (value) => {
@@ -45,6 +45,12 @@ const useInstructors = () => {
     return { ...instructors };
   }, [instructors]);
 
+  const {
+    activeLesson,
+  } = React.useMemo(() => {
+    return { ...navigation };
+  }, [navigation]);
+
   return {
     app,
     instructors,
@@ -54,6 +60,7 @@ const useInstructors = () => {
     navigation,
     isDesktop,
     isTablet,
+    activeLesson,
     getAll,
     handleLessonChose,
     handleSetFilter,
