@@ -10,7 +10,9 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
-import { Grid } from '@mui/material';
+import { Grid, IconButton } from '@mui/material';
+
+import { TimesIcon } from '../../../assets/icons';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -31,8 +33,25 @@ export default function CustomAlertDialog({
         keepMounted
         onClose={onClose}
         aria-describedby="alert-dialog-slide-description"
-
       >
+        <Grid
+          container
+          alignItems="center"
+          justifyContent="space-between"
+        >
+          {title ? (
+            <Grid item>
+              <DialogTitle variant="h3">{title}</DialogTitle>
+            </Grid>
+          ) : null}
+          <Grid item>
+            <IconButton
+              onClick={onClose}
+            >
+              <TimesIcon />
+            </IconButton>
+          </Grid>
+        </Grid>
         <Grid
           container
           direction="column"
@@ -42,11 +61,10 @@ export default function CustomAlertDialog({
             bgcolor: theme.palette.info.main,
             borderRadius: theme.shape.borderRadiusSm,
             textAlign: 'center',
+            overflowY: 'auto',
+            overflowX: 'hidden',
           })}
         >
-          {title ? (
-            <DialogTitle variant="h3">{title}</DialogTitle>
-          ) : null}
           <DialogContent>
             {description ? (
               <DialogContentText id="alert-dialog-slide-description">
@@ -61,12 +79,12 @@ export default function CustomAlertDialog({
               paddingBottom: 3,
             })}
           >
-            <Button
+            {/* <Button
               size='large'
               variant='contained'
               onClick={onClose}>
               Закрыть
-            </Button>
+            </Button> */}
             {/* <Button variant="contained" onClick={handleSuccess}>Agree</Button> */}
           </DialogActions>
         </Grid>
