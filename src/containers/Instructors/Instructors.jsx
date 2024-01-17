@@ -1,6 +1,5 @@
 import React from 'react';
 import { Grid } from '@mui/material';
-import { useSelector } from "react-redux";
 
 import CustomCard from '../../components/@ui/CustomCard';
 // import CustomTypography from '../../components/@ui/CustomTypography';
@@ -15,15 +14,13 @@ import useInstructors from './hooks/useInstructors';
 
 const Instructors = () => {
   const {
-    app,
-    instructors,
     breadcrumbs,
     getAll,
   } = useInstructors();
 
   React.useEffect(() => {
     getAll();
-  }, []);
+  }, [getAll]);
 
   return (
     <>

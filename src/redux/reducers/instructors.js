@@ -1,5 +1,8 @@
-import { mock, breadcrumbs, schema } from "../actions/model/Lessons/dto";
-import { schema as schemaNavigation } from "../actions/model/Navigation/dto";
+import { 
+  // mock, 
+  breadcrumbs,
+  schema,
+ } from "../actions/model/Lessons/dto";
 
 export const INSTRUCTORS_SET_FILTER = 'INSTRUCTORS_SET_FILTER';
 export const INSTRUCTORS_UNSET_FILTER = 'INSTRUCTORS_UNSET_FILTER';

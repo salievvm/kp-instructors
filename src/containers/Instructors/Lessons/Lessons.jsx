@@ -35,7 +35,7 @@ const Lessons = () => {
               alignItems="center"
               gap={1}
             >
-              <img src={img} width={335} />
+              <img src={img} width={335} alt='Not success' />
               <Typography variant="h5">Поиск не дал результатов</Typography>
               {filter.startDate ? (
                 <>

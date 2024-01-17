@@ -28,7 +28,7 @@ class InstructorsService {
 
     console.log({ navigation, lesson});
     if (lesson) {
-      const lessons = await this.getLessons(lesson);
+      await this.getLessons(lesson);
     } else {
       this.app.setError('Что-то пошло не так');
     }

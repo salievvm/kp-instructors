@@ -65,7 +65,6 @@ const LessonItemMobile = ({
           const [code, {
             id,
             hidden,
-            minWidth,
             format,
             label,
           }] = entry;
@@ -90,6 +89,8 @@ const LessonItemMobile = ({
               </Grid>
             );
           }
+
+          return null;
         })}
       </Grid >
     </CustomCard >
