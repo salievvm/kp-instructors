@@ -17,7 +17,7 @@ class InstructorsService {
 
     this.app = obApp;
     this.obNavigation = new Navigation(obShopController);
-    this.obLessons = new Lessons(obAxcessController);
+    this.obLessons = new Lessons(obAxcessController, obShopController);
   }
 
   get = async () => {
@@ -110,6 +110,19 @@ class InstructorsService {
     store.dispatch({
       type: INSTRUCTORS_UNSET_FILTER,
     });
+  }
+
+  lessonAddToCart = async (lessonId) => {
+    this.app.setLoading();
+
+    console.log({ lessonId });
+    const { instructors } = store.getState();
+
+    const lesson = instructors.lessons.list.find((item) => item.id === lessonId);
+
+    await this.obLessons.addToCart(lesson);
+
+    this.app.endLoading();
   }
 
   lessonsSort = (fieldId) => {

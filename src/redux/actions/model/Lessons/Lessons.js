@@ -12,9 +12,11 @@ export default class Lessons {
   schema = schema;
   mock = mock;
   api;
+  apiShop;
 
-  constructor(api) {
+  constructor(api, apiShop) {
     this.api = new LessonsApi(api);
+    this.apiShop = new LessonsApi(apiShop);
   }
 
   filterList = (list, { startDate, endDate }) => {
@@ -48,7 +50,7 @@ export default class Lessons {
         dateEnd: end_date,
         parentId: productId,
         availableSlots: available_slots,
-        prejectId: project_id,
+        projectId: project_id,
         seasonId: season_id,
         students: meta.students,
         rentalItem: meta.rental_item,
@@ -66,5 +68,25 @@ export default class Lessons {
     const list = await this.api.getList(productId);
 
     return this.mapFields(list, productId);
+  }
+
+  addToCart = async (lesson) => {
+    console.log({ lesson });
+    const formData = new FormData();
+
+    const newLesson = Object.entries(this.schema).map(([id, field]) => {
+      let value = lesson[id];
+
+      if (field.format && typeof field.format === 'function') {
+        value = field.format(value);
+      }
+
+      formData.append(field.id, value)
+      return {[field.id]: value}
+    });
+
+    console.log({ newLesson });
+
+    return this.apiShop.addToCard(formData);
   }
 };

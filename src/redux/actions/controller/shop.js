@@ -33,6 +33,37 @@ class AxcessController {
     }
   }
 
+  post = async (path, params) => {
+    try {
+      const response = await axios.post(
+        `${this.hook}?${path}`,
+        params,
+        {
+          withCredentials: true,
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+
+      const data = response.data;
+
+      console.log({ response, data });
+
+      if (data.error) {
+        throw new Error({ response });
+      } else {
+        return data;
+      }
+    } catch (err) {
+      console.log({ err });
+
+      this.obApp.setError(`Возникла ошибка, обновите страницу и попробуйте ещё раз.`);
+
+      return err;
+    }
+  }
+
   HTTPBuild = (obj, prefix) => {
     const params = [];
 

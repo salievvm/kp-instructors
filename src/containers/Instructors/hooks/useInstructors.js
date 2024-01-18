@@ -36,6 +36,10 @@ const useInstructors = () => {
     obInstructorsService.lessonsSort(fieldId);
   }
 
+  const handleLessonAddToCard = async (lessonId) => {
+    await obInstructorsService.lessonAddToCart(lessonId);
+  }
+
   const {
     breadcrumbs,
     lessons,
@@ -61,6 +65,7 @@ const useInstructors = () => {
     isDesktop,
     isTablet,
     activeLesson,
+    handleLessonAddToCard,
     getAll,
     handleLessonChose,
     handleSetFilter,
