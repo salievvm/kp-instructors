@@ -9,6 +9,13 @@ class LessonsApi {
       productId
     );
   };
+
+  addToCard = async (formData) => {
+    return await this.api.post(
+      'route=checkout/cart/add',
+      formData
+    );
+  }
 }
 
 export default LessonsApi;

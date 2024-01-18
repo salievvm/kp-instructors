@@ -20,8 +20,6 @@ const Navigation = () => {
 
   const [isOpenModal, setOpenModal] = React.useState(false);
 
-  console.log({ isOpenModal });
-
   const handleCloseModal = (lesson) => {
     setOpenModal(false);
     if (lesson) {

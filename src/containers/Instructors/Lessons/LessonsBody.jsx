@@ -11,6 +11,7 @@ import useInstructors from '../hooks/useInstructors';
 const LessonItemDesktop = ({
   schema,
   item,
+  addToCart,
 }) => {
   return (
     <CustomCard
@@ -34,7 +35,7 @@ const LessonItemDesktop = ({
           const _value = typeof format === 'function' ? format(value) : value;
           return !hidden ? <React.Fragment key={id}>
             {id === 'price' ? (
-              <LessonAddToCard value={_value} onClick={() => { }} minWidth={minWidth} />
+              <LessonAddToCard value={_value} onClick={() => addToCart(item.id)} minWidth={minWidth} />
             ) : (
               <Grid minWidth={minWidth} item>{_value}</Grid>
             )}
@@ -48,6 +49,7 @@ const LessonItemDesktop = ({
 const LessonItemMobile = ({
   schema,
   item,
+  addToCart,
 }) => {
   return (
     <CustomCard
@@ -74,14 +76,14 @@ const LessonItemMobile = ({
           if (!hidden) {
             if (id === 'price') {
               return (
-                <Grid item xs={12}>
-                  <LessonAddToCard value={_value} onClick={() => { }} />
+                <Grid item xs={12} key={id}>
+                  <LessonAddToCard value={_value} onClick={() => addToCart(item.id)} />
                 </Grid>
               );
             }
 
             return (
-              <Grid item xs={6}>
+              <Grid item xs={6} key={id}>
                 <Grid container direction="column" gap={0.2}>
                   <Typography variant="caption">{label}</Typography>
                   <Typography variant="body1">{_value}</Typography>
@@ -103,6 +105,7 @@ const LessonsBody = ({
 }) => {
   const {
     isTablet,
+    handleLessonAddToCard,
   } = useInstructors();
 
   return (
@@ -120,9 +123,9 @@ const LessonsBody = ({
           md={12}
         >
           {isTablet ? (
-            <LessonItemDesktop schema={schema} item={item} />
+            <LessonItemDesktop schema={schema} item={item} addToCart={handleLessonAddToCard} />
           ) : (
-            <LessonItemMobile schema={schema} item={item} />
+            <LessonItemMobile schema={schema} item={item} addToCart={handleLessonAddToCard} />
           )}
         </Grid>
       })
