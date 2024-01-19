@@ -6,10 +6,10 @@ class Bitrix24Controller {
 
   BATCH_CONST = 50;
 
-  constructor({
+  constructor(
     hook,
     store
-  }) {
+  ) {
     this.hook = hook;
     this.store = store;
   }

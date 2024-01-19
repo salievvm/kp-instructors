@@ -1,7 +1,11 @@
 import App from './model/App';
 
 import { AxcessController, Bitrix24Controller, ShopController } from './controller';
-import { axcessHook, shopHook, bitrix24Hook } from './settings';
+import { 
+  axcessHook,
+  shopHook,
+  bitrix24Hook,
+ } from './settings';
 
 import InstructorsService from './service/Instructors';
 import FormService from './service/Form/Form';
@@ -18,6 +22,8 @@ const obInstructorsService = new InstructorsService(
 );
 
 const obFormService = new FormService(obBitrix24Controller, app);
+
+console.log({ obFormService });
 
 export {
   obInstructorsService,

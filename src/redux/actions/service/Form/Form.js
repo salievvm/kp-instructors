@@ -1,13 +1,13 @@
 import store from "../../../store";
 
-// import {
-//   CrmContact,
+import {
+  CrmContact,
 //   CrmCandidate,
 //   CrmExperience,
 //   CrmRecommendation,
 //   CrmRelatives,
 //   CrmRequisite,
-// } from "../../model";
+} from "../../model";
 
 class FormService {
   constructor(api, app) {
@@ -15,7 +15,7 @@ class FormService {
     this.app = app;
 
     // this.obCrmRequisite = new CrmRequisite(api);
-    // this.obCrmContact = new CrmContact(api);
+    this.obCrmContact = new CrmContact(api);
     // this.obCrmCandidate = new CrmCandidate(api);
     // this.obCrmRelatives = new CrmRelatives(api);
     // this.obCrmExperience = new CrmExperience(api);
@@ -66,7 +66,7 @@ class FormService {
 
     console.log({ schema: form.schema });
 
-    // const personal = form.schema.personal.sections[0].items;
+    const main = form.schema.main.sections[0].items;
     // const additional = form.schema.additional.sections[0].items;
     // const carLicense = form.schema.carLicense.sections[0].items;
     // const lawViolation = form.schema.lawViolation.sections[0].items;
@@ -79,11 +79,11 @@ class FormService {
     // const experience = form.schema.experience.sections;
     // const recommendation = form.schema.recommendation.sections;
 
-    // const contactId = await this.obCrmContact.add({
-    //   ...personal,
-    //   ...passport,
-    //   ...main,
-    // });
+    const contactId = await this.obCrmContact.add({
+      ...main,
+    });
+
+    console.log({ contactId });
 
     // const resCandidate = await this.obCrmCandidate.add({
     //   ...personal,

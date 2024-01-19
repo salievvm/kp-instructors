@@ -32,6 +32,7 @@ const schema = {
             code: 'UF_CRM_14_VACANCY',
             type: text,
             col: 12,
+            required: true,
             // value: 'Тест: Разработчик ПО',
           },
           phone: {
@@ -40,12 +41,14 @@ const schema = {
             type: phone,
             col: 12,
             disabled: false,
+            required: true,
             // value: 'Василий Иванович',
           },
           email: {
             title: 'Email',
             code: '',
             type: email,
+            required: true,
             col: 12,
           },
         },
