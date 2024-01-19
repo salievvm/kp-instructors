@@ -32,7 +32,7 @@ export default class Lessons {
     })
   }
 
-  mapFields = ({ lessons, meta }, productId, price) => {
+  mapFields = ({ lessons, meta }, shopId, price) => {
     const list = lessons.map(({
       available_slots,
       project_id,
@@ -48,7 +48,7 @@ export default class Lessons {
         id: lesson_id,
         dateStart: start_date,
         dateEnd: end_date,
-        parentId: productId,
+        parentId: shopId,
         availableSlots: available_slots,
         projectId: project_id,
         seasonId: season_id,
@@ -64,10 +64,10 @@ export default class Lessons {
     return list;
   }
 
-  getList = async (productId, price) => {
+  getList = async (productId, price, shopId) => {
     const list = await this.api.getList(productId);
 
-    return this.mapFields(list, productId, price);
+    return this.mapFields(list, shopId, price);
   }
 
   addToCart = async (lesson) => {
@@ -75,7 +75,7 @@ export default class Lessons {
     const formData = new FormData();
 
     const newLesson = Object.entries(this.schema).map(([id, field]) => {
-      let value = lesson[id];
+      let value = lesson[id].toString();
 
       if (field.format && typeof field.format === 'function') {
         value = field.format(value);

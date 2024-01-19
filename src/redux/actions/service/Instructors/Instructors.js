@@ -60,8 +60,9 @@ class InstructorsService {
     const {
       id: productId,
       price,
+      shopId,
     } = lesson;
-    const lessons = await this.obLessons.getList(productId, price);
+    const lessons = await this.obLessons.getList(productId, price, shopId);
 
     store.dispatch({
       type: SET_ACTIVE_LESSON,
