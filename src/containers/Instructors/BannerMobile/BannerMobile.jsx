@@ -53,7 +53,7 @@ const BannerMobile = () => {
             </Hidden>
             <Grid item>
               <Grid container gap={1.5}>
-                <Hidden lgDown>
+                <Hidden xsUp>
                   <Button
                     variant="contained"
                     color="secondary"
@@ -68,12 +68,16 @@ const BannerMobile = () => {
                 <IconButton
                   size="large"
                   color="secondary"
+                  href="https://apps.apple.com/us/app/%D0%BA%D1%83%D1%80%D0%BE%D1%80%D1%82-%D0%BA%D1%80%D0%B0%D1%81%D0%BD%D0%B0%D1%8F-%D0%BF%D0%BE%D0%BB%D1%8F%D0%BD%D0%B0/id1601673705?roistat_visit=929450"
+                  target="_blank"
                 >
                   <AppleStoreIcon />
                 </IconButton>
                 <IconButton
                   size="large"
                   color="secondary"
+                  href="https://play.google.com/store/apps/details?id=ru.krasnayapolyanaresort&roistat_visit=929450"
+                  target="_blank"
                 >
                   <GooglePlayIcon />
                 </IconButton>
