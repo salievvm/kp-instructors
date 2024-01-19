@@ -9,5 +9,19 @@ export default function Dialog(theme) {
         },
       },
     },
+    MuiDialogContent: {
+      styleOverrides: {
+        root: {
+          padding: 0,
+        },
+      },
+    },
+    MuiDialogTitle: {
+      styleOverrides: {
+        root: {
+          padding: '16px 0',
+        },
+      },
+    },
   };
 }

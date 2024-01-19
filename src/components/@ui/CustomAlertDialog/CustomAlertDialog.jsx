@@ -33,26 +33,32 @@ export default function CustomAlertDialog({
   const {
     TransitionComponent,
     PaperProps,
+    textAlign,
   } = React.useMemo(() => {
     switch (variant) {
       case 'center':
         return {
           TransitionComponent: TransitionUp,
           PaperProps: {},
+          textAlign: 'center',
         };
       case 'right':
         return {
           TransitionComponent: TransitionRight,
           PaperProps: {
-            style: {
+            sx: (theme) => ({
               height: '90%',
               maxHeight: '90%',
-              width: '30%',  // Регулируйте этот параметр, чтобы изменить ширину
+              width: '400px',
               right: 0,
               top: 0,
               position: 'fixed',
-            },
-          }
+              [theme.breakpoints.down('sm')]: {
+                width: '85%'
+              },
+            }),
+          },
+          textAlign: 'inherit',
         }
     
       default:
@@ -74,6 +80,9 @@ export default function CustomAlertDialog({
           container
           alignItems="center"
           justifyContent="space-between"
+          sx={(theme) => ({
+            textAlign: 'center',
+          })}
         >
           {title ? (
             <Grid item>
@@ -94,9 +103,9 @@ export default function CustomAlertDialog({
           alignItems="center"
           justifyContent="center"
           sx={(theme) => ({
-            bgcolor: theme.palette.info.main,
-            borderRadius: theme.shape.borderRadiusSm,
-            textAlign: 'center',
+            // bgcolor: theme.palette.info.main,
+            // borderRadius: theme.shape.borderRadiusSm,
+            textAlign: textAlign,
             overflowY: 'auto',
             overflowX: 'hidden',
           })}

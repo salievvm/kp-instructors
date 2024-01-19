@@ -5,11 +5,12 @@ import he from 'he';
 import { Button, Grid, Typography } from '@mui/material';
 import Hidden from '@mui/material/Hidden';
 
+import CustomAlertDialog from '../../../components/@ui/CustomAlertDialog/CustomAlertDialog';
+
 import bg_main from '../../../assets/img/bg_main.webp';
 import CustomCard from '../../../components/@ui/CustomCard';
 import useInstructors from '../hooks/useInstructors';
-
-import FormFeedback from '../FormFeedback';
+import FormFeedback from '../../FormFeedback';
 
 const Banner = () => {
   const [isOpenForm, setOpenForm] = React.useState(false);
@@ -69,10 +70,14 @@ const Banner = () => {
           </Grid>
         </Grid>
       </CustomCard>
-      <FormFeedback
-        handleCloseForm={handleCloseForm}
-        isOpenForm={isOpenForm}
-      />
+      <CustomAlertDialog
+        open={isOpenForm}
+        onClose={handleCloseForm}
+        title={'Оставить заявку'}
+        variant='right'
+      >
+        <FormFeedback />
+      </CustomAlertDialog>
     </>
   );
 };
