@@ -50,8 +50,11 @@ class InstructorsService {
   }
 
   getLessons = async (lesson) => {
-    const productId = lesson.id;
-    const lessons = await this.obLessons.getList(productId);
+    const {
+      id: productId,
+      price,
+    } = lesson;
+    const lessons = await this.obLessons.getList(productId, price);
 
     store.dispatch({
       type: SET_ACTIVE_LESSON,

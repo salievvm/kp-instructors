@@ -32,7 +32,7 @@ export default class Lessons {
     })
   }
 
-  mapFields = ({ lessons, meta }, productId) => {
+  mapFields = ({ lessons, meta }, productId, price) => {
     const list = lessons.map(({
       available_slots,
       project_id,
@@ -56,7 +56,7 @@ export default class Lessons {
         rentalItem: meta.rental_item,
         rentalPersType: meta.rental_pers_type,
         duration: `${duration} ч.`,
-        price: 6000,
+        price,
       }
     })
       .sort((a, b) => dayjs(a.dateStart).isAfter(dayjs(b.dateStart)) ? 1 : -1);
@@ -64,10 +64,10 @@ export default class Lessons {
     return list;
   }
 
-  getList = async (productId) => {
+  getList = async (productId, price) => {
     const list = await this.api.getList(productId);
 
-    return this.mapFields(list, productId);
+    return this.mapFields(list, productId, price);
   }
 
   addToCart = async (lesson) => {
