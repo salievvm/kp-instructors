@@ -108,6 +108,7 @@ export default function CustomAlertDialog({
             textAlign: textAlign,
             overflowY: 'auto',
             overflowX: 'hidden',
+            height: '100%',
           })}
         >
           <DialogContent>

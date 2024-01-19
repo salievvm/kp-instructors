@@ -4,6 +4,7 @@ import Navigation from './Navigation';
 import Lessons from './Lessons';
 import Form from './Form'
 
+import CrmDeal from './Crm/Deal';
 import CrmContact from './Crm/Contact';
 
 const obApp = new App();
@@ -16,4 +17,5 @@ export {
   Lessons,
   Form,
   CrmContact,
+  CrmDeal,
 };

@@ -13,17 +13,11 @@ import useInstructors from '../hooks/useInstructors';
 import FormFeedback from '../../FormFeedback';
 
 const Banner = () => {
-  const [isOpenForm, setOpenForm] = React.useState(false);
-
-  const handleOpenForm = () => {
-    setOpenForm(true);
-  }
-
-  const handleCloseForm = () => {
-    setOpenForm(false);
-  }
   const {
     activeLesson,
+    isOpenForm,
+    handleOpenForm,
+    handleCloseForm,
   } = useInstructors();
 
   const {

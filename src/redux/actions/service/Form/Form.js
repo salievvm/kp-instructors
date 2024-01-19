@@ -2,6 +2,7 @@ import store from "../../../store";
 
 import {
   CrmContact,
+  CrmDeal,
 //   CrmCandidate,
 //   CrmExperience,
 //   CrmRecommendation,
@@ -16,6 +17,7 @@ class FormService {
 
     // this.obCrmRequisite = new CrmRequisite(api);
     this.obCrmContact = new CrmContact(api);
+    this.obCrmDeal = new CrmDeal(api);
     // this.obCrmCandidate = new CrmCandidate(api);
     // this.obCrmRelatives = new CrmRelatives(api);
     // this.obCrmExperience = new CrmExperience(api);
@@ -67,6 +69,9 @@ class FormService {
     console.log({ schema: form.schema });
 
     const main = form.schema.main.sections[0].items;
+    const sport = form.schema.sport.sections[0].items;
+    const date = form.schema.date.sections[0].items;
+    const comment = form.schema.comment.sections[0].items;
     // const additional = form.schema.additional.sections[0].items;
     // const carLicense = form.schema.carLicense.sections[0].items;
     // const lawViolation = form.schema.lawViolation.sections[0].items;
@@ -85,16 +90,13 @@ class FormService {
 
     console.log({ contactId });
 
-    // const resCandidate = await this.obCrmCandidate.add({
-    //   ...personal,
-    //   ...additional,
-    //   ...carLicense,
-    //   ...lawViolation,
-    //   ...main,
-    //   ...sourceRecognition,
-    //   ...documents,
-    //   ...passport,
-    // }, contactId);
+    const resDeal = await this.obCrmDeal.add({
+      ...sport,
+      ...date,
+      ...comment,
+    }, contactId);
+
+    console.log({ resDeal });
 
     // const candidateId = resCandidate.item.id;
 
@@ -113,6 +115,10 @@ class FormService {
 
     this.app.setSend();
     this.app.endLoading();
+  }
+
+  setOpenForm = (state) => {
+    this.app.setOpenForm(state);
   }
 }
 

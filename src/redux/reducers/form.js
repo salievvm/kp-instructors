@@ -4,6 +4,8 @@ import _ from 'lodash';
 
 import { FIELD_TYPES } from "../../consts";
 
+export const SET_OPEN_FORM = 'SET_OPEN_FORM';
+
 export const SET_FIELDS = 'SET_FIELDS';
 export const SET_FIELD = 'SET_FIELD';
 export const ADD_SUBSECTION = 'ADD_SUBSECTION';
@@ -18,6 +20,7 @@ const {
 const initState = {
   schema,
   fields: {},
+  isOpenForm: false,
 };
 
 function reducer(state = initState, action) {
@@ -158,6 +161,11 @@ function reducer(state = initState, action) {
       return {
         ...state,
         fields: action.data
+      };
+    case SET_OPEN_FORM:
+      return {
+        ...state,
+        isOpenForm: action.data.value
       };
     default:
       return state;

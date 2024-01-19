@@ -4,12 +4,13 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 
 import { useSelector } from "react-redux";
-import { obInstructorsService } from "../../../redux/actions";
+import { obFormService, obInstructorsService } from "../../../redux/actions";
 
 const useInstructors = () => {
   const {
     app,
     instructors,
+    form,
   } = useSelector(state => state);
 
   const theme = useTheme();
@@ -40,6 +41,18 @@ const useInstructors = () => {
     await obInstructorsService.lessonAddToCart(lessonId);
   }
 
+  const { isOpenForm } = React.useMemo(() => {
+    return form;
+  }, [form]);
+
+  const handleOpenForm = () => {
+    obFormService.setOpenForm(true);
+  }
+
+  const handleCloseForm = () => {
+    obFormService.setOpenForm(false);
+  }
+
   const {
     breadcrumbs,
     lessons,
@@ -65,6 +78,9 @@ const useInstructors = () => {
     isDesktop,
     isTablet,
     activeLesson,
+    isOpenForm,
+    handleOpenForm,
+    handleCloseForm,
     handleLessonAddToCard,
     getAll,
     handleLessonChose,

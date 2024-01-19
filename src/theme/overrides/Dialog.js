@@ -1,3 +1,4 @@
+import { height } from "@mui/system";
 import { BORDER_RADIUS_SM } from "../const";
 
 export default function Dialog(theme) {
@@ -13,6 +14,7 @@ export default function Dialog(theme) {
       styleOverrides: {
         root: {
           padding: 0,
+          height: '100%',
         },
       },
     },

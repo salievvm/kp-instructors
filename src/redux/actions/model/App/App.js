@@ -10,6 +10,7 @@ import {
   APP_SET_SEND,
   APP_UNSET_ERROR
 } from "../../../reducers/app";
+import { SET_OPEN_FORM } from "../../../reducers/form";
 
 class App {
   setLoading = () => {
@@ -48,6 +49,15 @@ class App {
   setDefault = () => {
     store.dispatch({
       type: APP_SET_DEFAULT,
+    });
+  }
+
+  setOpenForm = (value) => {
+    store.dispatch({
+      type: SET_OPEN_FORM,
+      data: {
+        value
+      }
     });
   }
 }

@@ -3,6 +3,7 @@ import React from 'react';
 import FormCandidateSectionList from './FormCandidateSectionList';
 
 import useForm from './hooks/useForm';
+import SuccessPage from '../SuccessPage';
 
 const FormFeedback = () => {
   const {
@@ -11,11 +12,15 @@ const FormFeedback = () => {
   } = useForm();
 
   return (
-    <>{!app.send ? (
-      <FormCandidateSectionList
-        schema={schema}
-      />
-    ) : null}</>
+    <>
+      {!app.send ? (
+        <FormCandidateSectionList
+          schema={schema}
+        />
+      ) : (
+        <SuccessPage />
+      )}
+    </>
   )
 };
 
