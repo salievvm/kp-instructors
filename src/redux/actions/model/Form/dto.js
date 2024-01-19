@@ -1,25 +1,25 @@
 import {
   FIELD_TYPES,
-  SECTION_TYPES,
+  // SECTION_TYPES,
 } from "../../../../consts";
 
 const {
   text,
   textarea,
-  radio,
-  radioGroup,
+  // radio,
+  // radioGroup,
   phone,
   email,
   date,
-  dateMulti,
-  file,
+  // dateMulti,
+  // file,
   list,
 } = FIELD_TYPES;
 
-const {
-  base,
-  filled,
-} = SECTION_TYPES;
+// const {
+//   base,
+//   filled,
+// } = SECTION_TYPES;
 
 const schema = {
   main: {

@@ -1,5 +1,5 @@
 import { FIELD_TYPES } from "../../../../../consts";
-import CrmItemApi from "../../../api/CrmItem";
+
 import DealApi from "../../../api/Deal/Deal";
 import { entityTypeId, schema } from "./dto";
 

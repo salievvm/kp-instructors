@@ -1,16 +1,16 @@
-import { Button, Grid, IconButton, Link, Typography } from "@mui/material";
+import { Button, Grid, Typography } from "@mui/material";
 
 import img from '../../assets/img/emptystate.png';
 // import { useSelector } from "react-redux";
 import useInstructors from "../Instructors/hooks/useInstructors";
 
-const SocialLink = ({ href, icon }) => (
-  <Link href={href} target="_blank">
-    <IconButton size="large">
-      {icon}
-    </IconButton>
-  </Link>
-);
+// const SocialLink = ({ href, icon }) => (
+//   <Link href={href} target="_blank">
+//     <IconButton size="large">
+//       {icon}
+//     </IconButton>
+//   </Link>
+// );
 
 const SuccessPage = () => {
   const title = 'Ваша заявка принята';
