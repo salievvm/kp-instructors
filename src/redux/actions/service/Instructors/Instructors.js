@@ -1,4 +1,11 @@
-import { INSTRUCTORS_SET_FILTER, INSTRUCTORS_UNSET_FILTER, SET_ACTIVE_LESSON, SET_LESSONS_LIST, SET_NAVIGATION_TREE } from "../../../reducers/instructors";
+import {
+  INSTRUCTORS_SET_FILTER,
+  INSTRUCTORS_UNSET_FILTER,
+  SET_ACTIVE_LESSON,
+  SET_LESSONS_LIST,
+  SET_NAVIGATION_TREE
+} from "../../../reducers/instructors";
+
 import store from "../../../store";
 
 import {
@@ -50,8 +57,12 @@ class InstructorsService {
   }
 
   getLessons = async (lesson) => {
-    const productId = lesson.id;
-    const lessons = await this.obLessons.getList(productId);
+    const {
+      id: productId,
+      price,
+      shopId,
+    } = lesson;
+    const lessons = await this.obLessons.getList(productId, price, shopId);
 
     store.dispatch({
       type: SET_ACTIVE_LESSON,

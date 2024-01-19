@@ -4,14 +4,16 @@ import React from 'react';
 import { Grid } from '@mui/material';
 
 import CustomCard from '../../components/@ui/CustomCard';
-// import CustomTypography from '../../components/@ui/CustomTypography';
-import Navigation from './Navigation';
-import Filter from './Filter';
-import Lessons from './Lessons';
 import CustomBreadcrumbs from '../../components/@ui/CustomBreadcrumbs';
+
+// import CustomTypography from '../../components/@ui/CustomTypography';
+import Filter from './Filter';
 import Banner from './Banner';
+import Lessons from './Lessons';
+import Navigation from './Navigation';
 import BannerMobile from './BannerMobile';
-import BannerSubscription from './BannerSubscription';
+// import BannerSubscription from './BannerSubscription';
+
 import useInstructors from './hooks/useInstructors';
 
 const Instructors = () => {
@@ -60,7 +62,7 @@ const Instructors = () => {
         marginTop={6}
       >
         <BannerMobile />
-        <BannerSubscription />
+        {/* <BannerSubscription /> */}
         {/* <CustomTypography /> */}
       </Grid>
     </>

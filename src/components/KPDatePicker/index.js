@@ -63,49 +63,51 @@ const KPDatePicker = ({
 	}
 
 	return (
-		<div className="kp-datepicker">
-			<DatePicker
-				onClickOutside={missClickHandle}
-				onMonthChange={markLastMounthDayInRange}
-				onDayMouseEnter={markLastMounthDayInRange}
-				renderDayContents={renderDayContents}
-				renderCustomHeader={({
-					date,
-					changeYear,
-					changeMonth,
-					decreaseMonth,
-					increaseMonth,
-					prevMonthButtonDisabled,
-					nextMonthButtonDisabled,
-					customHeaderCount,
-					monthDate
-				}) => <Header maxDate={maxDate} minDate={minDate} pickerProps={{
-					date,
-					changeYear,
-					changeMonth,
-					decreaseMonth,
-					increaseMonth,
-					prevMonthButtonDisabled,
-					nextMonthButtonDisabled,
-					customHeaderCount,
-					monthDate
-				}} />}
-				classNameName="ggwp"
-				selected={startDate}
-				dateFormat="dd.MM.yyyy"
-				selectsDisabledDaysInRange={range}
-				selectsRange={range}
-				onChange={(data) => handleChangeDate(data)}
-				maxDate={maxDate}
-				startDate={range ? startDate : undefined}
-				endDate={range ? endDate : undefined}
-				minDate={minDate}
-				locale="ru"
+		<div style={{ position: 'relative' }}>
+			<div className="kp-datepicker">
+				<DatePicker
+					onClickOutside={missClickHandle}
+					onMonthChange={markLastMounthDayInRange}
+					onDayMouseEnter={markLastMounthDayInRange}
+					renderDayContents={renderDayContents}
+					renderCustomHeader={({
+						date,
+						changeYear,
+						changeMonth,
+						decreaseMonth,
+						increaseMonth,
+						prevMonthButtonDisabled,
+						nextMonthButtonDisabled,
+						customHeaderCount,
+						monthDate
+					}) => <Header maxDate={maxDate} minDate={minDate} pickerProps={{
+						date,
+						changeYear,
+						changeMonth,
+						decreaseMonth,
+						increaseMonth,
+						prevMonthButtonDisabled,
+						nextMonthButtonDisabled,
+						customHeaderCount,
+						monthDate
+					}} />}
+					classNameName="ggwp"
+					selected={startDate}
+					dateFormat="dd.MM.yyyy"
+					selectsDisabledDaysInRange={range}
+					selectsRange={range}
+					onChange={(data) => handleChangeDate(data)}
+					maxDate={maxDate}
+					startDate={range ? startDate : undefined}
+					endDate={range ? endDate : undefined}
+					minDate={minDate}
+					locale="ru"
 
-				monthsShown={monthsShown}
-				inline
-				ref={datePickerRef}
-			/>
+					monthsShown={monthsShown}
+					inline
+					ref={datePickerRef}
+				/>
+			</div>
 		</div>
 	)
 }
@@ -117,7 +119,7 @@ const Header = ({ pickerProps, maxDate, minDate = new Date() }) => {
 	const currentYear = minDate.getFullYear()
 	const maxYear = maxDate.getFullYear()
 	const years = [];
-	for (let i = maxYear; i >= currentYear; i--) {
+	for (let i = currentYear; i <= maxYear; i++) {
 		years.push(i);
 	}
 
@@ -196,7 +198,7 @@ const Header = ({ pickerProps, maxDate, minDate = new Date() }) => {
 								{option}
 							</option>
 							{
-								months.slice().reverse().map((mounth, i) => {
+								months.slice().map((mounth, i) => {
 									if (minDate > new Date(option, 11 - i + 1) || new Date(option, 11 - i) > new Date(maxDate.getFullYear(), maxDate.getMonth())) {
 										return null
 									}

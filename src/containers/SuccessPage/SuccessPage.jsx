@@ -1,77 +1,54 @@
-import { Button, Grid, IconButton, Link, Typography } from "@mui/material";
-import CustomPageHeader from "../../components/@ui/CustomPageHeader";
-import image_hotels from '../../assets/img/image_hotels.png';
-import { useSelector } from "react-redux";
-import { Stack } from "@mui/system";
-import { HeadHunterIcon, TelegramIcon, VKIcon, YouTubeIcon } from "../../assets/icons";
+import { Button, Grid, Typography } from "@mui/material";
 
-const SocialLink = ({ href, icon }) => (
-  <Link href={href} target="_blank">
-    <IconButton size="large">
-      {icon}
-    </IconButton>
-  </Link>
-);
+import img from '../../assets/img/emptystate.png';
+// import { useSelector } from "react-redux";
+import useInstructors from "../Instructors/hooks/useInstructors";
+
+// const SocialLink = ({ href, icon }) => (
+//   <Link href={href} target="_blank">
+//     <IconButton size="large">
+//       {icon}
+//     </IconButton>
+//   </Link>
+// );
 
 const SuccessPage = () => {
-  const title = 'Спасибо!';
-  const subtitle = 'Ваша заявка успешно отправлена, и вскоре будет обработана специалистами. Мы будем рады видеть Вас в нашей компании!';
-  const { app } = useSelector(state => state);
+  const title = 'Ваша заявка принята';
+  const subtitle = 'В ближайшее время мы с вами свяжемся и подтвердим занятие';
 
-  const handleClick = () => {
-    window.location.reload();
-  }
+  const {
+    handleCloseForm,
+  } = useInstructors();
 
   return (
-    <>
-      {app.send ? (
-        <Grid
-          container
-          direction="column"
-          alignItems="center"
-        >
-          <CustomPageHeader
-            title={title}
-            subtitle={subtitle}
-          />
-          <Grid
-            container
-            direction="column"
-            alignItems="center"
-            gap={3}
-          >
-            <img
-              width={300}
-              src={image_hotels}
-              alt="Спасибо! Ваша заявка отправлена!"
-            />
-            <Typography variant="caption">Подпишитесь</Typography>
-            <Stack direction="row" spacing={1}>
-              <SocialLink
-                href="https://vk.com/kp_resort?roistat_visit=623292"
-                icon={<VKIcon />}
-              />
-              <SocialLink
-                href="https://www.youtube.com/krasnayapolyanaresort?roistat_visit=623292"
-                icon={<YouTubeIcon />}
-              />
-              <SocialLink
-                href="https://t.me/kp_resort?roistat_visit=623292"
-                icon={<TelegramIcon />}
-              />
-              <SocialLink
-                href="https://krasnaya-polyana.hh.ru/employer/1124351"
-                icon={<HeadHunterIcon />}
-              />
-            </Stack>
-            <Typography variant="h3" width={304} textAlign="center">
-              Мы всегда с вами на расстоянии всего одного клика
-            </Typography>
-            <Button onClick={handleClick}>Заполнить форму ещё раз</Button>
-          </Grid>
-        </Grid>
-      ) : null}
-    </>
+    <Grid
+      container
+      direction="column"
+      alignItems="center"
+      justifyContent="center"
+      gap={2}
+      sx={{
+        textAlign: 'center',
+        height: '100%',
+      }}
+    >
+      <img
+        width={300}
+        src={img}
+        alt="Спасибо! Ваша заявка отправлена!"
+      />
+      <Typography variant="h3">{title}</Typography>
+      <Typography variant="body2">{subtitle}</Typography>
+      <Button
+        variant="contained"
+        size="large"
+        onClick={handleCloseForm}
+        color="primary"
+        fullWidth
+      >
+        Спасибо
+      </Button>
+    </Grid>
   );
 };
 
