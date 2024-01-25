@@ -70,7 +70,7 @@ export default class Lessons {
     return this.mapFields(list, shopId, price);
   }
 
-  addToCart = async (lesson) => {
+  prepareCartFields = (lesson) => {
     console.log({ lesson });
     const formData = new FormData();
 
@@ -87,6 +87,32 @@ export default class Lessons {
 
     console.log({ newLesson });
 
-    return this.apiShop.addToCard(formData);
+    return formData;
   }
+
+  addToCart = async (lesson, handlers = {
+    onSuccess: () => {},
+    onError: () => {},
+  }) => {
+    const formData = this.prepareCartFields(lesson);
+
+    try {
+      if (!window.cart) {
+        throw new Error('Не найден модуль cart');
+      }
+
+      await window.cart.add(formData, {
+        onSuccess: handlers.onSuccess, 
+        onError: handlers.onError,
+        onFinal: handlers.onError
+    });
+    } catch (error) {
+      console.log({ error });
+      handlers.onError(error.message);
+    }
+
+    // return this.apiShop.addToCard(formData);
+  }
+
+  
 };

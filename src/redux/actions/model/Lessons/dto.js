@@ -134,24 +134,16 @@ const mock = [
 
 const breadcrumbs = [
   {
-    href: '#',
+    href: 'https://krasnayapolyanaresort.ru/',
     label: 'Главная',
   },
   {
-    href: '#',
+    href: 'https://shop.krasnayapolyanaresort.ru/',
     label: 'Онлайн-магазин',
   },
   {
-    href: '#',
-    label: 'Категории',
-  },
-  {
-    href: '#',
-    label: 'Услуги',
-  },
-  {
-    href: '#',
-    label: 'Инструктора',
+    href: '',
+    label: 'Инструкторы по горным лыжам и сноуборду',
   },
 ];
 

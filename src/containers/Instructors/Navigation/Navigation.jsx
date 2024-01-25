@@ -50,7 +50,7 @@ const Navigation = () => {
               onClick={handleOpenModal}
             >
               <Grid container alignItems="center" justifyContent="center" gap={1}>
-                <img src={icon} height={24} alt='icon' />
+                <img src={`${window.ROOT_DIRECTORY}${icon}`} height={24} alt='icon' />
                 <Typography variant="h3">{title}</Typography>
               </Grid>
             </CustomCard>

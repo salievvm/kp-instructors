@@ -34,7 +34,7 @@ const SuccessPage = () => {
     >
       <img
         width={300}
-        src={img}
+        src={`${window.ROOT_DIRECTORY}${img}`}
         alt="Спасибо! Ваша заявка отправлена!"
       />
       <Typography variant="h3">{title}</Typography>

@@ -8,6 +8,27 @@ export default class Navigation {
     this.api = new NavigationApi(api);
   }
 
+  convertItemsToArray = (items) => {
+    if (!items || items.length === 0) {
+      return [];
+    }
+
+    return items.map(item => {
+      if (item.categories && !item.items) {
+        item.items = item.categories;
+        delete item.categories;
+      }
+
+      const nestedItems = item.items;
+      if (nestedItems) {
+        item.items = Array.isArray(nestedItems) ? nestedItems : Object.values(nestedItems);
+        this.convertItemsToArray(item.items);
+      }
+
+      return item;
+    });
+  }
+
   mapTreeList = (tree) => {
     const skis = tree.skis[67];
 
@@ -23,11 +44,15 @@ export default class Navigation {
 
     delete skis.categories;
 
+    this.convertItemsToArray(skis.items);
+
     return { skis };
   }
 
   getTreeList = async () => {
     const tree = await this.api.getTreeList();
+
+    console.log({ tree });
 
     return this.mapTreeList(tree);
   }

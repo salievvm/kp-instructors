@@ -60,7 +60,7 @@ const BannerMobile = () => {
                     size="large"
                   >
                     <Grid container gap={1} alignItems="center" >
-                      <img src={qr_icon} width={32} height={32} alt="_"/>
+                      <img src={`${window.ROOT_DIRECTORY}${qr_icon}`} width={32} height={32} alt="_"/>
                       <span>Показать QR-код</span>
                     </Grid>
                   </Button>
