@@ -36,7 +36,7 @@ class InstructorsService {
     const lesson = this.findItemById(navigation?.skis?.items, shopId);
     // const lesson = navigation?.skis?.items[0]?.items[0];
 
-    console.log({ navigation, lesson });
+    console.log({ navigation, lesson, shopId });
     if (lesson) {
       await this.getLessons(lesson);
     } else {
@@ -52,11 +52,12 @@ class InstructorsService {
     }
 
     for (const item of items) {
+      console.log({ 'item.shopId': item.shopId, itemId });
       if (!itemId) {
         if (!item.items || item.items.length === 0) {
           return item;
         }
-      } else if (item.shopId === itemId) {
+      } else if (+item.shopId === +itemId) {
         return item;
       }
 

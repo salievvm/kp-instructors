@@ -82,7 +82,7 @@ export default class Lessons {
       }
 
       formData.append(field.id, value)
-      return {[field.id]: value}
+      return { [field.id]: value }
     });
 
     console.log({ newLesson });
@@ -91,28 +91,43 @@ export default class Lessons {
   }
 
   addToCart = async (lesson, handlers = {
-    onSuccess: () => {},
-    onError: () => {},
+    onSuccess: () => { },
+    onError: () => { },
   }) => {
     const formData = this.prepareCartFields(lesson);
 
+    // try {
+    //   if (!window.cart) {
+    //     throw new Error('Не найден модуль cart');
+    //   }
+
+    //   await window.cart.add(formData, {
+    //     onSuccess: handlers.onSuccess, 
+    //     onError: handlers.onError,
+    //     onFinal: handlers.onError
+    // });
+    // } catch (error) {
+    //   console.log({ error });
+    //   handlers.onError(error.message);
+    // }
+
     try {
+      const res = await this.apiShop.addToCard(formData);
+
+      console.log({ res, 'window.cart': window.cart });
+
       if (!window.cart) {
-        throw new Error('Не найден модуль cart');
+        throw new Error('Пожалуйста обновите страницу');
       }
 
-      await window.cart.add(formData, {
-        onSuccess: handlers.onSuccess, 
-        onError: handlers.onError,
-        onFinal: handlers.onError
-    });
+      await window.cart.render();
+      
+      return res;
     } catch (error) {
       console.log({ error });
       handlers.onError(error.message);
     }
-
-    // return this.apiShop.addToCard(formData);
   }
 
-  
+
 };
