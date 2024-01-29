@@ -1,7 +1,7 @@
 import { MAIN_TEXT, PRIMARY, SECOND_TEXT } from "./colors";
 
 const typography = {
-  fontFamily: 'Inter, Arial, sans-serif',
+  fontFamily: 'Panton, Inter, Arial, sans-serif',
   color: MAIN_TEXT,
   h1: {
     fontSize: '40px',

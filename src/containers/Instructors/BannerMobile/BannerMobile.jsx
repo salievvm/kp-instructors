@@ -86,7 +86,7 @@ const BannerMobile = () => {
           </Grid>
         </Grid>
         <Grid item xs={12} sm={6} sx={{ alignItems: { padding: '0 48 0 48', sm: 0 } }}>
-          <CustomImg src={bg_banner_mobile} />
+          <CustomImg src={`${window.ROOT_DIRECTORY}${bg_banner_mobile}`} />
         </Grid>
       </Grid>
     </CustomCard>

@@ -158,8 +158,8 @@ table {
 }
 
 html {
-	font: 14px/20px Arial;
-	font-family: 'Inter', sans-serif;
+	/* font: 14px/20px Inter; */
+	font-family: 'Panton', 'Inter', sans-serif;
 	color: #1f1f1f;
 }
 
