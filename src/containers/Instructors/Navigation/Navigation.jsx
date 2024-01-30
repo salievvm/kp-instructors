@@ -16,7 +16,7 @@ const Navigation = () => {
     handleLessonChose,
   } = useInstructors();
 
-  const title = 'Горные лыжи и сноуборд';
+  const title = navigation?.schema?.skis?.title;
 
   const [isOpenModal, setOpenModal] = React.useState(false);
 
@@ -36,7 +36,7 @@ const Navigation = () => {
       {navigation.schema?.skis ? (
         isDesktop ? (
           <CustomCard variant="filled">
-            <Typography variant="h3">Горные лыжи и сноуборд</Typography>
+            <Typography variant="h3">{title}</Typography>
             <CustomList
               schema={navigation.schema.skis}
               activeItemId={navigation.activeLesson?.id}

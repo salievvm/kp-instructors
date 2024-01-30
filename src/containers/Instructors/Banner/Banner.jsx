@@ -7,13 +7,14 @@ import Hidden from '@mui/material/Hidden';
 
 import CustomAlertDialog from '../../../components/@ui/CustomAlertDialog/CustomAlertDialog';
 
-import bg_main from '../../../assets/img/bg_main.webp';
+// import bg_main from '../../../assets/img/bg_main.webp';
 import CustomCard from '../../../components/@ui/CustomCard';
 import useInstructors from '../hooks/useInstructors';
 import FormFeedback from '../../FormFeedback';
 
 const Banner = () => {
   const {
+    bannerImage,
     activeLesson,
     isOpenForm,
     handleOpenForm,
@@ -33,7 +34,7 @@ const Banner = () => {
         gradient
         variant="banner"
         height={540}
-        bg={bg_main}
+        bg={bannerImage}
       >
         <Grid container alignItems="flex-end" justifyContent="flex-start" height="100%">
           <Grid item xs={6}>

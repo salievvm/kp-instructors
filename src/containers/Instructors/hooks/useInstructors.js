@@ -54,6 +54,7 @@ const useInstructors = () => {
   }
 
   const {
+    bannerImage,
     breadcrumbs,
     lessons,
     navigation,
@@ -79,6 +80,7 @@ const useInstructors = () => {
     isTablet,
     activeLesson,
     isOpenForm,
+    bannerImage,
     handleOpenForm,
     handleCloseForm,
     handleLessonAddToCard,

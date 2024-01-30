@@ -75,7 +75,8 @@ class InstructorsService {
   }
 
   getNavigation = async () => {
-    const navigation = await this.obNavigation.getTreeList();
+    const categoryId = window.category_id || 67;
+    const navigation = await this.obNavigation.getTreeList(categoryId);
 
     store.dispatch({
       type: SET_NAVIGATION_TREE,

@@ -52,6 +52,7 @@ const ListItem = ({
   open,
   activeItemId,
   id,
+  items,
 }) => {
   return (
     <ListItemButton onClick={onClick}>
@@ -80,7 +81,7 @@ const ListItem = ({
           ) : null}
         </Grid>
       } />
-      {!level ? (open ? <ExpandLess /> : <ExpandMore />) : null}
+      {items && items.length ? (open ? <ExpandLess /> : <ExpandMore />) : null}
     </ListItemButton>
   );
 };
@@ -93,6 +94,7 @@ ListItem.propTypes = {
   id: PropTypes.any,
   open: PropTypes.bool,
   activeItemId: PropTypes.any,
+  items: PropTypes.oneOf([ PropTypes.any, PropTypes.array]),
 };
 
 ListItem.defaultProps = {
@@ -137,6 +139,7 @@ const RecursiveList = ({
             id={item.id}
             level={level}
             activeItemId={activeItemId}
+            items={item.items}
           />
           {item.items && item.items.length ? (
             <Collapse in={openItems.includes(item.id)} timeout="auto" unmountOnExit>

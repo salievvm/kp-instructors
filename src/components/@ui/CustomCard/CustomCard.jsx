@@ -31,7 +31,7 @@ export default function CustomCard({
     },
     banner: {
       bgcolor: 'info.main',
-      backgroundImage: gradient ? `linear-gradient(90deg, #1F1B2E 0%, rgba(31, 27, 46, 0.72) 25%, rgba(31, 27, 46, 0) 50%), url("${window.ROOT_DIRECTORY}${bg}")` : `url("${window.ROOT_DIRECTORY}${bg}")`,
+      backgroundImage: gradient ? `linear-gradient(90deg, #1F1B2E 0%, rgba(31, 27, 46, 0.72) 25%, rgba(31, 27, 46, 0) 50%), url("${bg}")` : `url("${bg}")`,
       backgroundPosition: 'center',
       backgroundSize: 'cover',
       backgroundRepeat: 'no-repeat',
@@ -43,7 +43,7 @@ export default function CustomCard({
       [theme.breakpoints.down('sm')]: {
         height: 392,
         padding: '24px',
-        backgroundImage: gradient ? `linear-gradient(0deg, #1F1B2E 0%, rgba(31, 27, 46, 0.72) 25%, rgba(31, 27, 46, 0) 50%), url("${window.ROOT_DIRECTORY}${bg}")` : `url("${window.ROOT_DIRECTORY}${bg}")`,
+        backgroundImage: gradient ? `linear-gradient(0deg, #1F1B2E 0%, rgba(31, 27, 46, 0.72) 25%, rgba(31, 27, 46, 0) 50%), url("${bg}")` : `url("${bg}")`,
         backgroundPosition: '70%',
       },
     },

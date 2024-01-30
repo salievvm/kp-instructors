@@ -29,10 +29,13 @@ export default class Navigation {
     });
   }
 
-  mapTreeList = (tree) => {
-    const skis = tree.skis[67];
+  mapTreeList = (skis) => {
+    // const skis = tree.skis[67];
 
-    skis.items = Object.values(skis.categories);
+    if (skis.categories) {
+      skis.items = Object.values(skis.categories);
+      delete skis.categories;
+    }
 
     skis.items = skis.items.map((item) => {
       const quantity = item.items?.length;
@@ -42,18 +45,18 @@ export default class Navigation {
       return item;
     })
 
-    delete skis.categories;
-
     this.convertItemsToArray(skis.items);
 
     return { skis };
   }
 
-  getTreeList = async () => {
+  getTreeList = async (categoryId) => {
     const tree = await this.api.getTreeList();
 
     console.log({ tree });
 
-    return this.mapTreeList(tree);
+    const skis = tree.skis[categoryId];
+
+    return this.mapTreeList(skis);
   }
 };
