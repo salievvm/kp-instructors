@@ -8,7 +8,7 @@ export default class Navigation {
     this.api = new NavigationApi(api);
   }
 
-  convertItemsToArray = (items) => {
+  convertItemsToArray = (items, image) => {
     if (!items || items.length === 0) {
       return [];
     }
@@ -19,10 +19,14 @@ export default class Navigation {
         delete item.categories;
       }
 
+      if (!item.image) {
+        item.image = image;
+      }
+
       const nestedItems = item.items;
       if (nestedItems) {
         item.items = Array.isArray(nestedItems) ? nestedItems : Object.values(nestedItems);
-        this.convertItemsToArray(item.items);
+        this.convertItemsToArray(item.items, item.image);
       }
 
       return item;
@@ -45,7 +49,7 @@ export default class Navigation {
       return item;
     })
 
-    this.convertItemsToArray(skis.items);
+    this.convertItemsToArray(skis.items, skis.image);
 
     return { skis };
   }

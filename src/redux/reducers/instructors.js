@@ -69,12 +69,18 @@ function reducer(state = initState, action) {
         }
       };
     case SET_ACTIVE_LESSON:
+      let bannerImageLesson = state.bannerImage;
+      if (action.data.activeLesson.image) {
+        bannerImageLesson = action.data.activeLesson.image;
+      }
+
       return {
         ...state,
         navigation: {
           ...state.navigation,
           activeLesson: action.data.activeLesson,
-        }
+        },
+        bannerImage: bannerImageLesson,
       }
     case SET_NAVIGATION_TREE:
       const breadcrumbs = state.breadcrumbs;
