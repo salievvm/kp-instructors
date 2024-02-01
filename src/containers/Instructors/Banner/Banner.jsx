@@ -17,6 +17,7 @@ const Banner = () => {
     bannerImage,
     activeLesson,
     isOpenForm,
+    isDesktop,
     handleOpenForm,
     handleCloseForm,
   } = useInstructors();
@@ -45,7 +46,7 @@ const Banner = () => {
               <Hidden lgDown>
                 <Grid item lg={12}>
                   {description ? (
-                    <Typography variant="body1" gutterBottom color="#fff" component="div">
+                    <Typography variant={isDesktop ? 'h6' : 'body1'} gutterBottom color="#fff" component="div">
                       <div dangerouslySetInnerHTML={{ __html: he.decode(description) }} />
                     </Typography>
                   ) : null}
