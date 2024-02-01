@@ -26,7 +26,7 @@ export default class Lessons {
     const obDateEnd = dayjs(endDate + " 23:59:59", formatString);
 
     return list.filter((item) => {
-      const obItemDate = dayjs(item.dateStart).utc().utcOffset(3);
+      const obItemDate = dayjs(item.dateStart).utc().utcOffset(0);
 
       return obItemDate.isAfter(obDateStart) && obItemDate.isBefore(obDateEnd) ? true : false;
     })
@@ -76,15 +76,28 @@ export default class Lessons {
 
     const newLesson = Object.entries(this.schema).map(([id, field]) => {
       let value = lesson[id].toString();
+      if (field.formSend) {
 
-      if (field.format && typeof field.format === 'function') {
-        value = field.format(value);
+        if (field.formatForm && typeof field.formatForm === 'function') {
+          value = field.formatForm(value);
+        } else if (field.format && typeof field.format === 'function') {
+          value = field.format(value);
+        }
+
+        formData.append(field.id, value)
       }
-
-      formData.append(field.id, value)
+      
       return { [field.id]: value }
     });
 
+    const formDataEntries = formData.entries();
+    const formDataObject = {};
+
+    for (const pair of formDataEntries) {
+      formDataObject[pair[0]] = pair[1];
+    }
+    
+    console.log({ formDataObject });
     console.log({ newLesson });
 
     return formData;
@@ -121,7 +134,7 @@ export default class Lessons {
       }
 
       await window.cart.render();
-      
+
       return res;
     } catch (error) {
       console.log({ error });

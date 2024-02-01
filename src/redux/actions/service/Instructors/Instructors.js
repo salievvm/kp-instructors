@@ -52,7 +52,7 @@ class InstructorsService {
     }
 
     for (const item of items) {
-      console.log({ 'item.shopId': item.shopId, itemId });
+      // console.log({ 'item.shopId': item.shopId, itemId });
       if (!itemId) {
         if (!item.items || item.items.length === 0) {
           return item;

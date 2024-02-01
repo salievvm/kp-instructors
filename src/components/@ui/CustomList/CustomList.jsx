@@ -94,7 +94,7 @@ ListItem.propTypes = {
   id: PropTypes.any,
   open: PropTypes.bool,
   activeItemId: PropTypes.any,
-  items: PropTypes.oneOf([ PropTypes.any, PropTypes.array]),
+  items: PropTypes.oneOfType([ PropTypes.any, PropTypes.array]),
 };
 
 ListItem.defaultProps = {
@@ -129,7 +129,7 @@ const RecursiveList = ({
 
   return (
     <List sx={{ width: '100%' }} component="nav">
-      {items.map((item) => (
+      {items?.map((item) => (
         <React.Fragment key={item.id}>
           <ListItem
             chip={item.quantity}
