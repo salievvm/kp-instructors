@@ -16,8 +16,8 @@ class Contact {
 
   add = async (data) => {
     const fields = {
-      "SOURCE_ID": "125",
-      "SOURCE_DESCRIPTION": "Заполнена форма анкеты Кандидата",
+      "SOURCE_ID": "WEBFORM",
+      "SOURCE_DESCRIPTION": "Заполнена форма Занятия с инструктором",
     };
 
     for (const [apiCode, code] of Object.entries(this.schema)) {

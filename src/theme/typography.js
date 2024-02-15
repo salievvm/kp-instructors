@@ -4,19 +4,29 @@ const typography = {
   fontFamily: 'Inter, Arial, sans-serif',
   color: MAIN_TEXT,
   h1: {
-    fontSize: '32px',
+    fontSize: '40px',
     fontWeight: 700,
-    lineHeight: '40px',
+    lineHeight: '48px',
   },
   h2: {
-    fontSize: '24px',
+    fontSize: '40px',
     fontWeight: 700,
-    lineHeight: '32px',
+    lineHeight: '48px',
   },
   h3: {
     fontSize: '16px',
     fontWeight: 700,
     lineHeight: '24px',
+  },
+  h4: {
+    fontSize: '14px',
+    fontWeight: 700,
+    lineHeight: '20px',
+  },
+  h5: {
+    fontSize: '24px',
+    fontWeight: 700,
+    lineHeight: '28px',
   },
   subtitle1: {
     fontSize: '16px',
@@ -29,6 +39,11 @@ const typography = {
     fontWeight: 700,
     lineHeight: '24px',
     color: PRIMARY,
+  },
+  h6: {
+    fontSize: '16px',
+    fontWeight: 400,
+    lineHeight: '24px',
   },
   body1: {
     fontSize: '14px',

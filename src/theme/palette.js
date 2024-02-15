@@ -3,6 +3,7 @@ import { BODY_COLOR,
   MAIN_TEXT,
   PRIMARY,
   RADIO_GROUP_DEFAULT,
+  SECOND_TEXT,
 } from "./colors";
 
 const palette = {
@@ -19,7 +20,7 @@ const palette = {
     contrastText: MAIN_TEXT,
   },
   button: {
-    main: RADIO_GROUP_DEFAULT,
+    main: SECOND_TEXT,
   },
 };
 

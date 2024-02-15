@@ -2,10 +2,11 @@
 
 .kp-datepicker{
     position: absolute;
-    // top: 62px;
-    left: 10%;
+    top: 16px;
+    left: 16px;
     z-index: 100;
-    width: 80%;
+    // min-width: 280px;
+    // width: 80%;
     display: flex;
     justify-content: center;
     &>div{
@@ -20,7 +21,6 @@
     }
 }
 .react-datepicker {
-	  font-family: "Inter", sans-serif;
     color: #1F1F1F;
     border: none; 
     /* border-radius: 0.3em; */
@@ -31,6 +31,7 @@
     display: flex;
     justify-content: center;
     padding: 16px 0;
+    min-width: 280px;
     @media (min-width: 599px) {
       padding: 24px 32px;
     }
@@ -544,7 +545,7 @@
     background: #FFFFFF;
     box-shadow: 0px 8px 16px rgba(28, 28, 28, 0.12);
     border-radius: 50%;
-    top: calc(50% - 20px);
+    top: calc(50% - 60px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -554,13 +555,13 @@
         }
     }
     &.kp-datepicker__navigation--previous{
-      left: -32px;
+      left: -16px;
         @media (min-width: 599px) {
           left: -20px;
         }
     }
     &.kp-datepicker__navigation--next{
-      right: -32px;
+      right: -16px;
         @media (min-width: 599px) {
           right: -20px;
         }
@@ -600,3 +601,8 @@
 //   }
 
   /*Datepicker end*/
+  @media screen and (min-width: 768px) {
+    .react-datepicker .react-datepicker__month-container:last-child {
+      display: none;
+    }
+  }
