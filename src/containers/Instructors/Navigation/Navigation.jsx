@@ -16,7 +16,7 @@ const Navigation = () => {
     handleLessonChose,
   } = useInstructors();
 
-  const title = 'Горные лыжи и сноуборд';
+  const title = navigation?.schema?.skis?.title;
 
   const [isOpenModal, setOpenModal] = React.useState(false);
 
@@ -36,7 +36,7 @@ const Navigation = () => {
       {navigation.schema?.skis ? (
         isDesktop ? (
           <CustomCard variant="filled">
-            <Typography variant="h3">Горные лыжи и сноуборд</Typography>
+            <Typography variant="h3">{title}</Typography>
             <CustomList
               schema={navigation.schema.skis}
               activeItemId={navigation.activeLesson?.id}
@@ -50,7 +50,7 @@ const Navigation = () => {
               onClick={handleOpenModal}
             >
               <Grid container alignItems="center" justifyContent="center" gap={1}>
-                <img src={icon} height={24} alt='icon' />
+                <img src={`${window.ROOT_DIRECTORY}${icon}`} height={24} alt='icon' />
                 <Typography variant="h3">{title}</Typography>
               </Grid>
             </CustomCard>

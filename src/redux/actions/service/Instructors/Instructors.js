@@ -31,9 +31,12 @@ class InstructorsService {
     this.app.setLoading();
 
     const navigation = await this.getNavigation();
-    const lesson = navigation?.skis?.items[0]?.items[0];
+    console.log({ navigation });
+    const shopId = window.shop_id; // "327"
+    const lesson = this.findItemById(navigation?.skis?.items, shopId);
+    // const lesson = navigation?.skis?.items[0]?.items[0];
 
-    console.log({ navigation, lesson});
+    console.log({ navigation, lesson, shopId });
     if (lesson) {
       await this.getLessons(lesson);
     } else {
@@ -43,8 +46,37 @@ class InstructorsService {
     this.app.endLoading();
   }
 
+  findItemById = (items, itemId) => {
+    if (!items || items.length === 0) {
+      return null;
+    }
+
+    for (const item of items) {
+      // console.log({ 'item.shopId': item.shopId, itemId });
+      if (!itemId) {
+        if (!item.items || item.items.length === 0) {
+          return item;
+        }
+      } else if (+item.shopId === +itemId) {
+        return item;
+      }
+
+      const nestedItems = item.items;
+      if (nestedItems) {
+        const result = this.findItemById(Array.isArray(nestedItems) ?
+          nestedItems : Object.values(nestedItems), itemId);
+        if (result) {
+          return result;
+        }
+      }
+    }
+
+    return null;
+  }
+
   getNavigation = async () => {
-    const navigation = await this.obNavigation.getTreeList();
+    const categoryId = window.category_id || 67;
+    const navigation = await this.obNavigation.getTreeList(categoryId);
 
     store.dispatch({
       type: SET_NAVIGATION_TREE,
@@ -131,13 +163,16 @@ class InstructorsService {
 
     const lesson = instructors.lessons.list.find((item) => item.id === lessonId);
 
-    await this.obLessons.addToCart(lesson);
+    await this.obLessons.addToCart(lesson, {
+      onSuccess: () => this.app.endLoading(),
+      onError: (error) => this.app.setError(error),
+    });
 
     this.app.endLoading();
   }
 
   lessonsSort = (fieldId) => {
-    
+
   }
 }
 

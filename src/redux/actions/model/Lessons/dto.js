@@ -23,36 +23,43 @@ const schema = {
     id: 'lesson_id',
     label: 'ID',
     hidden: true,
+    formSend: true,
   },
   parentId: {
     id: 'product_id',
     label: 'parentId',
     hidden: true,
+    formSend: true,
   },
   projectId: {
     id: 'project_id',
     label: 'projectId',
     hidden: true,
+    formSend: true,
   },
   seasonId: {
     id: 'season_id',
     label: 'seasonId',
     hidden: true,
+    formSend: true,
   },
   students: {
     id: 'students',
     label: 'students',
     hidden: true,
+    formSend: true,
   },
   rentalItem: {
     id: 'rental_item',
     label: 'rentalItem',
     hidden: true,
+    formSend: true,
   },
   rentalPersType: {
     id: 'rental_pers_type',
     label: 'rentalPersType',
     hidden: true,
+    formSend: true,
   },
   dateStart: {
     id: 'start_date',
@@ -60,11 +67,12 @@ const schema = {
     minWidth: 143,
     type: date,
     format: (value) => {
-      return dayjs(value).utc().utcOffset(3).format('DD.MM.YYYY HH:mm')
+      return dayjs(value).utc().utcOffset(0).format('DD.MM.YYYY HH:mm')
     },
     formatForm: (value) => {
-      return dayjs(value).utc().utcOffset(3).format('MM-DD-YYYY HH:mm:ss')
+      return dayjs(value).utc().utcOffset(0).format('YYYY-MM-DD HH:mm:ss')
     },
+    formSend: true,
   },
   dateEnd: {
     id: 'end_date',
@@ -73,11 +81,12 @@ const schema = {
     type: date,
     hidden: true,
     format: (value) => {
-      return dayjs(value).utc().utcOffset(3).format('DD.MM.YYYY HH:mm')
+      return dayjs(value).utc().utcOffset(0).format('DD.MM.YYYY HH:mm')
     },
     formatForm: (value) => {
-      return dayjs(value).utc().utcOffset(3).format('MM-DD-YYYY HH:mm:ss')
+      return dayjs(value).utc().utcOffset(0).format('YYYY-MM-DD HH:mm:ss')
     },
+    formSend: true,
   },
   duration: {
     id: 'duration',
@@ -134,24 +143,16 @@ const mock = [
 
 const breadcrumbs = [
   {
-    href: '#',
+    href: 'https://krasnayapolyanaresort.ru/',
     label: 'Главная',
   },
   {
-    href: '#',
+    href: 'https://shop.krasnayapolyanaresort.ru/',
     label: 'Онлайн-магазин',
   },
   {
-    href: '#',
-    label: 'Категории',
-  },
-  {
-    href: '#',
-    label: 'Услуги',
-  },
-  {
-    href: '#',
-    label: 'Инструктора',
+    href: '',
+    label: 'Инструкторы по горным лыжам и сноуборду',
   },
 ];
 

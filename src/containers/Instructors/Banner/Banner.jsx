@@ -7,15 +7,17 @@ import Hidden from '@mui/material/Hidden';
 
 import CustomAlertDialog from '../../../components/@ui/CustomAlertDialog/CustomAlertDialog';
 
-import bg_main from '../../../assets/img/bg_main.webp';
+// import bg_main from '../../../assets/img/bg_main.webp';
 import CustomCard from '../../../components/@ui/CustomCard';
 import useInstructors from '../hooks/useInstructors';
 import FormFeedback from '../../FormFeedback';
 
 const Banner = () => {
   const {
+    bannerImage,
     activeLesson,
     isOpenForm,
+    isDesktop,
     handleOpenForm,
     handleCloseForm,
   } = useInstructors();
@@ -33,7 +35,7 @@ const Banner = () => {
         gradient
         variant="banner"
         height={540}
-        bg={bg_main}
+        bg={bannerImage}
       >
         <Grid container alignItems="flex-end" justifyContent="flex-start" height="100%">
           <Grid item xs={6}>
@@ -44,7 +46,7 @@ const Banner = () => {
               <Hidden lgDown>
                 <Grid item lg={12}>
                   {description ? (
-                    <Typography variant="body1" gutterBottom color="#fff" component="div">
+                    <Typography variant={isDesktop ? 'h6' : 'body1'} gutterBottom color="#fff" component="div">
                       <div dangerouslySetInnerHTML={{ __html: he.decode(description) }} />
                     </Typography>
                   ) : null}

@@ -40,6 +40,11 @@ const typography = {
     lineHeight: '24px',
     color: PRIMARY,
   },
+  h6: {
+    fontSize: '16px',
+    fontWeight: 400,
+    lineHeight: '24px',
+  },
   body1: {
     fontSize: '14px',
     fontWeight: 400,

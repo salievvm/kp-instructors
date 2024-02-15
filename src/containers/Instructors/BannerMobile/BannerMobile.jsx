@@ -60,7 +60,7 @@ const BannerMobile = () => {
                     size="large"
                   >
                     <Grid container gap={1} alignItems="center" >
-                      <img src={qr_icon} width={32} height={32} alt="_"/>
+                      <img src={`${window.ROOT_DIRECTORY}${qr_icon}`} width={32} height={32} alt="_"/>
                       <span>Показать QR-код</span>
                     </Grid>
                   </Button>
@@ -86,7 +86,7 @@ const BannerMobile = () => {
           </Grid>
         </Grid>
         <Grid item xs={12} sm={6} sx={{ alignItems: { padding: '0 48 0 48', sm: 0 } }}>
-          <CustomImg src={bg_banner_mobile} />
+          <CustomImg src={`${window.ROOT_DIRECTORY}${bg_banner_mobile}`} />
         </Grid>
       </Grid>
     </CustomCard>

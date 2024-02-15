@@ -5,6 +5,7 @@ import {
   axcessHook,
   shopHook,
   bitrix24Hook,
+  // shopHookStage,
  } from './settings';
 
 import InstructorsService from './service/Instructors';

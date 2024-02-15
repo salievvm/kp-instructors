@@ -1,8 +1,10 @@
-import { 
+import {
   // mock, 
   breadcrumbs,
   schema,
- } from "../actions/model/Lessons/dto";
+} from "../actions/model/Lessons/dto";
+
+import bg_main from '../../assets/img/bg_main.webp';
 
 export const INSTRUCTORS_SET_FILTER = 'INSTRUCTORS_SET_FILTER';
 export const INSTRUCTORS_UNSET_FILTER = 'INSTRUCTORS_UNSET_FILTER';
@@ -22,6 +24,7 @@ const initState = {
     schema: {},
   },
   breadcrumbs,
+  bannerImage: `${window.ROOT_DIRECTORY}${bg_main}`,
   filter: {
     startDate: null,
     endDate: null,
@@ -66,20 +69,37 @@ function reducer(state = initState, action) {
         }
       };
     case SET_ACTIVE_LESSON:
+      let bannerImageLesson = state.bannerImage;
+      if (action.data.activeLesson.image) {
+        bannerImageLesson = action.data.activeLesson.image;
+      }
+
       return {
         ...state,
         navigation: {
           ...state.navigation,
           activeLesson: action.data.activeLesson,
-        }
+        },
+        bannerImage: bannerImageLesson,
       }
     case SET_NAVIGATION_TREE:
+      const breadcrumbs = state.breadcrumbs;
+      if (action.data.schema.skis.title) {
+        breadcrumbs[2].label = action.data.schema.skis.title;
+      }
+
+      let bannerImage = state.bannerImage;
+      if (action.data.schema.skis.image) {
+        bannerImage = action.data.schema.skis.image;
+      }
       return {
         ...state,
         navigation: {
           ...state.navigation,
           schema: action.data.schema,
-        }
+        },
+        breadcrumbs,
+        bannerImage,
       }
     default:
       return state;

@@ -8,10 +8,38 @@ export default class Navigation {
     this.api = new NavigationApi(api);
   }
 
-  mapTreeList = (tree) => {
-    const skis = tree.skis[67];
+  convertItemsToArray = (items, image) => {
+    if (!items || items.length === 0) {
+      return [];
+    }
 
-    skis.items = Object.values(skis.categories);
+    return items.map(item => {
+      if (item.categories && !item.items) {
+        item.items = item.categories;
+        delete item.categories;
+      }
+
+      if (!item.image) {
+        item.image = image;
+      }
+
+      const nestedItems = item.items;
+      if (nestedItems) {
+        item.items = Array.isArray(nestedItems) ? nestedItems : Object.values(nestedItems);
+        this.convertItemsToArray(item.items, item.image);
+      }
+
+      return item;
+    });
+  }
+
+  mapTreeList = (skis) => {
+    // const skis = tree.skis[67];
+
+    if (skis.categories) {
+      skis.items = Object.values(skis.categories);
+      delete skis.categories;
+    }
 
     skis.items = skis.items.map((item) => {
       const quantity = item.items?.length;
@@ -21,14 +49,18 @@ export default class Navigation {
       return item;
     })
 
-    delete skis.categories;
+    this.convertItemsToArray(skis.items, skis.image);
 
     return { skis };
   }
 
-  getTreeList = async () => {
+  getTreeList = async (categoryId) => {
     const tree = await this.api.getTreeList();
 
-    return this.mapTreeList(tree);
+    console.log({ tree });
+
+    const skis = tree.skis[categoryId];
+
+    return this.mapTreeList(skis);
   }
 };

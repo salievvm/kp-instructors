@@ -26,7 +26,7 @@ export default class Lessons {
     const obDateEnd = dayjs(endDate + " 23:59:59", formatString);
 
     return list.filter((item) => {
-      const obItemDate = dayjs(item.dateStart).utc().utcOffset(3);
+      const obItemDate = dayjs(item.dateStart).utc().utcOffset(0);
 
       return obItemDate.isAfter(obDateStart) && obItemDate.isBefore(obDateEnd) ? true : false;
     })
@@ -70,23 +70,77 @@ export default class Lessons {
     return this.mapFields(list, shopId, price);
   }
 
-  addToCart = async (lesson) => {
+  prepareCartFields = (lesson) => {
     console.log({ lesson });
     const formData = new FormData();
 
     const newLesson = Object.entries(this.schema).map(([id, field]) => {
       let value = lesson[id].toString();
+      if (field.formSend) {
 
-      if (field.format && typeof field.format === 'function') {
-        value = field.format(value);
+        if (field.formatForm && typeof field.formatForm === 'function') {
+          value = field.formatForm(value);
+        } else if (field.format && typeof field.format === 'function') {
+          value = field.format(value);
+        }
+
+        formData.append(field.id, value)
       }
-
-      formData.append(field.id, value)
-      return {[field.id]: value}
+      
+      return { [field.id]: value }
     });
 
+    const formDataEntries = formData.entries();
+    const formDataObject = {};
+
+    for (const pair of formDataEntries) {
+      formDataObject[pair[0]] = pair[1];
+    }
+    
+    console.log({ formDataObject });
     console.log({ newLesson });
 
-    return this.apiShop.addToCard(formData);
+    return formData;
   }
+
+  addToCart = async (lesson, handlers = {
+    onSuccess: () => { },
+    onError: () => { },
+  }) => {
+    const formData = this.prepareCartFields(lesson);
+
+    // try {
+    //   if (!window.cart) {
+    //     throw new Error('Не найден модуль cart');
+    //   }
+
+    //   await window.cart.add(formData, {
+    //     onSuccess: handlers.onSuccess, 
+    //     onError: handlers.onError,
+    //     onFinal: handlers.onError
+    // });
+    // } catch (error) {
+    //   console.log({ error });
+    //   handlers.onError(error.message);
+    // }
+
+    try {
+      const res = await this.apiShop.addToCard(formData);
+
+      console.log({ res, 'window.cart': window.cart });
+
+      if (!window.cart) {
+        throw new Error('Пожалуйста обновите страницу');
+      }
+
+      await window.cart.render();
+
+      return res;
+    } catch (error) {
+      console.log({ error });
+      handlers.onError(error.message);
+    }
+  }
+
+
 };
