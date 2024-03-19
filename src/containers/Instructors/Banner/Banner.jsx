@@ -52,16 +52,18 @@ const Banner = () => {
                   ) : null}
                 </Grid>
               </Hidden>
-              <Grid item xs>
-                <Button
-                  onClick={handleOpenForm}
-                  variant="contained"
-                  color="primary"
-                  size="large"
-                >
-                  Оставить заявку
-                </Button>
-              </Grid>
+              {window.category_id != 168 ? (
+                <Grid item xs>
+                  <Button
+                    onClick={handleOpenForm}
+                    variant="contained"
+                    color="primary"
+                    size="large"
+                  >
+                    Оставить заявку
+                  </Button>
+                </Grid>
+              ) : null}
             </Grid>
           </Grid>
         </Grid>
