@@ -61,6 +61,8 @@ class Deal {
       }
     }
 
+    console.log({ fields });
+
     return await this.api.add(fields);
   }
 

@@ -72,17 +72,6 @@ class FormService {
     const sport = form.schema.sport.sections[0].items;
     const date = form.schema.date.sections[0].items;
     const comment = form.schema.comment.sections[0].items;
-    // const additional = form.schema.additional.sections[0].items;
-    // const carLicense = form.schema.carLicense.sections[0].items;
-    // const lawViolation = form.schema.lawViolation.sections[0].items;
-    // const main = form.schema.main.sections[0].items;
-    // const sourceRecognition = form.schema.sourceRecognition.sections[0].items;
-    // const documents = form.schema.documents.sections[0].items;
-    // const passport = form.schema.passport.sections[0].items;
-
-    // const relatives = form.schema.family.sections;
-    // const experience = form.schema.experience.sections;
-    // const recommendation = form.schema.recommendation.sections;
 
     const contactId = await this.obCrmContact.add({
       ...main,
@@ -97,21 +86,6 @@ class FormService {
     }, contactId);
 
     console.log({ resDeal });
-
-    // const candidateId = resCandidate.item.id;
-
-    // const resRelatives = await this.obCrmRelatives.add(relatives, candidateId);
-    // const resExperience = await this.obCrmExperience.add(experience, candidateId);
-    // const resRecommendation = await this.obCrmRecommendation.add(recommendation, candidateId);
-
-    // await this.obCrmCandidate.update(
-    //   candidateId,
-    //   {
-    //     "ufCrm14Relatives": resRelatives,
-    //     "ufCrm14Experience": resExperience,
-    //     "ufCrm14Recommendations": resRecommendation,
-    //   },
-    // );
 
     this.app.setSend();
     this.app.endLoading();
