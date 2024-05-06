@@ -1,7 +1,7 @@
 import {
   FIELD_TYPES,
   // SECTION_TYPES,
-} from "../../../../consts";
+} from "../../../../../consts";
 
 const {
   text,
@@ -21,7 +21,7 @@ const {
 //   filled,
 // } = SECTION_TYPES;
 
-const schema = {
+export const schema_skis = {
   main: {
     subtitle: 'Контактная информация',
     sections: {
@@ -179,5 +179,3 @@ const schema = {
     },
   },
 };
-
-export { schema };

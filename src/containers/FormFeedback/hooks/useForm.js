@@ -9,6 +9,8 @@ const useForm = () => {
     app,
     form,
   } = useSelector(state => state);
+  
+  const category_id = parseInt(window.category_id);
 
   const schema = React.useMemo(() => {
     return form.schema
@@ -26,7 +28,7 @@ const useForm = () => {
   }
 
   const handleSendForm = async () => {
-    await obFormService.send();
+    await obFormService.send(category_id);
   }
 
   const handleAddSubSection = (section) => {

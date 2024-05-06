@@ -10,6 +10,7 @@ const schema = {
   "UF_CRM_652CD8D71A9AE": "date",
   "UF_CRM_652CD8D732FC0": "hours",
   "COMMENTS": "comment",
+  "UF_CRM_INSTRUCTORS_GUIDES_PROGRAM": "guides_program",
 };
 
 export {

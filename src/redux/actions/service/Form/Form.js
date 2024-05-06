@@ -1,9 +1,12 @@
+import { CATEGORIES } from "../../../../consts";
+import { SET_SCHEMA } from "../../../reducers/form";
 import store from "../../../store";
 
 import {
   CrmContact,
   CrmDeal,
 } from "../../model";
+import { schemas } from "../../model/Form/dto";
 
 class FormService {
   constructor(api, app) {
@@ -12,6 +15,20 @@ class FormService {
 
     this.obCrmContact = new CrmContact(api);
     this.obCrmDeal = new CrmDeal(api);
+  }
+
+  initializeSchema = (category_id) => {
+    const { form } = store.getState();
+
+    const schema_id = category_id && CATEGORIES[category_id]?.schema;
+    const schema = schemas[schema_id] ?? form.schema;
+
+    console.log({ schema_id, schemas });
+
+    store.dispatch({
+      type: SET_SCHEMA,
+      data: { schema }
+    })
   }
 
   validate = (schema) => {
@@ -37,7 +54,7 @@ class FormService {
     return [isValidate, errorDescription]
   }
 
-  send = async () => {
+  send = async (category_id) => {
     const { form } = store.getState();
     const resValidate = this.validate(form.schema);
 
@@ -57,9 +74,11 @@ class FormService {
     const date = form.schema.date.sections[0].items;
     const comment = form.schema.comment.sections[0].items;
 
+    const sourceDescription = category_id && CATEGORIES[category_id]?.title;
+
     const contactId = await this.obCrmContact.add({
       ...main,
-    });
+    }, sourceDescription);
 
     console.log({ contactId });
 
@@ -67,7 +86,7 @@ class FormService {
       ...sport,
       ...date,
       ...comment,
-    }, contactId);
+    }, contactId, sourceDescription);
 
     console.log({ resDeal });
 

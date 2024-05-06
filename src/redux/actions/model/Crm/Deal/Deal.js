@@ -17,12 +17,12 @@ class Deal {
     this.api = new DealApi(api);
   }
 
-  add = async (data, contactId) => {
+  add = async (data, contactId, sourceDescription = null) => {
     const fields = {
       "CATEGORY_ID": this.entityTypeId,
       "CONTACT_ID": contactId,
       "SOURCE_ID": "WEBFORM",
-      "SOURCE_DESCRIPTION": "Заполнена форма Занятия с инструктором",
+      "SOURCE_DESCRIPTION": `Занятия с инструктором${sourceDescription ? ' ' + sourceDescription : ''}`,
     };
 
     // console.log({ data });
@@ -53,7 +53,7 @@ class Deal {
           default:
             console.log({ fields, code, data});
             fields[apiCode] = data[code].value;
-            if (code === 'date') {
+            if (code === 'date' && data.time && data.time.value) {
               fields[apiCode] = `${data[code].value} ${data.time.value.label}:00`;
             }
             break;

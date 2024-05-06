@@ -16,8 +16,10 @@ const useInstructors = () => {
   const theme = useTheme();
   const isDesktop = useMediaQuery(theme.breakpoints.up('lg'));
   const isTablet = useMediaQuery(theme.breakpoints.up('md'));
+  const category_id = parseInt(window.category_id);
 
   const getAll = async () => {
+    obFormService.initializeSchema(category_id);
     await obInstructorsService.get();
   }
 

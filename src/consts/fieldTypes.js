@@ -1,4 +1,4 @@
-const FIELD_TYPES = {
+export const FIELD_TYPES = {
   text: 'text',
   textarea: 'textarea',
   radio: 'radio',
@@ -10,5 +10,3 @@ const FIELD_TYPES = {
   list: 'list',
   file: 'file',
 };
-
-export default FIELD_TYPES;
