@@ -15,7 +15,7 @@ import {
 
 import useForm from '../hooks/useForm';
 
-import { SectionThemeContext } from '../FormCandidateSection/SectionProvider';
+import { SectionThemeContext } from '../FormFeedbackSection/SectionProvider';
 
 const {
   textarea,
@@ -142,7 +142,7 @@ const DisplayField = ({
   }
 }
 
-const FormCandidateField = ({
+const FormFeedbackField = ({
   field,
   fieldCode,
   sectionCode,
@@ -169,7 +169,7 @@ const FormCandidateField = ({
   );
 };
 
-FormCandidateField.propTypes = {
+FormFeedbackField.propTypes = {
   field: PropTypes.shape({
     title: PropTypes.string.isRequired,
     code: PropTypes.string,
@@ -191,4 +191,4 @@ DisplayField.propTypes = {
   }),
 };
 
-export default FormCandidateField;
+export default FormFeedbackField;

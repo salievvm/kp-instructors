@@ -52,7 +52,7 @@ const Banner = () => {
                   ) : null}
                 </Grid>
               </Hidden>
-              {window.category_id != 168 ? (
+              {parseInt(window.category_id) !== 168 ? (
                 <Grid item xs>
                   <Button
                     onClick={handleOpenForm}

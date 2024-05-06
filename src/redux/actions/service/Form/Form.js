@@ -3,11 +3,6 @@ import store from "../../../store";
 import {
   CrmContact,
   CrmDeal,
-//   CrmCandidate,
-//   CrmExperience,
-//   CrmRecommendation,
-//   CrmRelatives,
-//   CrmRequisite,
 } from "../../model";
 
 class FormService {
@@ -15,13 +10,8 @@ class FormService {
     this.api = api;
     this.app = app;
 
-    // this.obCrmRequisite = new CrmRequisite(api);
     this.obCrmContact = new CrmContact(api);
     this.obCrmDeal = new CrmDeal(api);
-    // this.obCrmCandidate = new CrmCandidate(api);
-    // this.obCrmRelatives = new CrmRelatives(api);
-    // this.obCrmExperience = new CrmExperience(api);
-    // this.obCrmRecommendation = new CrmRecommendation(api);
   }
 
   validate = (schema) => {
@@ -36,13 +26,7 @@ class FormService {
           console.log(item);
           if (item.required === true && !item.value) {
             isValidate = false;
-            // let title = item.title;
 
-            // if (!title) {
-            //   if (item.type === radioGroup) {
-            //     title = 'Наличие водительских прав';
-            //   }
-            // }
             errorDescription.push(item.title);
           }
         }

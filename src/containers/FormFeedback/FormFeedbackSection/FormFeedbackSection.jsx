@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 
 import { Button, Grid, Typography } from '@mui/material';
 
-import FormCandidateField from '../FormCandidateField';
+import FormFeedbackField from '../FormFeedbackField';
 import SectionProvider from './SectionProvider';
 import { CustomInformer } from '../../../components/@ui/CustomTypography';
 
 import useForm from '../hooks/useForm';
 import { SECTION_TYPES } from '../../../consts';
 
-const FormCandidateSection = ({
+const FormFeedbackSection = ({
   sectionType,
   sectionCode,
   schema,
@@ -95,7 +95,7 @@ const FormCandidateSection = ({
                 return (
                   !field.disabled ? (
                     <Grid item xs={field.col} key={fieldCode}>
-                      <FormCandidateField
+                      <FormFeedbackField
                         field={field}
                         fieldCode={fieldCode}
                         sectionCode={sectionCode}
@@ -120,11 +120,11 @@ const FormCandidateSection = ({
   );
 };
 
-export default FormCandidateSection;
+export default FormFeedbackSection;
 
 const sectionTypes = Object.keys(SECTION_TYPES);
 
-FormCandidateSection.propTypes = {
+FormFeedbackSection.propTypes = {
   sectionType: PropTypes.oneOf(sectionTypes).isRequired,
   sectionCode: PropTypes.string.isRequired,
   schema: PropTypes.object.isRequired,
