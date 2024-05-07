@@ -15,12 +15,11 @@ import BannerMobile from './BannerMobile';
 // import BannerSubscription from './BannerSubscription';
 
 import useInstructors from './hooks/useInstructors';
+import { useNavigation } from './hooks/useNavigation';
 
 const Instructors = () => {
-  const {
-    breadcrumbs,
-    getAll,
-  } = useInstructors();
+  const { getAll } = useInstructors();
+  const { breadcrumbs } = useNavigation();
 
   React.useEffect(() => {
     getAll();

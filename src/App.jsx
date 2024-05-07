@@ -7,17 +7,20 @@ import AppError from './containers/AppError';
 import AppLoading from './containers/AppLoading';
 
 import Instructors from './containers/Instructors';
+import { DeviceTypeProvider } from './shared/deviceType';
 
 registerLocale("ru", ru);
 
 function App() {
 	return (
 		<ThemeProvider>
-			<Container>
-				<Instructors />
-				<AppLoading />
-				<AppError />
-			</Container>
+			<DeviceTypeProvider>
+				<Container>
+					<Instructors />
+					<AppLoading />
+					<AppError />
+				</Container>
+			</DeviceTypeProvider>
 		</ThemeProvider>
 	);
 }

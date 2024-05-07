@@ -1,4 +1,4 @@
-import { FIELD_TYPES } from "../../../../../consts";
+import { FIELD_TYPES } from "../../../../../shared/consts";
 import ContactApi from "../../../api/Contact";
 import { schema } from "./dto";
 

@@ -1,4 +1,4 @@
-import { CATEGORIES } from "../../../../consts";
+import { CATEGORIES } from "../../../../shared/consts";
 import { SET_SCHEMA } from "../../../reducers/form";
 import store from "../../../store";
 

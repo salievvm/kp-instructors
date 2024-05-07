@@ -1,7 +1,7 @@
 import {
   FIELD_TYPES,
   // SECTION_TYPES,
-} from "../../../../../consts";
+} from "../../../../../shared/consts";
 
 const {
   text,

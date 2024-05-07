@@ -4,7 +4,7 @@ import { Button, Grid, Typography } from '@mui/material';
 
 import FormFeedbackSection from '../FormFeedbackSection';
 import useForm from '../hooks/useForm';
-import { SECTION_TYPES } from '../../../consts';
+import { SECTION_TYPES } from '../../../shared/consts';
 
 const FormFeedbackSectionList = ({
   schema,

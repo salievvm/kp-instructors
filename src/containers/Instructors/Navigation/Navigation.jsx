@@ -1,40 +1,32 @@
 import React from 'react';
 import { Grid, Typography, Skeleton } from '@mui/material';
 
-import CustomList from '../../../components/@ui/CustomList/CustomList';
-
-import useInstructors from '../hooks/useInstructors';
+import CustomList from '../../../components/@ui/CustomList';
 import CustomCard from '../../../components/@ui/CustomCard';
+import CustomAlertDialog from '../../../components/@ui/CustomAlertDialog';
+
+import { useDeviceType } from '../../../shared/deviceType';
+import { DEVICE_TYPES } from '../../../shared/consts';
+import { useNavigation } from '../hooks/useNavigation';
 
 import icon from '../../../assets/icons/ArrowDown.svg';
-import CustomAlertDialog from '../../../components/@ui/CustomAlertDialog/CustomAlertDialog';
 
 const Navigation = () => {
   const {
+    title,
     navigation,
-    isDesktop,
+    isOpenNavigationModal,
     handleLessonChose,
-  } = useInstructors();
+    handleOpenNavigationModal,
+    handleCloseNavigationModal,
+  } = useNavigation();
 
-  const title = navigation?.schema?.skis?.title;
-
-  const [isOpenModal, setOpenModal] = React.useState(false);
-
-  const handleCloseModal = (lesson) => {
-    setOpenModal(false);
-    if (lesson) {
-      handleLessonChose(lesson);
-    }
-  }
-
-  const handleOpenModal = () => {
-    setOpenModal(true);
-  }
+  const deviceType = useDeviceType();
 
   return (
     <>
       {navigation.schema?.skis ? (
-        isDesktop ? (
+        deviceType === DEVICE_TYPES.desktop ? (
           <CustomCard variant="filled">
             <Typography variant="h3">{title}</Typography>
             <CustomList
@@ -47,7 +39,7 @@ const Navigation = () => {
           <>
             <CustomCard
               variant="filled"
-              onClick={handleOpenModal}
+              onClick={handleOpenNavigationModal}
             >
               <Grid container alignItems="center" justifyContent="center" gap={1}>
                 <img src={`${window.ROOT_DIRECTORY}${icon}`} height={24} alt='icon' />
@@ -55,20 +47,20 @@ const Navigation = () => {
               </Grid>
             </CustomCard>
             <CustomAlertDialog
-              open={isOpenModal}
-              onClose={() => handleCloseModal()}
+              open={isOpenNavigationModal}
+              onClose={() => handleCloseNavigationModal()}
               title={title}
             >
               <CustomList
                 schema={navigation.schema.skis}
                 activeItemId={navigation.activeLesson?.id}
-                onClick={handleCloseModal}
+                onClick={handleCloseNavigationModal}
               />
             </CustomAlertDialog>
           </>
         )
       ) : (
-        <Skeleton height={isDesktop ? 200 : 72} variant="rectangular" />
+        <Skeleton height={deviceType === DEVICE_TYPES.desktop ? 200 : 72} variant="rectangular" />
       )}
     </>
   );

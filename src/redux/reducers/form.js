@@ -2,7 +2,7 @@ import { schemas } from "../actions/model/Form/dto";
 
 import _ from 'lodash';
 
-import { FIELD_TYPES } from "../../consts";
+import { FIELD_TYPES } from "../../shared/consts";
 
 export const SET_SCHEMA = 'SET_SCHEMA';
 export const SET_OPEN_FORM = 'SET_OPEN_FORM';

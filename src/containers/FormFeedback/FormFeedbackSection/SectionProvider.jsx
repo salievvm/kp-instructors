@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { SECTION_TYPES } from '../../../consts';
+import { SECTION_TYPES } from '../../../shared/consts';
 import CustomCard from '../../../components/@ui/CustomCard/CustomCard';
 
 const {

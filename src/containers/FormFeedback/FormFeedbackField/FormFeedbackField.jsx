@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { FIELD_TYPES, TEXT_FIELD_THEMES } from '../../../consts';
+import { FIELD_TYPES, TEXT_FIELD_THEMES } from '../../../shared/consts';
 import {
   CustomTextField,
   CustomSwitch,

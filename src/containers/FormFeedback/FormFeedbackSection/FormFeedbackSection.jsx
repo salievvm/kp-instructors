@@ -8,7 +8,7 @@ import SectionProvider from './SectionProvider';
 import { CustomInformer } from '../../../components/@ui/CustomTypography';
 
 import useForm from '../hooks/useForm';
-import { SECTION_TYPES } from '../../../consts';
+import { SECTION_TYPES } from '../../../shared/consts';
 
 const FormFeedbackSection = ({
   sectionType,

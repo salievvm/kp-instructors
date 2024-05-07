@@ -10,13 +10,13 @@ import useInstructors from '../hooks/useInstructors';
 import img from '../../../assets/img/emptystate.png';
 import CustomCard from '../../../components/@ui/CustomCard';
 
+import { useFilter } from '../hooks/useFilter';
+import { useLessons } from '../hooks/useLessons';
+
 const Lessons = () => {
-  const {
-    app,
-    lessons,
-    filter,
-    handleUnsetFilter,
-  } = useInstructors();
+  const { app } = useInstructors();
+  const { lessons, handleSortLessons, handleLessonAddToCart } = useLessons();
+  const { filter, handleUnsetFilter } = useFilter();
 
   return (
     <>
@@ -54,8 +54,12 @@ const Lessons = () => {
           </CustomCard>
         ) : (
           <>
-            <LessonsHeader schema={lessons.schema} />
-            <LessonsBody schema={lessons.schema} data={lessons.listFiltered} />
+            <LessonsHeader schema={lessons.schema} handleSortLessons={handleSortLessons} />
+            <LessonsBody
+              schema={lessons.schema}
+              data={lessons.listFiltered}
+              handleLessonAddToCart={handleLessonAddToCart}
+            />
           </>
         )
       )}

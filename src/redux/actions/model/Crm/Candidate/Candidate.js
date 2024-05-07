@@ -1,4 +1,4 @@
-import { FIELD_TYPES } from "../../../../../consts";
+import { FIELD_TYPES } from "../../../../../shared/consts";
 import CrmItemApi from "../../../api/CrmItem";
 import { entityTypeId, schema } from "./dto";
 

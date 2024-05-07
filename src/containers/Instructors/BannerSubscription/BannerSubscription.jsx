@@ -8,7 +8,7 @@ import subscription_images from '../../../assets/img/subscription_images.png';
 import CustomCard from "../../../components/@ui/CustomCard";
 import { CustomTextField } from "../../../components/@ui/CustomFields";
 
-import { SECTION_TYPES, FIELD_TYPES } from "../../../consts";
+import { SECTION_TYPES, FIELD_TYPES } from "../../../shared/consts";
 import { BORDER_RADIUS_MD } from "../../../theme/const";
 const {
   email,
