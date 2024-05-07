@@ -3,15 +3,11 @@ import React from 'react';
 import { Grid, Typography } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 
-import { ArrowDownIcon } from '../../../assets/icons';
-import { DEVICE_TYPES } from '../../../shared/consts';
-import { useDeviceType } from '../../../shared/deviceType';
+import { ArrowDownIcon } from '../../../../assets/icons';
+import { DEVICE_TYPES } from '../../../../shared/consts';
+import { useDeviceType } from '../../../../shared/deviceType';
 
-import useInstructors from '../hooks/useInstructors';
-
-const LessonsHeader = ({ schema }) => {
-  const { handleSortLessons } = useInstructors();
-
+export const ListHeader = ({ schema, handleSortLessons }) => {
   const deviceType = useDeviceType();
 
   return (
@@ -40,5 +36,3 @@ const LessonsHeader = ({ schema }) => {
     ) : null
   );
 };
-
-export default LessonsHeader;

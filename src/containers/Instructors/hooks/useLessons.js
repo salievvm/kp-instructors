@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { obInstructorsService } from "../../../redux/actions";
+import { useMemo } from "react";
 
 export const useLessons = () => {
   const { lessons } = useSelector(state => state.instructors);
@@ -12,8 +13,11 @@ export const useLessons = () => {
     await obInstructorsService.lessonAddToCart(lessonId);
   }
 
+  const isEmptyListFiltered = useMemo(() => !lessons.listFiltered.length, [lessons]);
+
   return {
     lessons,
+    isEmptyListFiltered,
     handleSortLessons,
     handleLessonAddToCard,
   }

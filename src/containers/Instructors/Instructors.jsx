@@ -6,13 +6,11 @@ import { Grid } from '@mui/material';
 import CustomCard from '../../components/@ui/CustomCard';
 import CustomBreadcrumbs from '../../components/@ui/CustomBreadcrumbs';
 
-// import CustomTypography from '../../components/@ui/CustomTypography';
 import Filter from './Filter';
 import Banner from './Banner';
-import Lessons from './Lessons';
+import LessonsList from './LessonsList';
 import Navigation from './Navigation';
 import BannerMobile from './BannerMobile';
-// import BannerSubscription from './BannerSubscription';
 
 import useInstructors from './hooks/useInstructors';
 import { useNavigation } from './hooks/useNavigation';
@@ -51,7 +49,7 @@ const Instructors = () => {
             <CustomCard variant="filled">
               <Filter />
             </CustomCard>
-            <Lessons />
+            <LessonsList />
           </Grid>
         </Grid>
       </Grid>

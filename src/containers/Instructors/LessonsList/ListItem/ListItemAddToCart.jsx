@@ -1,13 +1,13 @@
-import CustomCard from '../../../components/@ui/CustomCard';
+import CustomCard from '../../../../components/@ui/CustomCard';
 
 import { Grid, Typography } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 
-import { CartIcon } from '../../../assets/icons';
-import { BORDER_RADIUS_SM } from '../../../theme/const';
+import { CartIcon } from '../../../../assets/icons';
+import { BORDER_RADIUS_SM } from '../../../../theme/const';
 
 
-const LessonAddToCard = ({ value, onClick, minWidth }) => {
+export const ListItemAddToCart = ({ value, onClick, minWidth }) => {
   return (
     <Grid minWidth={minWidth} item>
       <CustomCard
@@ -29,5 +29,3 @@ const LessonAddToCard = ({ value, onClick, minWidth }) => {
     </Grid>
   );
 };
-
-export default LessonAddToCard;

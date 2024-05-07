@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { obFormService, obInstructorsService } from "../../../redux/actions";
 
 const useInstructors = () => {
-  const { app, instructors } = useSelector(state => state);
+  const { instructors } = useSelector(state => state);
 
   const category_id = parseInt(window.category_id);
 
@@ -12,9 +12,8 @@ const useInstructors = () => {
   }
   
   return {
-    app,
-    instructors,
     getAll,
+    instructors,
   }
 };
 
