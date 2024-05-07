@@ -8,10 +8,13 @@ import CustomAlertDialog from '../../../components/@ui/CustomAlertDialog';
 import { useDeviceType } from '../../../shared/deviceType';
 import { DEVICE_TYPES } from '../../../shared/consts';
 import { useNavigation } from '../hooks/useNavigation';
+import useInstructors from '../hooks/useInstructors';
 
 import icon from '../../../assets/icons/ArrowDown.svg';
 
 const Navigation = () => {
+  const { params } = useInstructors();
+
   const {
     title,
     navigation,
@@ -42,7 +45,7 @@ const Navigation = () => {
               onClick={handleOpenNavigationModal}
             >
               <Grid container alignItems="center" justifyContent="center" gap={1}>
-                <img src={`${window.ROOT_DIRECTORY}${icon}`} height={24} alt='icon' />
+                <img src={`${params.rootDirectory}${icon}`} height={24} alt='icon' />
                 <Typography variant="h3">{title}</Typography>
               </Grid>
             </CustomCard>

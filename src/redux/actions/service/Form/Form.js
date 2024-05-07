@@ -17,10 +17,10 @@ class FormService {
     this.obCrmDeal = new CrmDeal(api);
   }
 
-  initializeSchema = (category_id) => {
-    const { form } = store.getState();
+  initializeSchema = () => {
+    const { form, params } = store.getState();
 
-    const schema_id = category_id && CATEGORIES[category_id]?.schema;
+    const schema_id = params.categoryId && CATEGORIES[params.categoryId]?.schema;
     const schema = schemas[schema_id] ?? form.schema;
 
     console.log({ schema_id, schemas });
@@ -54,27 +54,22 @@ class FormService {
     return [isValidate, errorDescription]
   }
 
-  send = async (category_id) => {
-    const { form } = store.getState();
+  send = async () => {
+    const { form, params } = store.getState();
     const resValidate = this.validate(form.schema);
 
     if (!resValidate[0]) {
-      return this.app.setError(`Неверно заполнены поля:
-
-      ${resValidate[1].join(', ')}
-      `);
+      return this.app.setError(`Неверно заполнены поля:\n\n${resValidate[1].join(', ')}\n`);
     }
 
     this.app.setLoading();
-
-    console.log({ schema: form.schema });
 
     const main = form.schema.main.sections[0].items;
     const sport = form.schema.sport.sections[0].items;
     const date = form.schema.date.sections[0].items;
     const comment = form.schema.comment.sections[0].items;
 
-    const sourceDescription = category_id && CATEGORIES[category_id]?.title;
+    const sourceDescription = params.categoryId && CATEGORIES[params.categoryId]?.title;
 
     const contactId = await this.obCrmContact.add({
       ...main,

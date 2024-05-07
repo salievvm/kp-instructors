@@ -6,12 +6,8 @@ import FormFeedbackSection from '../FormFeedbackSection';
 import useForm from '../hooks/useForm';
 import { SECTION_TYPES } from '../../../shared/consts';
 
-const FormFeedbackSectionList = ({
-  schema,
-}) => {
-  const {
-    handleSendForm,
-  } = useForm();
+const FormFeedbackSectionList = ({ schema }) => {
+  const { handleSendForm } = useForm();
 
   return (
     <Grid container direction="column" gap={2}>

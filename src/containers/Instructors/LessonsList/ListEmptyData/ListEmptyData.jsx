@@ -5,14 +5,16 @@ import CustomCard from "../../../../components/@ui/CustomCard";
 import { useFilter } from "../../hooks/useFilter";
 
 import img from '../../../../assets/img/emptystate.png';
+import useInstructors from "../../hooks/useInstructors";
 
 export const ListEmptyData = () => {
+  const { params } = useInstructors();
   const { filter, handleUnsetFilter } = useFilter();
 
   return (
     <CustomCard>
       <Grid container direction="column"alignItems="center" gap={1}>
-        <img src={`${window.ROOT_DIRECTORY}${img}`} width={335} alt='Not success' />
+        <img src={`${params.rootDirectory}${img}`} width={335} alt='Not success' />
 
         <Typography variant="h5">Поиск не дал результатов</Typography>
         {filter.startDate ? (

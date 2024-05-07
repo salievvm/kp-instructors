@@ -5,7 +5,7 @@ const FileImagePreview = ({ file }) => {
     <Box sx={(theme) => ({
       borderRadius: theme.shape.borderRadiusSm,
       bgcolor: theme.palette.info.main,
-      backgroundImage: `url(${window.ROOT_DIRECTORY}${URL.createObjectURL(file)})`,
+      backgroundImage: `url(${URL.createObjectURL(file)})`,
       width: 96,
       height: 96,
       backgroundPosition: 'center',

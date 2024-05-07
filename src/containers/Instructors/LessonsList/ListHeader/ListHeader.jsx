@@ -10,29 +10,31 @@ import { useDeviceType } from '../../../../shared/deviceType';
 export const ListHeader = ({ schema, handleSortLessons }) => {
   const deviceType = useDeviceType();
 
+  if (deviceType === DEVICE_TYPES.mobile) return null;
+
   return (
-    deviceType === DEVICE_TYPES.tablet ? (
-      <Grid
-        container
-        justifyContent="space-between"
-        alignItems="center"
-        padding="6px 8px 6px 16px"
-      >
-        {Object.values(schema).map(({ id, hidden, label, minWidth }) => {
-          return !hidden ? (
-            <Grid minWidth={minWidth} item key={id}>
-              <Grid container>
-                <Typography variant="h4">
-                  {label}
-                </Typography>
-                <IconButton onClick={() => handleSortLessons(id)}>
-                  <ArrowDownIcon />
-                </IconButton>
-              </Grid>
+    <Grid
+      container
+      justifyContent="space-between"
+      alignItems="center"
+      padding="6px 8px 6px 16px"
+    >
+      {Object.values(schema).map(({ id, hidden, label, minWidth }) => {
+        if (hidden) return null;
+
+        return (
+          <Grid minWidth={minWidth} item key={id}>
+            <Grid container>
+              <Typography variant="h4">
+                {label}
+              </Typography>
+              <IconButton onClick={() => handleSortLessons(id)}>
+                <ArrowDownIcon />
+              </IconButton>
             </Grid>
-          ) : null;
-        })}
-      </Grid>
-    ) : null
+          </Grid>
+        );
+      })}
+    </Grid>
   );
 };

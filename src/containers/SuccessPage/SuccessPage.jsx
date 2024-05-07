@@ -16,9 +16,7 @@ const SuccessPage = () => {
   const title = 'Ваша заявка принята';
   const subtitle = 'В ближайшее время мы с вами свяжемся и подтвердим занятие';
 
-  const {
-    handleCloseForm,
-  } = useInstructors();
+  const { handleCloseForm, params } = useInstructors();
 
   return (
     <Grid
@@ -34,7 +32,7 @@ const SuccessPage = () => {
     >
       <img
         width={300}
-        src={`${window.ROOT_DIRECTORY}${img}`}
+        src={`${params.rootDirectory}${img}`}
         alt="Спасибо! Ваша заявка отправлена!"
       />
       <Typography variant="h3">{title}</Typography>

@@ -16,7 +16,7 @@ import useInstructors from './hooks/useInstructors';
 import { useNavigation } from './hooks/useNavigation';
 
 const Instructors = () => {
-  const { getAll } = useInstructors();
+  const { getAll, isShowFeedbackButton } = useInstructors();
   const { breadcrumbs } = useNavigation();
 
   React.useEffect(() => {
@@ -31,7 +31,7 @@ const Instructors = () => {
         marginTop={6}
       >
         <Grid item xs={12}>
-          <Banner />
+          <Banner showButton={isShowFeedbackButton} />
         </Grid>
         <Grid item xs={12}>
           <CustomBreadcrumbs links={breadcrumbs} />

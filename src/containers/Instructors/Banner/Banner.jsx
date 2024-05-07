@@ -15,7 +15,7 @@ import { useDeviceType } from '../../../shared/deviceType';
 import { DEVICE_TYPES } from '../../../shared/consts';
 import { useNavigation } from '../hooks/useNavigation';
 
-const Banner = () => {
+const Banner = ({ showButton }) => {
   const { isOpenForm, handleOpenForm, handleCloseForm } = useForm();
 
   const { bannerImage, activeLesson } = useNavigation();
@@ -44,7 +44,7 @@ const Banner = () => {
                   ) : null}
                 </Grid>
               </Hidden>
-              {parseInt(window.category_id) !== 168 ? (
+              {showButton && (
                 <Grid item xs>
                   <Button
                     onClick={handleOpenForm}
@@ -55,7 +55,7 @@ const Banner = () => {
                     Оставить заявку
                   </Button>
                 </Grid>
-              ) : null}
+              )}
             </Grid>
           </Grid>
         </Grid>
@@ -63,7 +63,7 @@ const Banner = () => {
       <CustomAlertDialog
         open={isOpenForm}
         onClose={handleCloseForm}
-        title={'Оставить заявку'}
+        title={'Записаться онлайн'}
         variant='right'
       >
         <FormFeedback />
