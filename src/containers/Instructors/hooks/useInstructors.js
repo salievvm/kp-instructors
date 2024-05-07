@@ -1,94 +1,27 @@
-import React from 'react';
-
-import useMediaQuery from '@mui/material/useMediaQuery';
-import { useTheme } from '@mui/material/styles';
-
 import { useSelector } from "react-redux";
 import { obFormService, obInstructorsService } from "../../../redux/actions";
+import { useMemo } from "react";
+import { CATEGORIES } from "../../../shared/consts";
 
 const useInstructors = () => {
-  const {
-    app,
-    instructors,
-    form,
-  } = useSelector(state => state);
-
-  const theme = useTheme();
-  const isDesktop = useMediaQuery(theme.breakpoints.up('lg'));
-  const isTablet = useMediaQuery(theme.breakpoints.up('md'));
+  const { instructors, params } = useSelector(state => state);
 
   const getAll = async () => {
+    obFormService.initializeSchema();
     await obInstructorsService.get();
   }
 
-  const handleLessonChose = async (lesson) => {
-    await obInstructorsService.getLessonsHandler(lesson);
-  }
+  const { categoryId } = useMemo(() => params, [params]);
 
-  const handleSetFilter = (value) => {
-    obInstructorsService.setFilterDate(value[0], value[1]);
-  }
+  const isShowFeedbackButton = useMemo(() => (
+    categoryId && CATEGORIES[categoryId]?.schema !== 'fitness'
+  ), [categoryId]);
   
-  const handleUnsetFilter = () => {
-    obInstructorsService.unsetFilterDate();
-  }
-  
-  const handleSortLessons = (fieldId) => {
-    obInstructorsService.lessonsSort(fieldId);
-  }
-
-  const handleLessonAddToCard = async (lessonId) => {
-    await obInstructorsService.lessonAddToCart(lessonId);
-  }
-
-  const { isOpenForm } = React.useMemo(() => {
-    return form;
-  }, [form]);
-
-  const handleOpenForm = () => {
-    obFormService.setOpenForm(true);
-  }
-
-  const handleCloseForm = () => {
-    obFormService.setOpenForm(false);
-  }
-
-  const {
-    bannerImage,
-    breadcrumbs,
-    lessons,
-    navigation,
-    filter,
-  } = React.useMemo(() => {
-    return { ...instructors };
-  }, [instructors]);
-
-  const {
-    activeLesson,
-  } = React.useMemo(() => {
-    return { ...navigation };
-  }, [navigation]);
-
   return {
-    app,
-    instructors,
-    breadcrumbs,
-    lessons,
-    filter,
-    navigation,
-    isDesktop,
-    isTablet,
-    activeLesson,
-    isOpenForm,
-    bannerImage,
-    handleOpenForm,
-    handleCloseForm,
-    handleLessonAddToCard,
     getAll,
-    handleLessonChose,
-    handleSetFilter,
-    handleUnsetFilter,
-    handleSortLessons,
+    params,
+    instructors,
+    isShowFeedbackButton,
   }
 };
 

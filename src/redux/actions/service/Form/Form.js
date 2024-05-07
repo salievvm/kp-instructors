@@ -1,27 +1,34 @@
+import { CATEGORIES } from "../../../../shared/consts";
+import { SET_SCHEMA } from "../../../reducers/form";
 import store from "../../../store";
 
 import {
   CrmContact,
   CrmDeal,
-//   CrmCandidate,
-//   CrmExperience,
-//   CrmRecommendation,
-//   CrmRelatives,
-//   CrmRequisite,
 } from "../../model";
+import { schemas } from "../../model/Form/dto";
 
 class FormService {
   constructor(api, app) {
     this.api = api;
     this.app = app;
 
-    // this.obCrmRequisite = new CrmRequisite(api);
     this.obCrmContact = new CrmContact(api);
     this.obCrmDeal = new CrmDeal(api);
-    // this.obCrmCandidate = new CrmCandidate(api);
-    // this.obCrmRelatives = new CrmRelatives(api);
-    // this.obCrmExperience = new CrmExperience(api);
-    // this.obCrmRecommendation = new CrmRecommendation(api);
+  }
+
+  initializeSchema = () => {
+    const { form, params } = store.getState();
+
+    const schema_id = params.categoryId && CATEGORIES[params.categoryId]?.schema;
+    const schema = schemas[schema_id] ?? form.schema;
+
+    console.log({ schema_id, schemas });
+
+    store.dispatch({
+      type: SET_SCHEMA,
+      data: { schema }
+    })
   }
 
   validate = (schema) => {
@@ -36,13 +43,7 @@ class FormService {
           console.log(item);
           if (item.required === true && !item.value) {
             isValidate = false;
-            // let title = item.title;
 
-            // if (!title) {
-            //   if (item.type === radioGroup) {
-            //     title = 'Наличие водительских прав';
-            //   }
-            // }
             errorDescription.push(item.title);
           }
         }
@@ -54,28 +55,25 @@ class FormService {
   }
 
   send = async () => {
-    const { form } = store.getState();
+    const { form, params } = store.getState();
     const resValidate = this.validate(form.schema);
 
     if (!resValidate[0]) {
-      return this.app.setError(`Неверно заполнены поля:
-
-      ${resValidate[1].join(', ')}
-      `);
+      return this.app.setError(`Неверно заполнены поля:\n\n${resValidate[1].join(', ')}\n`);
     }
 
     this.app.setLoading();
-
-    console.log({ schema: form.schema });
 
     const main = form.schema.main.sections[0].items;
     const sport = form.schema.sport.sections[0].items;
     const date = form.schema.date.sections[0].items;
     const comment = form.schema.comment.sections[0].items;
 
+    const sourceDescription = params.categoryId && CATEGORIES[params.categoryId]?.title;
+
     const contactId = await this.obCrmContact.add({
       ...main,
-    });
+    }, sourceDescription);
 
     console.log({ contactId });
 
@@ -83,7 +81,7 @@ class FormService {
       ...sport,
       ...date,
       ...comment,
-    }, contactId);
+    }, contactId, sourceDescription);
 
     console.log({ resDeal });
 

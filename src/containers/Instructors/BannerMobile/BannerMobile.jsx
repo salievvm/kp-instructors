@@ -9,6 +9,7 @@ import qr_icon from '../../../assets/img/qr_icon.png';
 import { AppleStoreIcon, GooglePlayIcon, KPLogoMin } from '../../../assets/icons';
 
 import CustomCard from "../../../components/@ui/CustomCard";
+import useInstructors from "../hooks/useInstructors";
 
 const CustomImg = styled('img')(({ theme }) => ({
   maxHeight: 400,
@@ -20,6 +21,8 @@ const CustomImg = styled('img')(({ theme }) => ({
 }));
 
 const BannerMobile = () => {
+  const { params } = useInstructors();
+  
   return (
     <CustomCard
       variant="filled"
@@ -27,20 +30,10 @@ const BannerMobile = () => {
     >
       <Grid container
         alignItems="flex-end"
-        sx={{
-          textAlign: {
-            xs: 'center',
-            sm: 'inherit'
-          }
-        }}>
+        sx={{ textAlign: { xs: 'center', sm: 'inherit' }}}>
         <Grid item xs={12} sm={6} padding={6}>
           <Grid container gap={2}
-            sx={{
-              justifyContent: {
-                xs: 'center',
-                sm: 'inherit'
-              }
-            }}>
+            sx={{ justifyContent: { xs: 'center', sm: 'inherit' } }}>
             <Hidden mdDown>
               <KPLogoMin size={120} />
             </Hidden>
@@ -54,13 +47,10 @@ const BannerMobile = () => {
             <Grid item>
               <Grid container gap={1.5}>
                 <Hidden xsUp>
-                  <Button
-                    variant="contained"
-                    color="secondary"
-                    size="large"
+                  <Button variant="contained" color="secondary" size="large"
                   >
                     <Grid container gap={1} alignItems="center" >
-                      <img src={`${window.ROOT_DIRECTORY}${qr_icon}`} width={32} height={32} alt="_"/>
+                      <img src={`${params.rootDirectory}${qr_icon}`} width={32} height={32} alt="_"/>
                       <span>Показать QR-код</span>
                     </Grid>
                   </Button>
@@ -86,7 +76,7 @@ const BannerMobile = () => {
           </Grid>
         </Grid>
         <Grid item xs={12} sm={6} sx={{ alignItems: { padding: '0 48 0 48', sm: 0 } }}>
-          <CustomImg src={`${window.ROOT_DIRECTORY}${bg_banner_mobile}`} />
+          <CustomImg src={`${params.rootDirectory}${bg_banner_mobile}`} />
         </Grid>
       </Grid>
     </CustomCard>

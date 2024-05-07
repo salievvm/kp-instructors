@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
 import utc from 'dayjs/plugin/utc';
 
-import { FIELD_TYPES } from "../../../../consts";
+import { FIELD_TYPES } from "../../../../shared/consts";
 
 dayjs.extend(utc);
 

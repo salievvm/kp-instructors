@@ -29,18 +29,17 @@ class InstructorsService {
 
   get = async () => {
     this.app.setLoading();
+    
+    const { params } = store.getState();
 
     const navigation = await this.getNavigation();
-    console.log({ navigation });
-    const shopId = window.shop_id; // "327"
+    const shopId = params.shopId; // "327"
     const lesson = this.findItemById(navigation?.skis?.items, shopId);
-    // const lesson = navigation?.skis?.items[0]?.items[0];
 
-    console.log({ navigation, lesson, shopId });
     if (lesson) {
       await this.getLessons(lesson);
     } else {
-      this.app.setError('Что-то пошло не так');
+      this.app.setError('Что-то пошло не так. Не найдено занятие.');
     }
 
     this.app.endLoading();

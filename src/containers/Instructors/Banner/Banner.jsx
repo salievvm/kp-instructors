@@ -5,38 +5,27 @@ import he from 'he';
 import { Button, Grid, Typography } from '@mui/material';
 import Hidden from '@mui/material/Hidden';
 
-import CustomAlertDialog from '../../../components/@ui/CustomAlertDialog/CustomAlertDialog';
-
-// import bg_main from '../../../assets/img/bg_main.webp';
 import CustomCard from '../../../components/@ui/CustomCard';
-import useInstructors from '../hooks/useInstructors';
+import CustomAlertDialog from '../../../components/@ui/CustomAlertDialog';
+
 import FormFeedback from '../../FormFeedback';
 
-const Banner = () => {
-  const {
-    bannerImage,
-    activeLesson,
-    isOpenForm,
-    isDesktop,
-    handleOpenForm,
-    handleCloseForm,
-  } = useInstructors();
+import { useForm } from '../hooks/useForm';
+import { useDeviceType } from '../../../shared/deviceType';
+import { DEVICE_TYPES } from '../../../shared/consts';
+import { useNavigation } from '../hooks/useNavigation';
 
-  const {
-    title,
-    description,
-  } = React.useMemo(() => {
-    return { ...activeLesson };
-  }, [activeLesson]);
+const Banner = ({ showButton }) => {
+  const { isOpenForm, handleOpenForm, handleCloseForm } = useForm();
+
+  const { bannerImage, activeLesson } = useNavigation();
+  const { title, description } = React.useMemo(() => activeLesson ?? {}, [activeLesson]);
+  
+  const deviceType = useDeviceType();
 
   return (
     <>
-      <CustomCard
-        gradient
-        variant="banner"
-        height={540}
-        bg={bannerImage}
-      >
+      <CustomCard gradient variant="banner" height={540} bg={bannerImage}>
         <Grid container alignItems="flex-end" justifyContent="flex-start" height="100%">
           <Grid item xs={6}>
             <Grid container >
@@ -46,13 +35,16 @@ const Banner = () => {
               <Hidden lgDown>
                 <Grid item lg={12}>
                   {description ? (
-                    <Typography variant={isDesktop ? 'h6' : 'body1'} gutterBottom color="#fff" component="div">
+                    <Typography
+                      variant={deviceType === DEVICE_TYPES.desktop ? 'h6' : 'body1'}
+                      gutterBottom color="#fff" component="div"
+                    >
                       <div dangerouslySetInnerHTML={{ __html: he.decode(description) }} />
                     </Typography>
                   ) : null}
                 </Grid>
               </Hidden>
-              {window.category_id != 168 ? (
+              {showButton && (
                 <Grid item xs>
                   <Button
                     onClick={handleOpenForm}
@@ -63,7 +55,7 @@ const Banner = () => {
                     Оставить заявку
                   </Button>
                 </Grid>
-              ) : null}
+              )}
             </Grid>
           </Grid>
         </Grid>
@@ -71,7 +63,7 @@ const Banner = () => {
       <CustomAlertDialog
         open={isOpenForm}
         onClose={handleCloseForm}
-        title={'Оставить заявку'}
+        title={'Записаться онлайн'}
         variant='right'
       >
         <FormFeedback />

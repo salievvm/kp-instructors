@@ -1,4 +1,4 @@
-import { FIELD_TYPES } from "../../../../../consts";
+import { FIELD_TYPES } from "../../../../../shared/consts";
 import ContactApi from "../../../api/Contact";
 import { schema } from "./dto";
 
@@ -14,10 +14,10 @@ class Contact {
     this.api = new ContactApi(api);
   }
 
-  add = async (data) => {
+  add = async (data, sourceDescription = null) => {
     const fields = {
       "SOURCE_ID": "WEBFORM",
-      "SOURCE_DESCRIPTION": "Заполнена форма Занятия с инструктором",
+      "SOURCE_DESCRIPTION": `Занятия с инструктором${sourceDescription ? ' ' + sourceDescription : ''}`,
     };
 
     for (const [apiCode, code] of Object.entries(this.schema)) {

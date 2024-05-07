@@ -1,9 +1,10 @@
-import { schema } from "../actions/model/Form/dto";
+import { schemas } from "../actions/model/Form/dto";
 
 import _ from 'lodash';
 
-import { FIELD_TYPES } from "../../consts";
+import { FIELD_TYPES } from "../../shared/consts";
 
+export const SET_SCHEMA = 'SET_SCHEMA';
 export const SET_OPEN_FORM = 'SET_OPEN_FORM';
 
 export const SET_FIELDS = 'SET_FIELDS';
@@ -18,13 +19,19 @@ const {
 } = FIELD_TYPES;
 
 const initState = {
-  schema,
+  schema: schemas.skis,
   fields: {},
   isOpenForm: false,
 };
 
 function reducer(state = initState, action) {
   switch (action.type) {
+    case SET_SCHEMA:
+      return {
+        ...state,
+        schema: action.data.schema,
+      };
+
     case SET_FIELD:
       const { section, subsection, code, value } = action.data;
 
