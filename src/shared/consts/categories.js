@@ -7,6 +7,10 @@ export const CATEGORIES = {
     schema: 'guides',
     title: 'Прогулка с гидом',
   },
+  93: {
+    schema: 'riders',
+    title: 'Академия райдеров',
+  },
   168: {
     schema: 'fitness',
     title: 'Фитнесс',

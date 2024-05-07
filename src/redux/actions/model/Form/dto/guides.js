@@ -10,7 +10,7 @@ const {
 } = FIELD_TYPES;
 
 
-export const schema_guides = {
+export const guides = {
   main: {
     subtitle: 'Контактная информация',
     sections: {

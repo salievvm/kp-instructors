@@ -21,7 +21,7 @@ const {
 //   filled,
 // } = SECTION_TYPES;
 
-export const schema_skis = {
+export const skis = {
   main: {
     subtitle: 'Контактная информация',
     sections: {
