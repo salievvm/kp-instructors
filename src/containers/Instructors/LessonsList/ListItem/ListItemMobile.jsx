@@ -6,15 +6,13 @@ import { ListItemAddToCart } from "./index";
 import { BORDER_RADIUS_SM } from "../../../../theme/const";
 import { listItemFormatValue } from "../../../../shared/lessons";
 
-const ListItemField = ({ id, label, value, handleAddToCart }) => {
-  if (id === 'price') {
-    return (
-      <Grid item xs={12}>
-        <ListItemAddToCart value={value} handleAddToCart={handleAddToCart} />
-      </Grid>
-    );
-  }
+const ListItemAddToCartField = ({ value, handleAddToCart, itemId }) => (
+  <Grid item xs={12}>
+    <ListItemAddToCart value={value} onClick={() => handleAddToCart(itemId)} />
+  </Grid>
+);
 
+const ListItemField = ({ label, value }) => {
   return <Grid item xs={6}>
     <Grid container direction="column" gap={0.2}>
       <Typography variant="caption">{label}</Typography>
@@ -33,6 +31,12 @@ export const ListItemMobile = ({ schema, item, handleAddToCart }) => {
           const { id, hidden, format, label } = field;
 
           if (hidden) return null;
+          if (id === 'price') return <ListItemAddToCartField
+            key={id}
+            itemId={item.id}
+            handleAddToCart={handleAddToCart}
+            value={listItemFormatValue(format, item[code])}
+          />
 
           return (
             <ListItemField
@@ -40,7 +44,6 @@ export const ListItemMobile = ({ schema, item, handleAddToCart }) => {
               id={id}
               label={label}
               value={listItemFormatValue(format, item[code])} 
-              handleAddToCart={() => handleAddToCart(item.id)}
             />
           );
         })}

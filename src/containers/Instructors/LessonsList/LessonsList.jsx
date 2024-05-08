@@ -16,8 +16,6 @@ const LessonsList = () => {
   const {
     lessons,
     isEmptyListFiltered,
-    handleSortLessons,
-    handleLessonAddToCart,
   } = useLessons();
 
   const { isEmptyData, isLoadingData} = useMemo(() => ({
@@ -32,12 +30,10 @@ const LessonsList = () => {
     <>
       <ListHeader
         schema={lessons.schema}
-        handleSortLessons={handleSortLessons}
       />
       <ListBody
         schema={lessons.schema}
         data={lessons.listFiltered}
-        handleLessonAddToCart={handleLessonAddToCart}
       />
     </>
   );

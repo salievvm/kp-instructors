@@ -16,9 +16,16 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <script>
-      var category_id = "93";
-      // var shop_id = "740";
+      /**
+       * Обязательно. Нужна для отображения конкретной родительской услуги.
+       * { 87: 'guides', 93: 'riders', 67: 'skis', 168: 'fitness' } */
+      var category_id = "87"; 
+      /**
+       * Обязательно. Нужна для определения путей статических картинок. */
       var ROOT_DIRECTORY = ".";
+      /**
+       * Не обязательно. Нужна для отображения какой-то вложенной услуги, внутри дерева навигации. */
+      // var shop_id = "740";
     </script>
     <div id="root"></div>
   </body>

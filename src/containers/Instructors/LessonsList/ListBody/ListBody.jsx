@@ -5,13 +5,16 @@ import { Grid } from '@mui/material';
 import { DEVICE_TYPES } from '../../../../shared/consts';
 import { useDeviceType } from '../../../../shared/deviceType';
 import { ListItemDesktop, ListItemMobile } from '../ListItem';
+import { useLessons } from '../../hooks/useLessons';
 
-export const ListBody = ({ data, schema, handleLessonAddToCard }) => {
+export const ListBody = ({ data, schema }) => {
   const deviceType = useDeviceType();
+
+  const { handleLessonAddToCart } = useLessons();
 
   const ListItemProps = {
     schema: schema,
-    handleAddToCart: handleLessonAddToCard,
+    handleAddToCart: handleLessonAddToCart,
   }
 
   const isMobile = useMemo(() => deviceType === DEVICE_TYPES.mobile, [deviceType]);
