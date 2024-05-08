@@ -9,7 +9,8 @@ export const useLessons = () => {
     obInstructorsService.lessonsSort(fieldId);
   }
 
-  const handleLessonAddToCard = async (lessonId) => {
+  const handleLessonAddToCart = async (lessonId) => {
+    console.log({ lessonId });
     await obInstructorsService.lessonAddToCart(lessonId);
   }
 
@@ -19,6 +20,6 @@ export const useLessons = () => {
     lessons,
     isEmptyListFiltered,
     handleSortLessons,
-    handleLessonAddToCard,
+    handleLessonAddToCart,
   }
 }

@@ -6,17 +6,17 @@ import { ListItemAddToCart } from './index';
 import { BORDER_RADIUS_SM } from "../../../../theme/const";
 import { listItemFormatValue } from "../../../../shared/lessons";
 
-const ListItemField = ({ id, minWidth, value, handleAddToCart }) => {
-  if (id === 'price') return (
-    <ListItemAddToCart
-      value={value}
-      handleAddToCart={handleAddToCart}
-      minWidth={minWidth}
-    />
-  );
+const ListItemAddToCartField = ({ minWidth, value, handleAddToCart, itemId }) => (
+  <ListItemAddToCart
+    value={value}
+    onClick={() => handleAddToCart(itemId)}
+    minWidth={minWidth}
+  />
+);
 
-  return <Grid minWidth={minWidth} item>{value}</Grid>
-};
+const ListItemField = ({ minWidth, value }) => (
+  <Grid minWidth={minWidth} item>{value}</Grid>
+);
 
 export const ListItemDesktop = ({ schema, item, handleAddToCart }) => {
   const fields = Object.entries(schema);
@@ -28,13 +28,18 @@ export const ListItemDesktop = ({ schema, item, handleAddToCart }) => {
           const { id, hidden, minWidth, format } = field;
 
           if (hidden) return null;
-
-          return <ListItemField
-            id={id}
+          if (id === 'price') return <ListItemAddToCartField
             key={id}
             minWidth={minWidth}
             value={listItemFormatValue(format, item[code])}
-            handleAddToCart={() => handleAddToCart(item.id)}
+            handleAddToCart={handleAddToCart}
+            itemId={item.id}
+          />
+
+          return <ListItemField
+            key={id}
+            minWidth={minWidth}
+            value={listItemFormatValue(format, item[code])}
           />
         })}
       </Grid>

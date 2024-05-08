@@ -1,6 +1,6 @@
 /* eslint-disable */
 
-import React from 'react';
+import { useEffect } from 'react';
 import { Grid } from '@mui/material';
 
 import CustomCard from '../../components/@ui/CustomCard';
@@ -19,17 +19,11 @@ const Instructors = () => {
   const { getAll, isShowFeedbackButton } = useInstructors();
   const { breadcrumbs } = useNavigation();
 
-  React.useEffect(() => {
-    getAll();
-  }, []);
+  useEffect(() => { getAll() }, []);
 
   return (
     <>
-      <Grid
-        container
-        spacing={2}
-        marginTop={6}
-      >
+      <Grid container spacing={2} marginTop={6}>
         <Grid item xs={12}>
           <Banner showButton={isShowFeedbackButton} />
         </Grid>
@@ -40,12 +34,7 @@ const Instructors = () => {
           <Navigation />
         </Grid>
         <Grid item lg={8} xs={12}>
-          <Grid
-            container
-            direction="column"
-            gap={2}
-            width="100%"
-          >
+          <Grid container direction="column" gap={2} width="100%">
             <CustomCard variant="filled">
               <Filter />
             </CustomCard>
@@ -53,11 +42,7 @@ const Instructors = () => {
           </Grid>
         </Grid>
       </Grid>
-      <Grid
-        container
-        gap={6}
-        marginTop={6}
-      >
+      <Grid container gap={6} marginTop={6}>
         <BannerMobile />
         {/* <BannerSubscription /> */}
         {/* <CustomTypography /> */}

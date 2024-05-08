@@ -6,9 +6,12 @@ import IconButton from '@mui/material/IconButton';
 import { ArrowDownIcon } from '../../../../assets/icons';
 import { DEVICE_TYPES } from '../../../../shared/consts';
 import { useDeviceType } from '../../../../shared/deviceType';
+import { useLessons } from '../../hooks/useLessons';
 
-export const ListHeader = ({ schema, handleSortLessons }) => {
+export const ListHeader = ({ schema }) => {
   const deviceType = useDeviceType();
+
+  const { handleSortLessons } = useLessons();
 
   if (deviceType === DEVICE_TYPES.mobile) return null;
 
