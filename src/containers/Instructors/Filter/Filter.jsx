@@ -43,7 +43,7 @@ const Filter = () => {
             />
           </Grid>
           <Grid item>
-            <Button size="large" color="button" onClick={handleUnsetFilter}>Сбросить</Button>
+            <Button size="medium" color="button" onClick={handleUnsetFilter}>Сбросить</Button>
           </Grid>
         </Grid>
       </Grid>

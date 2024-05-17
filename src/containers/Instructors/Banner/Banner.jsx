@@ -50,7 +50,7 @@ const Banner = ({ showButton }) => {
                     onClick={handleOpenForm}
                     variant="contained"
                     color="primary"
-                    size="large"
+                    size="medium"
                   >
                     Оставить заявку
                   </Button>

@@ -110,7 +110,7 @@ const FormFeedbackSection = ({
           {canAdd ? <Button
             variant="contained"
             color="button"
-            size="large"
+            size="medium"
             onClick={() => handleAddSubSection(sectionCode)}
             fullWidth
           >{addButtonLabel}</Button> : null}

@@ -107,7 +107,7 @@ const BannerSubscription = () => {
                 <Button
                   variant="contained"
                   color="primary"
-                  size="large"
+                  size="medium"
                   fullWidth
                 >
                   Подписаться

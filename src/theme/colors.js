@@ -1,5 +1,7 @@
 /*** Palette */
 export const PRIMARY = '#DE210B';
+export const WARNING = '#E34532';
+export const WARNING_LIGHT = '#E23C28';
 
 /*** Text */
 export const CONTRAST_TEXT_LIGHT = '#FFFFFF';
