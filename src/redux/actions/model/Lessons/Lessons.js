@@ -32,7 +32,7 @@ export default class Lessons {
     })
   }
 
-  mapFields = ({ lessons, meta }, shopId, price) => {
+  mapFields = ({ lessons, meta }, shopId, price, model) => {
     const list = lessons.map(({
       available_slots,
       project_id,
@@ -56,6 +56,7 @@ export default class Lessons {
         rentalItem: meta.rental_item,
         rentalPersType: meta.rental_pers_type,
         duration: `${duration} ч.`,
+        model,
         price,
       }
     })
@@ -64,10 +65,10 @@ export default class Lessons {
     return list;
   }
 
-  getList = async (productId, price, shopId) => {
+  getList = async (productId, price, shopId, model) => {
     const list = await this.api.getList(productId);
 
-    return this.mapFields(list, shopId, price);
+    return this.mapFields(list, shopId, price, model);
   }
 
   prepareCartFields = (lesson) => {
@@ -130,7 +131,7 @@ export default class Lessons {
       console.log({ res, 'window.cart': window.cart });
 
       if (!window.cart) {
-        throw new Error('Пожалуйста обновите страницу');
+        throw new Error('Возникла ошибка! Пожалуйста обновите страницу.');
       }
 
       await window.cart.render();

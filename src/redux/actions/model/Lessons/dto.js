@@ -37,6 +37,12 @@ const schema = {
     hidden: true,
     formSend: true,
   },
+  model: {
+    id: 'model',
+    label: 'model',
+    hidden: true,
+    formSend: true,
+  },
   seasonId: {
     id: 'season_id',
     label: 'seasonId',
