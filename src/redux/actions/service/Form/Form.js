@@ -23,8 +23,6 @@ class FormService {
     const schema_id = params.categoryId && CATEGORIES[params.categoryId]?.schema;
     const schema = schemas[schema_id] ?? form.schema;
 
-    console.log({ schema_id, schemas });
-
     store.dispatch({
       type: SET_SCHEMA,
       data: { schema }
@@ -40,7 +38,6 @@ class FormService {
       for (const section of Object.values(chapter.sections)) {
         const { items } = section;
         for (const item of Object.values(items)) {
-          console.log(item);
           if (item.required === true && !item.value) {
             isValidate = false;
 
@@ -74,8 +71,6 @@ class FormService {
     const contactId = await this.obCrmContact.add({
       ...main,
     }, sourceDescription);
-
-    console.log({ contactId });
 
     const resDeal = await this.obCrmDeal.add({
       ...sport,

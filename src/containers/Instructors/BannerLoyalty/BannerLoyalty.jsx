@@ -77,8 +77,6 @@ const Desktop = () => {
 export const BannerLoyalty = () => {
   const deviceType = useDeviceType();
 
-  console.log({ deviceType });
-
   if (deviceType === 'desktop') return <Desktop />;
   
   return <Mobile />;

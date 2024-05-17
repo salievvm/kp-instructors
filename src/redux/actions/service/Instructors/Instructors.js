@@ -95,7 +95,6 @@ class InstructorsService {
       model,
     } = product;
 
-    console.log({ model });
     const lessons = await this.obLessons.getList(productId, price, shopId, model);
 
     store.dispatch({
