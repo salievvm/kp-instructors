@@ -80,7 +80,7 @@ export const BannerLoyalty = () => {
   const deviceType = useDeviceType();
   const { params } = useInstructors();
 
-  const stylesBadge = { backgroundImage: `${params.rootDirectory}${cardGoldImage}` };
+  const stylesBadge = { backgroundImage: `url(${params.rootDirectory}${cardGoldImage})` };
 
   if (deviceType === 'desktop') return <Desktop stylesBadge={stylesBadge} />;
   

@@ -1,3 +1,22 @@
+@use "~inter-ui/default" with (
+  $inter-font-display: swap,
+  $inter-font-path: '~inter-ui/web'
+);
+
+@use "~inter-ui/variable" with (
+  $inter-font-display: swap,
+  $inter-font-path: '~inter-ui/variable'
+);
+
+@include default.all;
+@include variable.all;
+
+html, body { font-family: "Inter", "system-ui"; }
+
+@supports (font-variation-settings: normal) {
+  html, body { font-family: "InterVariable", "system-ui"; }
+}
+
 body {
 	margin: 0;
 	-webkit-font-smoothing: antialiased;
@@ -162,8 +181,6 @@ table {
 }
 
 html {
-	/* font: 14px/20px Inter; */
-	font-family: 'Inter', sans-serif;
 	color: #1f1f1f;
 }
 

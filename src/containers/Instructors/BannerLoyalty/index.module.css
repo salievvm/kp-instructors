@@ -16,6 +16,6 @@
   width: 128px;
   top: calc(50% + 19px - 50px);
   right: -38px;
-  background: url('../../../assets/img/image_card_gold.png') no-repeat;
   background-size: contain;
+  background-repeat: no-repeat;
 }
