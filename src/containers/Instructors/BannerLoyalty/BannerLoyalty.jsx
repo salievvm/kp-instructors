@@ -1,8 +1,10 @@
-import { Button, Grid, Typography } from "@mui/material";
+import { Button, Grid, Typography } from '@mui/material';
 
 import styles from './index.module.css';
 import { locales as t } from './locales';
-import { useDeviceType } from "../../../shared/deviceType";
+import { useDeviceType } from '../../../shared/deviceType';
+import cardGoldImage from '../../../assets/img/image_card_gold.png';
+import useInstructors from '../hooks/useInstructors';
 
 const LoyaltyButton = ({ fullWidth = false }) => (
   <Button
@@ -15,7 +17,7 @@ const LoyaltyButton = ({ fullWidth = false }) => (
   >
     {t.detail.label}
   </Button>
-)
+);
 
 const MembershipButton = ({ fullWidth = false }) => (
   <Button
@@ -28,15 +30,15 @@ const MembershipButton = ({ fullWidth = false }) => (
   >
     {t.membership.label}
   </Button>
-)
+);
 
-const Mobile = () => {
+const Mobile = ({ stylesBadge }) => {
   return (
     <div className={styles.root}>
       <Typography variant="h5" paddingBottom={2}>{t.title}</Typography>
       <div className={styles.container}>
         <Typography variant="body1">{t.text}</Typography>
-        <div className={styles.image}></div>
+        <div className={styles.image} style={stylesBadge}></div>
       </div>
       <Grid container spacing={2} marginTop={2}>
         <Grid item xs={6}>
@@ -47,10 +49,10 @@ const Mobile = () => {
         </Grid>
       </Grid>
     </div>
-  )
+  );
 };
 
-const Desktop = () => {
+const Desktop = ({ stylesBadge }) => {
   return (
     <div className={styles.root}>
       <div className={styles.container}>
@@ -68,16 +70,19 @@ const Desktop = () => {
             </Grid>
           </Grid>
         </Grid>
-        <div className={styles.image}></div>
+        <div className={styles.image} style={stylesBadge}></div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export const BannerLoyalty = () => {
   const deviceType = useDeviceType();
+  const { params } = useInstructors();
 
-  if (deviceType === 'desktop') return <Desktop />;
+  const stylesBadge = { backgroundImage: `${params.rootDirectory}${cardGoldImage}` };
+
+  if (deviceType === 'desktop') return <Desktop stylesBadge={stylesBadge} />;
   
-  return <Mobile />;
+  return <Mobile stylesBadge={stylesBadge} />;
 };

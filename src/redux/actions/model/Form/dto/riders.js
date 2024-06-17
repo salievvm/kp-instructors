@@ -43,7 +43,7 @@ export const riders = {
     },
   },
   sport: {
-    subtitle: 'Вид спорта',
+    subtitle: 'Направление',
     sections: {
       0: {
         items: {
@@ -55,10 +55,12 @@ export const riders = {
             disabled: false,
             required: true,
             options: [
-              { code: '7548', id: 'rollers', label: 'Ролики', },
-              { code: '7550', id: 'skateboard', label: 'Скейтборд', },
-              { code: '7552', id: 'scooter', label: 'Самокат', },
-              { code: '7554', id: 'bike', label: 'Велосипед', },
+              // { code: '7548', id: 'rollers', label: 'Ролики', },
+              // { code: '7550', id: 'skateboard', label: 'Скейтборд', },
+              // { code: '7552', id: 'scooter', label: 'Самокат', },
+              // { code: '7554', id: 'bike', label: 'Велосипед', },
+              { code: '7590', id: 'scoutCamp', label: 'Scout Camp', },
+              { code: '7592', id: 'rollersAndSkateboard', label: 'Школа роликов и скейтбординга', },
             ],
           },
         },
