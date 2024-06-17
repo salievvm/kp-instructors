@@ -39,7 +39,7 @@ const SuccessPage = () => {
       <Typography variant="body2">{subtitle}</Typography>
       <Button
         variant="contained"
-        size="large"
+        size="medium"
         onClick={handleCloseForm}
         color="primary"
         fullWidth

@@ -4,6 +4,8 @@ import { BODY_COLOR,
   PRIMARY,
   RADIO_GROUP_DEFAULT,
   SECOND_TEXT,
+  WARNING,
+  WARNING_LIGHT,
 } from "./colors";
 
 const palette = {
@@ -18,6 +20,12 @@ const palette = {
     light: RADIO_GROUP_DEFAULT,
     dark: BODY_COLOR,
     contrastText: MAIN_TEXT,
+  },
+  warning: {
+    main: WARNING,
+    light: WARNING_LIGHT,
+    dark: WARNING,
+    contrastText: CONTRAST_TEXT_LIGHT,
   },
   button: {
     main: SECOND_TEXT,

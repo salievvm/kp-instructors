@@ -1,0 +1,1 @@
+export { BannerLoyalty } from './BannerLoyalty';

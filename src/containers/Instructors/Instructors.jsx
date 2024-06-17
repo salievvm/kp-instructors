@@ -14,6 +14,7 @@ import BannerMobile from './BannerMobile';
 
 import useInstructors from './hooks/useInstructors';
 import { useNavigation } from './hooks/useNavigation';
+import { BannerLoyalty } from './BannerLoyalty';
 
 const Instructors = () => {
   const { getAll, isShowFeedbackButton } = useInstructors();
@@ -23,7 +24,7 @@ const Instructors = () => {
 
   return (
     <>
-      <Grid container spacing={2} marginTop={6}>
+      <Grid container spacing={2}>
         <Grid item xs={12}>
           <Banner showButton={isShowFeedbackButton} />
         </Grid>
@@ -44,6 +45,7 @@ const Instructors = () => {
       </Grid>
       <Grid container gap={6} marginTop={6}>
         <BannerMobile />
+        <BannerLoyalty />
         {/* <BannerSubscription /> */}
         {/* <CustomTypography /> */}
       </Grid>

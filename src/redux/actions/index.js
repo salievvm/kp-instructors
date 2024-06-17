@@ -24,8 +24,6 @@ const obInstructorsService = new InstructorsService(
 
 const obFormService = new FormService(obBitrix24Controller, app);
 
-console.log({ obFormService });
-
 export {
   obInstructorsService,
   obFormService,

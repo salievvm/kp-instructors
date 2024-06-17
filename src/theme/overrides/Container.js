@@ -5,7 +5,8 @@ export default function Container(theme) {
     MuiContainer: {
       styleOverrides: {
         root: {
-          marginBottom: 48,
+          paddingBottom: 48,
+          paddingTop: 48,
           maxWidth: CONTAINER_WIDTH_XL,
           // paddingLeft: 0,
           // paddingRight: 0,

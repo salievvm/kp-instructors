@@ -111,7 +111,7 @@ const RecursiveList = ({
   activeItemId,
   onClick,
 }) => {
-  const defaultOpenItems = level === 0 ? [items[0].id, items[1].id] : [];
+  const defaultOpenItems = level === 0 ? [items[0]?.id, items[1]?.id] : [];
   const [openItems, setOpenItems] = React.useState(defaultOpenItems);
 
   const handleClick = (id) => {

@@ -23,7 +23,7 @@ const FormFeedbackSectionList = ({ schema }) => {
         )
       }) : null}
       <Button
-        size='large'
+        size="medium"
         variant="contained"
         onClick={handleSendForm}
       >Отправить заявку</Button>

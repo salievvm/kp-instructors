@@ -87,18 +87,20 @@ class InstructorsService {
     return navigation;
   }
 
-  getLessons = async (lesson) => {
+  getLessons = async (product) => { // Product = navigation item, Lesson = Quotas
     const {
       id: productId,
       price,
       shopId,
-    } = lesson;
-    const lessons = await this.obLessons.getList(productId, price, shopId);
+      model,
+    } = product;
+
+    const lessons = await this.obLessons.getList(productId, price, shopId, model);
 
     store.dispatch({
       type: SET_ACTIVE_LESSON,
       data: {
-        activeLesson: lesson,
+        activeLesson: product,
       }
     });
 
