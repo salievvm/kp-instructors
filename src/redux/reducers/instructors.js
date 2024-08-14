@@ -14,6 +14,8 @@ export const SET_ACTIVE_LESSON = 'SET_ACTIVE_LESSON';
 
 export const SET_NAVIGATION_TREE = 'SET_NAVIGATION_TREE';
 
+export const SET_DEFAULTS_BREADCRUMBS_AND_BANNER = 'SET_DEFAULTS_BREADCRUMBS_AND_BANNER';
+
 const initState = {
   lessons: {
     list: [],
@@ -88,10 +90,11 @@ function reducer(state = initState, action) {
         breadcrumbs[2].label = action.data.schema.skis.title;
       }
 
-      let bannerImage = state.bannerImage;
-      if (action.data.schema.skis.image) {
-        bannerImage = action.data.schema.skis.image;
-      }
+      /** Убрал, потому что по дефолту уже стоит */
+      // let bannerImage = state.bannerImage;
+      // if (action.data.schema.skis.image) {
+      //   bannerImage = action.data.schema.skis.image;
+      // }
       return {
         ...state,
         navigation: {
@@ -99,7 +102,22 @@ function reducer(state = initState, action) {
           schema: action.data.schema,
         },
         breadcrumbs,
-        bannerImage,
+        // bannerImage,
+      }
+    case SET_DEFAULTS_BREADCRUMBS_AND_BANNER:
+      const breadcrumbsDefault = state.breadcrumbs;
+      if (action.data.title) {
+        breadcrumbsDefault[2].label = action.data.title;
+      }
+
+      let bannerImageDefault = state.bannerImage;
+      if (action.data.image) {
+        bannerImageDefault = action.data.image;
+      }
+      return {
+        ...state,
+        breadcrumbs: breadcrumbsDefault,
+        bannerImage: bannerImageDefault,
       }
     default:
       return state;

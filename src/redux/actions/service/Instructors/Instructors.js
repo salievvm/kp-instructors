@@ -1,7 +1,9 @@
+import { CATEGORIES } from "../../../../shared/consts";
 import {
   INSTRUCTORS_SET_FILTER,
   INSTRUCTORS_UNSET_FILTER,
   SET_ACTIVE_LESSON,
+  SET_DEFAULTS_BREADCRUMBS_AND_BANNER,
   SET_LESSONS_LIST,
   SET_NAVIGATION_TREE
 } from "../../../reducers/instructors";
@@ -31,6 +33,13 @@ class InstructorsService {
     this.app.setLoading();
     
     const { params } = store.getState();
+
+    const { title, image } = CATEGORIES[params.categoryId];
+
+    store.dispatch({
+      type: SET_DEFAULTS_BREADCRUMBS_AND_BANNER,
+      data: { title, image },
+    });
 
     const navigation = await this.getNavigation();
     const shopId = params.shopId; // "327"
